@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '0.5-SNAPSHOT'
+    id 'dev.architectury.loom' version '0.7.2-SNAPSHOT'
 }
 
 
@@ -11,6 +11,8 @@ targetCompatibility = JavaVersion.VERSION_1_8
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+
+    forge "net.minecraftforge:forge:${mc_version}-${forge_version}"
 
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
