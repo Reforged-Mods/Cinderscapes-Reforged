@@ -18,6 +18,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -45,6 +46,9 @@ public class Cinderscapes implements ModInitializer {
 		CinderscapesBiomes.init();
 		CinderscapesSoundEvents.init();
 		CinderscapesTrades.init();
+
+		CinderscapesBiomes.BIOMES.register(FMLJavaModLoadingContext.get().getModEventBus());
+		CinderscapesDecorators.DECORATORS.register(FMLJavaModLoadingContext.get().getModEventBus());
 
 		NoiseCollisionChecker.init();
 	}
@@ -81,7 +85,10 @@ public class Cinderscapes implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		try { SpawnRestrictionAccessor.callRegister(EntityType.ZOGLIN, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ZoglinEntity::canMobSpawn); } catch (IllegalStateException e) { }
+		//todo
+		/*try {
+			SpawnRestrictionAccessor.callRegister(EntityType.ZOGLIN, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ZoglinEntity::canMobSpawn);
+		} catch (IllegalStateException e) {}*/
 
 
 	}
