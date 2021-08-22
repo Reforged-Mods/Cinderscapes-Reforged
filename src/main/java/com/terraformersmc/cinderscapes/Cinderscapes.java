@@ -1,35 +1,35 @@
 package com.terraformersmc.cinderscapes;
 
 import com.terraformersmc.cinderscapes.config.CinderscapesConfig;
-import com.terraformersmc.cinderscapes.init.*;
+import com.terraformersmc.cinderscapes.init.CinderscapesBiomes;
+import com.terraformersmc.cinderscapes.init.CinderscapesBlocks;
+import com.terraformersmc.cinderscapes.init.CinderscapesConfiguredFeatures;
+import com.terraformersmc.cinderscapes.init.CinderscapesDecorators;
+import com.terraformersmc.cinderscapes.init.CinderscapesFeatures;
+import com.terraformersmc.cinderscapes.init.CinderscapesGroups;
+import com.terraformersmc.cinderscapes.init.CinderscapesItems;
+import com.terraformersmc.cinderscapes.init.CinderscapesSoundEvents;
+import com.terraformersmc.cinderscapes.init.CinderscapesSurfaces;
+import com.terraformersmc.cinderscapes.init.CinderscapesTrades;
 import com.terraformersmc.cinderscapes.util.NoiseCollisionChecker;
-import me.sargunvohra.mcmods.autoconfig1u.ConfigManager;
-import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.mixin.object.builder.SpawnRestrictionAccessor;
 import net.minecraft.block.Block;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnRestriction;
-import net.minecraft.entity.mob.ZoglinEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.Heightmap;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-
 @Mod(value = Cinderscapes.ID)
-public class Cinderscapes implements ModInitializer {
+public class Cinderscapes {
 
 	public static final String ID = "cinderscapes";
 	public static final Logger LOGGER = LogManager.getLogger();
@@ -51,6 +51,13 @@ public class Cinderscapes implements ModInitializer {
 		CinderscapesDecorators.DECORATORS.register(FMLJavaModLoadingContext.get().getModEventBus());
 
 		NoiseCollisionChecker.init();
+	}
+
+	private void setup(final FMLCommonSetupEvent e) {
+		e.enqueueWork(() -> {
+			CinderscapesConfiguredFeatures.init();
+		});
+
 	}
 
 	public void onRegister(final RegistryEvent.Register<?> event){
@@ -83,7 +90,6 @@ public class Cinderscapes implements ModInitializer {
 
 	}
 
-	@Override
 	public void onInitialize() {
 		//todo
 		/*try {
@@ -95,5 +101,9 @@ public class Cinderscapes implements ModInitializer {
 
 	public static Identifier id(String path) {
 		return new Identifier(ID, path);
+	}
+
+	public static String idAsString(String path){
+		return id(path).toString();
 	}
 }

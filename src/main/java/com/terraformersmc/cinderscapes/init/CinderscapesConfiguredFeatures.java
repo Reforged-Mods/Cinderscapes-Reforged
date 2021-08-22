@@ -24,6 +24,8 @@ import java.util.List;
 
 public final class CinderscapesConfiguredFeatures {
 
+    public static void init(){}
+
     public static final ConfiguredFeature<?, ?> BLACKSTONE_SHALE_WEEPING_VINES = register("blackstone_shales_weeping_vines", ConfiguredFeatures.WEEPING_VINES.repeat(10));
 
     public static final ConfiguredFeature<?, ?> ORE_DEBRIS_LARGE_ASHY_SHOALS = register("ore_debris_large_ashy_shoals", Feature.NO_SURFACE_ORE
@@ -38,14 +40,14 @@ public final class CinderscapesConfiguredFeatures {
             .spreadHorizontally()
             .repeat(4)
     );
-    public static final ConfiguredFeature<?, ?> ASH_PILES = register("ash_piles", CinderscapesFeatures.ASH_PILE
+    public static final ConfiguredFeature<?, ?> ASH_PILES = register("ash_piles", CinderscapesFeatures.ASH_PILE.get()
             .configure(FeatureConfig.DEFAULT)
             .decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(10, 10, 128)))
             .spreadHorizontally()
             .repeat(5)
     );
     public static final ConfiguredFeature<?, ?> VEGETATION_ASHY_SHOALS = register("vegetation_ashy_shoals",
-            CinderscapesFeatures.VEGETATION
+            CinderscapesFeatures.VEGETATION.get()
                     .configure(CinderscapesFeatures.ASHY_SHOALS_VEGETATION_CONFIG)
                     .decorate(Decorator.COUNT_MULTILAYER.configure(new CountConfig(8)))
     );
@@ -72,11 +74,11 @@ public final class CinderscapesConfiguredFeatures {
             .repeat(5)
     );
 
-    public static final ConfiguredFeature<?, ?> ASH_TOP_LAYER = register("ash_top_layer", CinderscapesFeatures.ASH_TOP_LAYER.configure(FeatureConfig.DEFAULT));
+    public static final ConfiguredFeature<?, ?> ASH_TOP_LAYER = register("ash_top_layer", CinderscapesFeatures.ASH_TOP_LAYER.get().configure(FeatureConfig.DEFAULT));
 
     private static final List<BlockState> DEAD_TREE_SAFELIST = Arrays.asList(Blocks.NETHERRACK.getDefaultState(), Blocks.GRAVEL.getDefaultState(), CinderscapesBlocks.ASH.getDefaultState(), Blocks.SOUL_SAND.getDefaultState(), Blocks.SOUL_SOIL.getDefaultState());
 
-    public static final ConfiguredFeature<?, ?> DEAD_TREE = register("dead_tree", CinderscapesFeatures.DEAD_TREE.configure(FeatureConfig.DEFAULT).decorate(CinderscapesDecorators.COUNT_FLOOR.get().configure(new CountSafelistRangeDecoratorConfig(10, 20, 20, 128, DEAD_TREE_SAFELIST))));
+    public static final ConfiguredFeature<?, ?> DEAD_TREE = register("dead_tree", CinderscapesFeatures.DEAD_TREE.get().configure(FeatureConfig.DEFAULT).decorate(CinderscapesDecorators.COUNT_FLOOR.get().configure(new CountSafelistRangeDecoratorConfig(10, 20, 20, 128, DEAD_TREE_SAFELIST))));
 
     /******* BLACKSTONE SHALES *********/
 
@@ -103,13 +105,13 @@ public final class CinderscapesConfiguredFeatures {
     private static final List<BlockState> SHALE_SAFELIST = Arrays.asList(Blocks.CRIMSON_ROOTS.getDefaultState(), Blocks.NETHERRACK.getDefaultState(), Blocks.BLACKSTONE.getDefaultState(), Blocks.SOUL_SOIL.getDefaultState(), Blocks.SOUL_SAND.getDefaultState());
 
     public static final ConfiguredFeature<?, ?> SHALES = register("shales",
-            CinderscapesFeatures.SHALE_FEATURE.configure(new SimpleStateFeatureConfig(Blocks.BLACKSTONE.getDefaultState(), SHALE_SAFELIST)).decorate(CinderscapesDecorators.COUNT_FLOOR.get().configure(new CountSafelistRangeDecoratorConfig(2, 20, 20, 128, SHALE_SAFELIST)))
+            CinderscapesFeatures.SHALE_FEATURE.get().configure(new SimpleStateFeatureConfig(Blocks.BLACKSTONE.getDefaultState(), SHALE_SAFELIST)).decorate(CinderscapesDecorators.COUNT_FLOOR.get().configure(new CountSafelistRangeDecoratorConfig(2, 20, 20, 128, SHALE_SAFELIST)))
     );
 
     private static final List<BlockState> LAVA_SHALE_SAFELIST = Arrays.asList(Blocks.LAVA.getDefaultState());
 
     public static final ConfiguredFeature<?, ?> LAVA_SHALES = register("lava_shales",
-            CinderscapesFeatures.SHALE_FEATURE.configure(new SimpleStateFeatureConfig(Blocks.BLACKSTONE.getDefaultState(), SHALE_SAFELIST)).decorate(CinderscapesDecorators.COUNT_FLOOR.get().configure(new CountSafelistRangeDecoratorConfig(2, 20, 20, 128, LAVA_SHALE_SAFELIST)))
+            CinderscapesFeatures.SHALE_FEATURE.get().configure(new SimpleStateFeatureConfig(Blocks.BLACKSTONE.getDefaultState(), SHALE_SAFELIST)).decorate(CinderscapesDecorators.COUNT_FLOOR.get().configure(new CountSafelistRangeDecoratorConfig(2, 20, 20, 128, LAVA_SHALE_SAFELIST)))
     );
 
     /******* LUMINOUS GROVE *********/
@@ -124,14 +126,14 @@ public final class CinderscapesConfiguredFeatures {
     );
 
     public static final ConfiguredFeature<?, ?> SHROOMLIGHT_BUSH = register("luminous_grove/shroomlight_bush",
-            CinderscapesFeatures.SHROOMLIGHT_BUSH.configure(FeatureConfig.DEFAULT)
+            CinderscapesFeatures.SHROOMLIGHT_BUSH.get().configure(FeatureConfig.DEFAULT)
                     .rangeOf(128)
                     .spreadHorizontally()
                     .repeat(5)
     );
 
     public static final ConfiguredFeature<?, ?> VEGETATION_LUMINOUS_GROWTH = register("luminous_growth/vegetation",
-            CinderscapesFeatures.VEGETATION.configure(CinderscapesFeatures.LUMINOUS_GROVE_VEGETATION_CONFIG).decorate(Decorator.COUNT_MULTILAYER.configure(new CountConfig(8)))
+            CinderscapesFeatures.VEGETATION.get().configure(CinderscapesFeatures.LUMINOUS_GROVE_VEGETATION_CONFIG).decorate(Decorator.COUNT_MULTILAYER.configure(new CountConfig(8)))
     );
 
     public static final ConfiguredFeature<?, ?> LUMINOUS_POD = register("luminous_growth/luminous_pod",
@@ -153,7 +155,7 @@ public final class CinderscapesConfiguredFeatures {
     );
 
     public static final ConfiguredFeature<?, ?> UMBRAL_VINE = register("luminous_growth/umbral_vine",
-            CinderscapesFeatures.UMBRAL_VINE.configure(FeatureConfig.DEFAULT)
+            CinderscapesFeatures.UMBRAL_VINE.get().configure(FeatureConfig.DEFAULT)
                     .rangeOf(128)
                     .spreadHorizontally()
                     .repeat(20)
@@ -161,11 +163,11 @@ public final class CinderscapesConfiguredFeatures {
 
     private static final List<BlockState> CANOPIED_HUGE_FUNGUS_SAFELIST = Arrays.asList(CinderscapesBlocks.UMBRAL_NYLIUM.getDefaultState(), Blocks.NETHERRACK.getDefaultState());
 
-    public static final ConfiguredFeature<?, ?> CANOPIED_HUGE_FUNGUS = register("canopied_huge_fungus", CinderscapesFeatures.CANOPIED_HUGE_FUNGUS.configure(CinderscapesFeatures.UMBRAL_FUNGUS_NOT_PLANTED_CONFIG).decorate(CinderscapesDecorators.COUNT_FLOOR.get().configure(new CountSafelistRangeDecoratorConfig(32, 20, 20, 128, CANOPIED_HUGE_FUNGUS_SAFELIST))));
+    public static final ConfiguredFeature<?, ?> CANOPIED_HUGE_FUNGUS = register("canopied_huge_fungus", CinderscapesFeatures.CANOPIED_HUGE_FUNGUS.get().configure(CinderscapesFeatures.UMBRAL_FUNGUS_NOT_PLANTED_CONFIG).decorate(CinderscapesDecorators.COUNT_FLOOR.get().configure(new CountSafelistRangeDecoratorConfig(32, 20, 20, 128, CANOPIED_HUGE_FUNGUS_SAFELIST))));
 
     /******* QUARTZ CANYON *******/
 
-    public static final ConfiguredFeature<?, ?> VEGETATION_QUARTZ_CANYON = register("quartz_canyon/vegetation", CinderscapesFeatures.VEGETATION.configure(CinderscapesFeatures.QUARTZ_CANYON_VEGETATION_CONFIG).decorate(Decorator.COUNT.configure(new CountConfig(8))));
+    public static final ConfiguredFeature<?, ?> VEGETATION_QUARTZ_CANYON = register("quartz_canyon/vegetation", CinderscapesFeatures.VEGETATION.get().configure(CinderscapesFeatures.QUARTZ_CANYON_VEGETATION_CONFIG).decorate(Decorator.COUNT.configure(new CountConfig(8))));
 
     public static final ConfiguredFeature<?, ?> ORE_QUARTZ_QUARTZ_CANYON = register("quartz_canyon/quartz_ore", Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.NETHERRACK, Blocks.NETHER_QUARTZ_ORE.getDefaultState(), 14)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(10, 20, 128))).spreadHorizontally().repeat(32));
     public static final ConfiguredFeature<?, ?> ORE_SULFUR_QUARTZ_CANYON = register("quartz_canyon/sulfur_ore", Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.NETHERRACK, CinderscapesBlocks.SULFUR_ORE.getDefaultState(), 14)).rangeOf(128).spreadHorizontally().repeat(16));
@@ -177,14 +179,14 @@ public final class CinderscapesConfiguredFeatures {
     private static final List<BlockState> SHARD_WHITELIST = Arrays.asList(Blocks.NETHERRACK.getDefaultState(), Blocks.AIR.getDefaultState(), Blocks.GRAVEL.getDefaultState(), Blocks.NETHER_QUARTZ_ORE.getDefaultState(), Blocks.SOUL_SAND.getDefaultState());
     private static final List<BlockState> SHARED_SAFELIST = Arrays.asList(Blocks.NETHERRACK.getDefaultState(), Blocks.NETHER_QUARTZ_ORE.getDefaultState());
 
-    public static final ConfiguredFeature<?, ?> CEILING_SHARD_QUARTZ = register("quartz_canyon/ceiling_shard_quartz", CinderscapesFeatures.CEILING_SHARD.configure(new SimpleStateFeatureConfig(CinderscapesBlocks.CRYSTALLINE_QUARTZ.getDefaultState(), SHARD_WHITELIST)).decorate(CinderscapesDecorators.COUNT_CEILING.get().configure(new CountSafelistRangeDecoratorConfig(1, 20, 20, 128, SHARED_SAFELIST))));
-    public static final ConfiguredFeature<?, ?> FLOOR_SHARD_QUARTZ = register("quartz_canyon/floor_shard_quartz", CinderscapesFeatures.FLOOR_SHARD.configure(new SimpleStateFeatureConfig(CinderscapesBlocks.CRYSTALLINE_QUARTZ.getDefaultState(), SHARD_WHITELIST)).decorate(CinderscapesDecorators.COUNT_FLOOR.get().configure(new CountSafelistRangeDecoratorConfig(1, 20, 20, 128, SHARED_SAFELIST))));
-    public static final ConfiguredFeature<?, ?> CEILING_SHARD_ROSE_QUARTZ = register("quartz_canyon/ceiling_shard_rose_quartz", CinderscapesFeatures.CEILING_SHARD.configure(new SimpleStateFeatureConfig(CinderscapesBlocks.CRYSTALLINE_ROSE_QUARTZ.getDefaultState(), SHARD_WHITELIST)).decorate(CinderscapesDecorators.COUNT_CEILING.get().configure(new CountSafelistRangeDecoratorConfig(1, 20, 20, 128, SHARED_SAFELIST))));
-    public static final ConfiguredFeature<?, ?> FLOOR_SHARD_ROSE_QUARTZ = register("quartz_canyon/floor_shard_rose_quartz", CinderscapesFeatures.FLOOR_SHARD.configure(new SimpleStateFeatureConfig(CinderscapesBlocks.CRYSTALLINE_ROSE_QUARTZ.getDefaultState(), SHARD_WHITELIST)).decorate(CinderscapesDecorators.COUNT_FLOOR.get().configure(new CountSafelistRangeDecoratorConfig(1, 20, 20, 128, SHARED_SAFELIST))));
-    public static final ConfiguredFeature<?, ?> CEILING_SHARD_SMOKY_QUARTZ = register("quartz_canyon/ceiling_shard_smoky_quartz", CinderscapesFeatures.CEILING_SHARD.configure(new SimpleStateFeatureConfig(CinderscapesBlocks.CRYSTALLINE_SMOKY_QUARTZ.getDefaultState(), SHARD_WHITELIST)).decorate(CinderscapesDecorators.COUNT_CEILING.get().configure(new CountSafelistRangeDecoratorConfig(1, 20, 20, 128, SHARED_SAFELIST))));
-    public static final ConfiguredFeature<?, ?> FLOOR_SHARD_SMOKY_QUARTZ = register("quartz_canyon/floor_shard_smoky_quartz", CinderscapesFeatures.FLOOR_SHARD.configure(new SimpleStateFeatureConfig(CinderscapesBlocks.CRYSTALLINE_SMOKY_QUARTZ.getDefaultState(), SHARD_WHITELIST)).decorate(CinderscapesDecorators.COUNT_FLOOR.get().configure(new CountSafelistRangeDecoratorConfig(1, 20, 20, 128, SHARED_SAFELIST))));
-    public static final ConfiguredFeature<?, ?> CEILING_SHARD_SULFUR_QUARTZ = register("quartz_canyon/ceiling_shard_sulfur_quartz", CinderscapesFeatures.CEILING_SHARD.configure(new SimpleStateFeatureConfig(CinderscapesBlocks.CRYSTALLINE_SULFUR_QUARTZ.getDefaultState(), SHARD_WHITELIST)).decorate(CinderscapesDecorators.COUNT_CEILING.get().configure(new CountSafelistRangeDecoratorConfig(1, 20, 20, 128, SHARED_SAFELIST))));
-    public static final ConfiguredFeature<?, ?> FLOOR_SHARD_SULFUR_QUARTZ = register("quartz_canyon/floor_shard_sulfur_quartz", CinderscapesFeatures.FLOOR_SHARD.configure(new SimpleStateFeatureConfig(CinderscapesBlocks.CRYSTALLINE_SULFUR_QUARTZ.getDefaultState(), SHARD_WHITELIST)).decorate(CinderscapesDecorators.COUNT_FLOOR.get().configure(new CountSafelistRangeDecoratorConfig(1, 20, 20, 128, SHARED_SAFELIST))));
+    public static final ConfiguredFeature<?, ?> CEILING_SHARD_QUARTZ = register("quartz_canyon/ceiling_shard_quartz", CinderscapesFeatures.CEILING_SHARD.get().configure(new SimpleStateFeatureConfig(CinderscapesBlocks.CRYSTALLINE_QUARTZ.getDefaultState(), SHARD_WHITELIST)).decorate(CinderscapesDecorators.COUNT_CEILING.get().configure(new CountSafelistRangeDecoratorConfig(1, 20, 20, 128, SHARED_SAFELIST))));
+    public static final ConfiguredFeature<?, ?> FLOOR_SHARD_QUARTZ = register("quartz_canyon/floor_shard_quartz", CinderscapesFeatures.FLOOR_SHARD.get().configure(new SimpleStateFeatureConfig(CinderscapesBlocks.CRYSTALLINE_QUARTZ.getDefaultState(), SHARD_WHITELIST)).decorate(CinderscapesDecorators.COUNT_FLOOR.get().configure(new CountSafelistRangeDecoratorConfig(1, 20, 20, 128, SHARED_SAFELIST))));
+    public static final ConfiguredFeature<?, ?> CEILING_SHARD_ROSE_QUARTZ = register("quartz_canyon/ceiling_shard_rose_quartz", CinderscapesFeatures.CEILING_SHARD.get().configure(new SimpleStateFeatureConfig(CinderscapesBlocks.CRYSTALLINE_ROSE_QUARTZ.getDefaultState(), SHARD_WHITELIST)).decorate(CinderscapesDecorators.COUNT_CEILING.get().configure(new CountSafelistRangeDecoratorConfig(1, 20, 20, 128, SHARED_SAFELIST))));
+    public static final ConfiguredFeature<?, ?> FLOOR_SHARD_ROSE_QUARTZ = register("quartz_canyon/floor_shard_rose_quartz", CinderscapesFeatures.FLOOR_SHARD.get().configure(new SimpleStateFeatureConfig(CinderscapesBlocks.CRYSTALLINE_ROSE_QUARTZ.getDefaultState(), SHARD_WHITELIST)).decorate(CinderscapesDecorators.COUNT_FLOOR.get().configure(new CountSafelistRangeDecoratorConfig(1, 20, 20, 128, SHARED_SAFELIST))));
+    public static final ConfiguredFeature<?, ?> CEILING_SHARD_SMOKY_QUARTZ = register("quartz_canyon/ceiling_shard_smoky_quartz", CinderscapesFeatures.CEILING_SHARD.get().configure(new SimpleStateFeatureConfig(CinderscapesBlocks.CRYSTALLINE_SMOKY_QUARTZ.getDefaultState(), SHARD_WHITELIST)).decorate(CinderscapesDecorators.COUNT_CEILING.get().configure(new CountSafelistRangeDecoratorConfig(1, 20, 20, 128, SHARED_SAFELIST))));
+    public static final ConfiguredFeature<?, ?> FLOOR_SHARD_SMOKY_QUARTZ = register("quartz_canyon/floor_shard_smoky_quartz", CinderscapesFeatures.FLOOR_SHARD.get().configure(new SimpleStateFeatureConfig(CinderscapesBlocks.CRYSTALLINE_SMOKY_QUARTZ.getDefaultState(), SHARD_WHITELIST)).decorate(CinderscapesDecorators.COUNT_FLOOR.get().configure(new CountSafelistRangeDecoratorConfig(1, 20, 20, 128, SHARED_SAFELIST))));
+    public static final ConfiguredFeature<?, ?> CEILING_SHARD_SULFUR_QUARTZ = register("quartz_canyon/ceiling_shard_sulfur_quartz", CinderscapesFeatures.CEILING_SHARD.get().configure(new SimpleStateFeatureConfig(CinderscapesBlocks.CRYSTALLINE_SULFUR_QUARTZ.getDefaultState(), SHARD_WHITELIST)).decorate(CinderscapesDecorators.COUNT_CEILING.get().configure(new CountSafelistRangeDecoratorConfig(1, 20, 20, 128, SHARED_SAFELIST))));
+    public static final ConfiguredFeature<?, ?> FLOOR_SHARD_SULFUR_QUARTZ = register("quartz_canyon/floor_shard_sulfur_quartz", CinderscapesFeatures.FLOOR_SHARD.get().configure(new SimpleStateFeatureConfig(CinderscapesBlocks.CRYSTALLINE_SULFUR_QUARTZ.getDefaultState(), SHARD_WHITELIST)).decorate(CinderscapesDecorators.COUNT_FLOOR.get().configure(new CountSafelistRangeDecoratorConfig(1, 20, 20, 128, SHARED_SAFELIST))));
 
     public static final ConfiguredFeature<?, ?> POLYPITE_QUARTZ = register("quartz_canyon/polypite_quartz", configurePolypiteQuartz((PolypiteQuartzBlock) CinderscapesBlocks.POLYPITE_QUARTZ));
     public static final ConfiguredFeature<?, ?> POLYPITE_SULFUR_QUARTZ = register("quartz_canyon/polypite_sulfur_quartz", configurePolypiteQuartz((PolypiteQuartzBlock) CinderscapesBlocks.POLYPITE_SULFUR_QUARTZ));
@@ -192,7 +194,7 @@ public final class CinderscapesConfiguredFeatures {
     public static final ConfiguredFeature<?, ?> POLYPITE_SMOKY_QUARTZ = register("quartz_canyon/polypite_smoky_quartz", configurePolypiteQuartz((PolypiteQuartzBlock) CinderscapesBlocks.POLYPITE_SMOKY_QUARTZ));
 
     private static ConfiguredFeature<?, ?> configurePolypiteQuartz(PolypiteQuartzBlock block) {
-        return CinderscapesFeatures.POLYPITE_QUARTZ.configure(new PolypiteQuartzFeatureConfig(block)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(10, 20, 128))).spreadHorizontally().repeat(128);
+        return CinderscapesFeatures.POLYPITE_QUARTZ.get().configure(new PolypiteQuartzFeatureConfig(block)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(10, 20, 128))).spreadHorizontally().repeat(128);
     }
 
     private CinderscapesConfiguredFeatures() {

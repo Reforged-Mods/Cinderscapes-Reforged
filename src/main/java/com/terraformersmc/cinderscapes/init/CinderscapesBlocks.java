@@ -82,7 +82,7 @@ public class CinderscapesBlocks {
 
     public static final Block UMBRAL_NYLIUM = add("umbral_nylium", new CinderscapesNyliumBlock(copy(Blocks.WARPED_NYLIUM, MaterialColor.BLUE).harvestTool(ToolType.PICKAXE)), ItemGroup.BUILDING_BLOCKS);
 
-    public static final Block UMBRAL_FUNGUS = add("umbral_fungus", new CinderscapesCanopiedFungusBlock(copy(Blocks.WARPED_FUNGUS, MaterialColor.BLUE).harvestTool(ToolType.PICKAXE).luminance(i -> 15), () -> CinderscapesFeatures.CANOPIED_HUGE_FUNGUS.configure(CinderscapesFeatures.UMBRAL_FUNGUS_CONFIG)), ItemGroup.DECORATIONS);
+    public static final Block UMBRAL_FUNGUS = add("umbral_fungus", new CinderscapesCanopiedFungusBlock(copy(Blocks.WARPED_FUNGUS, MaterialColor.BLUE).harvestTool(ToolType.PICKAXE).luminance(i -> 15), () -> CinderscapesFeatures.CANOPIED_HUGE_FUNGUS.get().configure(CinderscapesFeatures.UMBRAL_FUNGUS_CONFIG)), ItemGroup.DECORATIONS);
     public static final Block POTTED_UMBRAL_FUNGUS = add("potted_umbral_fungus", new FlowerPotBlock(UMBRAL_FUNGUS, Settings.copy(Blocks.POTTED_WARPED_FUNGUS)));
 
     public static final Block UMBRAL_WART_BLOCK = add("umbral_wart_block", new CinderscapesTransparentBlock(copy(Blocks.WARPED_WART_BLOCK, MaterialColor.BLUE).harvestTool(ToolType.HOE).nonOpaque()), ItemGroup.BUILDING_BLOCKS);
