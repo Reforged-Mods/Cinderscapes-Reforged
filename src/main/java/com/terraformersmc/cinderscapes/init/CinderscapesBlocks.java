@@ -37,11 +37,11 @@ public class CinderscapesBlocks {
     // Ashy Shoals //
     /////////////////
 
-    public static final Block STRIPPED_SCORCHED_STEM = add("stripped_scorched_stem", new PillarBlock(copy(Blocks.STRIPPED_WARPED_STEM, MaterialColor.LIGHT_GRAY).breakByTool(FabricToolTags.AXES)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block SCORCHED_STEM = add("scorched_stem", new StrippableLogBlock(() -> STRIPPED_SCORCHED_STEM, MaterialColor.CLEAR, copy(Blocks.WARPED_STEM, MaterialColor.LIGHT_GRAY).breakByTool(FabricToolTags.AXES)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block STRIPPED_SCORCHED_STEM = add("stripped_scorched_stem", new PillarBlock(copy(Blocks.STRIPPED_WARPED_STEM, MaterialColor.LIGHT_GRAY).harvestTool(ToolType.AXE)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block SCORCHED_STEM = add("scorched_stem", new StrippableLogBlock(() -> STRIPPED_SCORCHED_STEM, MaterialColor.CLEAR, copy(Blocks.WARPED_STEM, MaterialColor.LIGHT_GRAY).harvestTool(ToolType.AXE)), ItemGroup.BUILDING_BLOCKS);
 
-    public static final Block STRIPPED_SCORCHED_HYPHAE = add("stripped_scorched_hyphae", new PillarBlock(copy(Blocks.STRIPPED_WARPED_HYPHAE, MaterialColor.LIGHT_GRAY).breakByTool(FabricToolTags.AXES)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block SCORCHED_HYPHAE = add("scorched_hyphae", new StrippableLogBlock(() -> STRIPPED_SCORCHED_HYPHAE, MaterialColor.CLEAR, copy(Blocks.WARPED_HYPHAE, MaterialColor.LIGHT_GRAY).breakByTool(FabricToolTags.AXES)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block STRIPPED_SCORCHED_HYPHAE = add("stripped_scorched_hyphae", new PillarBlock(copy(Blocks.STRIPPED_WARPED_HYPHAE, MaterialColor.LIGHT_GRAY).harvestTool(ToolType.AXE)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block SCORCHED_HYPHAE = add("scorched_hyphae", new StrippableLogBlock(() -> STRIPPED_SCORCHED_HYPHAE, MaterialColor.CLEAR, copy(Blocks.WARPED_HYPHAE, MaterialColor.LIGHT_GRAY).harvestTool(ToolType.AXE)), ItemGroup.BUILDING_BLOCKS);
 
     public static final Block SCORCHED_PLANKS = add("scorched_planks", new Block(copy(Blocks.WARPED_PLANKS, MaterialColor.LIGHT_GRAY)), ItemGroup.BUILDING_BLOCKS);
     public static final Block SCORCHED_SLAB = add("scorched_slab", new SlabBlock(copy(Blocks.WARPED_SLAB, MaterialColor.LIGHT_GRAY)), ItemGroup.BUILDING_BLOCKS);
@@ -55,15 +55,15 @@ public class CinderscapesBlocks {
     public static final Block SCORCHED_SIGN = add("scorched_sign", new TerraformSignBlock(Cinderscapes.id("entity/signs/scorched"), copy(Blocks.WARPED_SIGN, MaterialColor.LIGHT_GRAY)));
     public static final Block SCORCHED_WALL_SIGN = add("scorched_wall_sign", new TerraformWallSignBlock(Cinderscapes.id("entity/signs/scorched"), copy(Blocks.WARPED_WALL_SIGN, MaterialColor.LIGHT_GRAY)));
 
-    public static final Block SCORCHED_SHRUB = add("scorched_shrub", new CinderscapesNetherPlantBlock(copy(Blocks.DEAD_BUSH), (state) -> Block.createCuboidShape(2.0, 0.0, 2.0, 14.0, 14.0, 14.0)), ItemGroup.DECORATIONS);
-    public static final Block POTTED_SCORCHED_SHRUB = add("potted_scorched_shrub", new FlowerPotBlock(SCORCHED_SHRUB, copy(Blocks.POTTED_DEAD_BUSH)));
+    public static final Block SCORCHED_SHRUB = add("scorched_shrub", new CinderscapesNetherPlantBlock(Settings.copy(Blocks.DEAD_BUSH), (state) -> Block.createCuboidShape(2.0, 0.0, 2.0, 14.0, 14.0, 14.0)), ItemGroup.DECORATIONS);
+    public static final Block POTTED_SCORCHED_SHRUB = add("potted_scorched_shrub", new FlowerPotBlock(SCORCHED_SHRUB, Settings.copy(Blocks.POTTED_DEAD_BUSH)));
 
-    public static final Block SCORCHED_SPROUTS = add("scorched_sprouts", new CinderscapesNetherPlantBlock(copy(Blocks.DEAD_BUSH), (state) -> Block.createCuboidShape(2.0, 0.0, 2.0, 14.0, 3.0, 14.0)), ItemGroup.DECORATIONS);
-    public static final Block SCORCHED_TENDRILS = add("scorched_tendrils", new CinderscapesNetherPlantBlock(copy(Blocks.DEAD_BUSH), (state) -> Block.createCuboidShape(2.0, 0.0, 2.0, 14.0, 12.0, 14.0)), ItemGroup.DECORATIONS);
-    public static final Block POTTED_SCORCHED_TENDRILS = add("potted_scorched_tendrils", new FlowerPotBlock(SCORCHED_TENDRILS, copy(Blocks.POTTED_WARPED_ROOTS)));
+    public static final Block SCORCHED_SPROUTS = add("scorched_sprouts", new CinderscapesNetherPlantBlock(Settings.copy(Blocks.DEAD_BUSH), (state) -> Block.createCuboidShape(2.0, 0.0, 2.0, 14.0, 3.0, 14.0)), ItemGroup.DECORATIONS);
+    public static final Block SCORCHED_TENDRILS = add("scorched_tendrils", new CinderscapesNetherPlantBlock(Settings.copy(Blocks.DEAD_BUSH), (state) -> Block.createCuboidShape(2.0, 0.0, 2.0, 14.0, 12.0, 14.0)), ItemGroup.DECORATIONS);
+    public static final Block POTTED_SCORCHED_TENDRILS = add("potted_scorched_tendrils", new FlowerPotBlock(SCORCHED_TENDRILS, Settings.copy(Blocks.POTTED_WARPED_ROOTS)));
 
-    public static final Block ASH = add("ash", new AshLayerBlock(copy(Blocks.SNOW).breakByTool(FabricToolTags.SHOVELS)), ItemGroup.DECORATIONS);
-    public static final Block ASH_BLOCK = add("ash_block", new Block(copy(Blocks.SNOW_BLOCK).breakByTool(FabricToolTags.SHOVELS)), ItemGroup.DECORATIONS);
+    public static final Block ASH = add("ash", new AshLayerBlock(Settings.copy(Blocks.SNOW).harvestTool(ToolType.SHOVEL)), ItemGroup.DECORATIONS);
+    public static final Block ASH_BLOCK = add("ash_block", new Block(Settings.copy(Blocks.SNOW_BLOCK).harvestTool(ToolType.SHOVEL)), ItemGroup.DECORATIONS);
 
     public static final Block PYRACINTH = add("pyracinth", new PyracinthBlock(), ItemGroup.DECORATIONS);
     public static final Block POTTED_PYRACINTH = add("potted_pyracinth", new PottedPyracinthBlock());
@@ -102,7 +102,7 @@ public class CinderscapesBlocks {
 
     // Other
 
-    public static final Block TWILIGHT_VINE_BLOCK = add("twilight_vine_block", new Block(FabricBlockSettings.of(Material.SOLID_ORGANIC).strength(1.0F).sounds(BlockSoundGroup.NETHER_STEM).breakByTool(FabricToolTags.AXES)), ItemGroup.DECORATIONS);
+    public static final Block TWILIGHT_VINE_BLOCK = add("twilight_vine_block", new Block(Settings.of(Material.SOLID_ORGANIC).strength(1.0F).sounds(BlockSoundGroup.NETHER_STEM).harvestTool(ToolType.AXE)), ItemGroup.DECORATIONS);
     public static final Block TWILIGHT_TENDRILS = add("twilight_tendrils", new CinderscapesNetherPlantBlock(Settings.copy(Blocks.WARPED_ROOTS).luminance((state) -> 15), (state) -> Block.createCuboidShape(2.0, 0.0, 2.0, 14.0, 12.0, 14.0)), ItemGroup.DECORATIONS);
     public static final Block POTTED_TWILIGHT_TENDRILS = add("potted_twilight_tendrils", new FlowerPotBlock(TWILIGHT_TENDRILS, Settings.copy(Blocks.POTTED_WARPED_ROOTS).luminance((state) -> 15)));
     public static final Block TWILIGHT_FESCUES = add("twilight_fescues", new CinderscapesNetherPlantBlock(Settings.copy(Blocks.WARPED_ROOTS), (state) -> Block.createCuboidShape(2.0, 0.0, 2.0, 14.0, 5.0, 14.0)), ItemGroup.DECORATIONS);
@@ -139,7 +139,7 @@ public class CinderscapesBlocks {
     // Sulfur Quartz
 
     public static final Block POLYPITE_SULFUR_QUARTZ = add("polypite_sulfur_quartz", new PolypiteQuartzBlock(copy(POLYPITE_QUARTZ, MaterialColor.YELLOW)), ItemGroup.DECORATIONS);
-    public static final Block POTTED_POLYPITE_SULFUR_QUARTZ = add("potted_polypite_sulfur_quartz", new FlowerPotBlock(POLYPITE_SULFUR_QUARTZ, copy(Blocks.FLOWER_POT)));
+    public static final Block POTTED_POLYPITE_SULFUR_QUARTZ = add("potted_polypite_sulfur_quartz", new FlowerPotBlock(POLYPITE_SULFUR_QUARTZ, Settings.copy(Blocks.FLOWER_POT)));
 
     public static final Block SULFUR_QUARTZ_ORE = addOre("sulfur_quartz_ore", ItemGroup.BUILDING_BLOCKS, 1, MaterialColor.YELLOW);
     public static final Block SULFUR_QUARTZ_BLOCK = add("sulfur_quartz_block", new Block(copy(Blocks.QUARTZ_BLOCK, MaterialColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
@@ -156,7 +156,7 @@ public class CinderscapesBlocks {
     // Rose Quartz
 
     public static final Block POLYPITE_ROSE_QUARTZ = add("polypite_rose_quartz", new PolypiteQuartzBlock(copy(POLYPITE_QUARTZ, MaterialColor.PINK)), ItemGroup.DECORATIONS);
-    public static final Block POTTED_POLYPITE_ROSE_QUARTZ = add("potted_polypite_rose_quartz", new FlowerPotBlock(POLYPITE_ROSE_QUARTZ, copy(Blocks.FLOWER_POT)));
+    public static final Block POTTED_POLYPITE_ROSE_QUARTZ = add("potted_polypite_rose_quartz", new FlowerPotBlock(POLYPITE_ROSE_QUARTZ, Settings.copy(Blocks.FLOWER_POT)));
 
     public static final Block ROSE_QUARTZ_ORE = addOre("rose_quartz_ore", ItemGroup.BUILDING_BLOCKS, 1, MaterialColor.PINK);
     public static final Block ROSE_QUARTZ_BLOCK = add("rose_quartz_block", new Block(copy(Blocks.QUARTZ_BLOCK, MaterialColor.PINK)), ItemGroup.BUILDING_BLOCKS);
@@ -173,7 +173,7 @@ public class CinderscapesBlocks {
     // Smoky Quartz
 
     public static final Block POLYPITE_SMOKY_QUARTZ = add("polypite_smoky_quartz", new PolypiteQuartzBlock(copy(POLYPITE_QUARTZ, MaterialColor.GRAY)), ItemGroup.DECORATIONS);
-    public static final Block POTTED_POLYPITE_SMOKY_QUARTZ = add("potted_polypite_smoky_quartz", new FlowerPotBlock(POLYPITE_SMOKY_QUARTZ, copy(Blocks.FLOWER_POT)));
+    public static final Block POTTED_POLYPITE_SMOKY_QUARTZ = add("potted_polypite_smoky_quartz", new FlowerPotBlock(POLYPITE_SMOKY_QUARTZ, Settings.copy(Blocks.FLOWER_POT)));
 
     public static final Block SMOKY_QUARTZ_ORE = addOre("smoky_quartz_ore", ItemGroup.BUILDING_BLOCKS, 1, MaterialColor.GRAY);
     public static final Block SMOKY_QUARTZ_BLOCK = add("smoky_quartz_block", new Block(copy(Blocks.QUARTZ_BLOCK, MaterialColor.GRAY)), ItemGroup.BUILDING_BLOCKS);

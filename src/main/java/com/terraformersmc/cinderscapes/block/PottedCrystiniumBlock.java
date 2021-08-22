@@ -13,7 +13,7 @@ import java.util.Random;
 
 public class PottedCrystiniumBlock extends FlowerPotBlock {
     public PottedCrystiniumBlock() {
-        super(CinderscapesBlocks.CRYSTINIUM, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM));
+        super(CinderscapesBlocks.CRYSTINIUM, Settings.copy(Blocks.POTTED_ALLIUM));
     }
 
     @Environment(EnvType.CLIENT)

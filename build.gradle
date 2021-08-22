@@ -1,10 +1,20 @@
 plugins {
     id 'dev.architectury.loom' version '0.7.2-SNAPSHOT'
+    id "com.github.johnrengelman.shadow" version "5.0.0"
 }
 
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
+
+configurations {
+    shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
+}
+
+loom {
+    mixinConfigs = ["cinderscapes.mixins.json"]
+    useFabricMixin = true
+}
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
@@ -15,14 +25,14 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	modCompileOnly "com.terraformersmc.terraform-api:terraform-shapes-api-v1:${project.terraform_shapes_api_version}"
-	modCompileOnly "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
+    def wood = "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
+    modImplementation wood
+    shadowCommon wood
 
-    //mod "mod-menu", "com.terraformersmc:modmenu:${project.modmenu_version}"
+    def shapes = "com.terraformersmc.terraform-api:terraform-shapes-api-v1:${project.terraform_shapes_api_version}"
+    modImplementation shapes
+    shadowCommon shapes
     modCompileOnly "com.terraformersmc:vistas:${project.vistas_version}"
-
-    modCompileOnly "me.shedaniel.cloth:config-2:${project.clothconfig_version}"
-    modCompileOnly "me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}"
 }
 
 repositories {
@@ -44,13 +54,8 @@ repositories {
 processResources {
     inputs.property "version", project.version
 
-    from(sourceSets.main.resources.srcDirs) {
-        include "fabric.mod.json"
+    filesMatching("META-INF/mods.toml") {
         expand "version": project.version
-    }
-
-    from(sourceSets.main.resources.srcDirs) {
-        exclude "fabric.mod.json"
     }
 }
 
@@ -68,4 +73,20 @@ tasks.withType(JavaCompile) {
 task sourcesJar(type: Jar, dependsOn: classes) {
     classifier = "sources"
     from sourceSets.main.allSource
+}
+
+shadowJar {
+    configurations = [project.configurations.shadowCommon]
+    classifier "dev-shadow"
+}
+
+
+remapJar {
+    input.set shadowJar.archiveFile
+    dependsOn shadowJar
+    classifier ""
+}
+
+jar {
+    classifier "dev"
 }
