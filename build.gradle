@@ -6,8 +6,6 @@ plugins {
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-//apply from: 'https://raw.githubusercontent.com/TerraformersMC/GradleScripts/2.0/ferry.gradle'
-
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
@@ -17,14 +15,14 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	modImplementation "com.terraformersmc.terraform-api:terraform-shapes-api-v1:${project.terraform_shapes_api_version}"
-	modImplementation "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
+	modCompileOnly "com.terraformersmc.terraform-api:terraform-shapes-api-v1:${project.terraform_shapes_api_version}"
+	modCompileOnly "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
 
     //mod "mod-menu", "com.terraformersmc:modmenu:${project.modmenu_version}"
-    modImplementation "com.terraformersmc:vistas:${project.vistas_version}"
+    modCompileOnly "com.terraformersmc:vistas:${project.vistas_version}"
 
-    modImplementation "me.shedaniel.cloth:config-2:${project.clothconfig_version}"
-    modImplementation "me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}"
+    modCompileOnly "me.shedaniel.cloth:config-2:${project.clothconfig_version}"
+    modCompileOnly "me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}"
 }
 
 repositories {

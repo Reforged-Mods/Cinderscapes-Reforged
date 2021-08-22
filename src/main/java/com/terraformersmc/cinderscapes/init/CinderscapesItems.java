@@ -17,7 +17,7 @@ import java.util.Map;
 
 public class CinderscapesItems {
     // Acts as a kind of local registry for items added by Cinderscapes
-    private static final Map<Identifier, Item> ITEMS = new LinkedHashMap<>();
+    public static final Map<Identifier, Item> ITEMS = new LinkedHashMap<>();
 
     public static final Item BRAMBLE_BERRIES = add("bramble_berries", new AliasedBlockItem(CinderscapesBlocks.BRAMBLE_BERRY_BUSH, new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(2).saturationModifier(0.1F).alwaysEdible().snack().statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 600, 0), 0.8F).build())));
 
@@ -41,10 +41,6 @@ public class CinderscapesItems {
     }
 
     public static void init() {
-
-        for (Identifier id : ITEMS.keySet()) {
-            Registry.register(Registry.ITEM, id, ITEMS.get(id));
-        }
 
         ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(BRAMBLE_BERRIES, 0.3f);
     }

@@ -25,9 +25,9 @@ import java.util.Map;
 public class CinderscapesBlocks {
 
     // Acts as a kind of local registry for block items added by Cinderscapes
-    private static final Map<Identifier, BlockItem> ITEMS = new LinkedHashMap<>();
+    public static final Map<Identifier, BlockItem> ITEMS = new LinkedHashMap<>();
     // Acts as a kind of local registry for blocks added by Cinderscapes
-    private static final Map<Identifier, Block> BLOCKS = new LinkedHashMap<>();
+    public static final Map<Identifier, Block> BLOCKS = new LinkedHashMap<>();
 
     /////////////////
     // Ashy Shoals //
@@ -213,13 +213,6 @@ public class CinderscapesBlocks {
     }
 
     public static void init() {
-        for (Identifier id : ITEMS.keySet()) {
-            Registry.register(Registry.ITEM, id, ITEMS.get(id));
-        }
-        for (Identifier id : BLOCKS.keySet()) {
-            Registry.register(Registry.BLOCK, id, BLOCKS.get(id));
-        }
-
         registerCompostableBlocks();
     }
 
