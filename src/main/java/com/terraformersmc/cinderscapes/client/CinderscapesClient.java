@@ -11,9 +11,11 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.util.SpriteIdentifier;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 @SuppressWarnings("unused")
-@Environment(EnvType.CLIENT)
+@OnlyIn(Dist.CLIENT)
 public class CinderscapesClient implements ClientModInitializer {
 
     @Override
