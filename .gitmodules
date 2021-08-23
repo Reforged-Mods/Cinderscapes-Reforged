@@ -1,3 +1,0 @@
-[submodule "Terraform"]
-	path = Terraform
-	url = https://github.com/Trinsdar/Terraform.git
