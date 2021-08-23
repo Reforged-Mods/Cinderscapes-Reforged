@@ -78,6 +78,7 @@ task sourcesJar(type: Jar, dependsOn: classes) {
 shadowJar {
     configurations = [project.configurations.shadowCommon]
     classifier "dev-shadow"
+
 }
 
 

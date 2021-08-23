@@ -13,7 +13,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 // Contains all of the surface builders and surface configs added by Cinderscapes
 public class CinderscapesSurfaces {
     // Acts as a kind of local registry for surface builders added by Cinderscapes
-    private static final DeferredRegister<SurfaceBuilder<? extends SurfaceConfig>> SURFACE_BUILDERS = DeferredRegister.create(ForgeRegistries.SURFACE_BUILDERS, Cinderscapes.ID);
+    private static final DeferredRegister<SurfaceBuilder<?>> SURFACE_BUILDERS = DeferredRegister.create(ForgeRegistries.SURFACE_BUILDERS, Cinderscapes.ID);
 
     /////////////////////
     // SURFACE CONFIGS //
