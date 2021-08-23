@@ -23,13 +23,13 @@ dependencies {
     forge "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
     def wood = "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
-    modImplementation (wood){
+    modCompileOnly (wood){
         transitive = false
     }
     shadowCommon wood
 
     def shapes = "com.terraformersmc.terraform-api:terraform-shapes-api-v1:${project.terraform_shapes_api_version}"
-    modImplementation (shapes){
+    modCompileOnly (shapes){
         transitive = false
     }
     shadowCommon shapes

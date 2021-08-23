@@ -43,8 +43,7 @@ public abstract class ServerWorldMixin extends World {
             while (!(
                     biome != null && biome.getRegistryName().equals(CinderscapesBiomes.ASHY_SHOALS.get().getRegistryName()) &&
                             state.isSideSolidFullSquare(this, pos, Direction.UP) &&
-                            //todo fabric change
-                            //CinderscapesTags.ASH_PERMEABLE.contains(blockAbove(pos).getBlock()) &&
+                            CinderscapesTags.ASH_PERMEABLE.contains(blockAbove(pos).getBlock()) &&
                             this.getBlockState(pos.up()).isAir() &&
                             CinderscapesBlocks.ASH.getDefaultState().canPlaceAt(this, pos.up())) &&
                     pos.getY() < 127) {
