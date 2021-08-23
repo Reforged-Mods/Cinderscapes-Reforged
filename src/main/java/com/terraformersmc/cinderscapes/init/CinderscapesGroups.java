@@ -1,13 +1,10 @@
 package com.terraformersmc.cinderscapes.init;
 
 import com.terraformersmc.cinderscapes.Cinderscapes;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.registry.Registry;
-
-import java.util.Iterator;
 
 // Contains the item groups added by Cinderscapes
 public class CinderscapesGroups {
