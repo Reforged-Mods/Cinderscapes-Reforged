@@ -21,7 +21,6 @@ import com.terraformersmc.cinderscapes.feature.config.PolypiteQuartzFeatureConfi
 import com.terraformersmc.cinderscapes.feature.config.SimpleStateFeatureConfig;
 import com.terraformersmc.cinderscapes.feature.config.VegetationFeatureConfig;
 import net.minecraft.block.Blocks;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.UniformIntDistribution;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;

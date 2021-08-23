@@ -51,7 +51,7 @@ public class QuartzCanyonBiome {
                         .loopSound(SoundEvents.AMBIENT_NETHER_WASTES_LOOP)
                         .moodSound(new BiomeMoodSound(SoundEvents.AMBIENT_NETHER_WASTES_MOOD, 6000, 8, 2.0D))
                         .additionsSound(new BiomeAdditionsSound(SoundEvents.AMBIENT_NETHER_WASTES_ADDITIONS, 0.0111D))
-                        .music(MusicType.createIngameMusic(CinderscapesSoundEvents.QUARTZ_CANYON_MUSIC))
+                        .music(MusicType.createIngameMusic(CinderscapesSoundEvents.QUARTZ_CANYON_MUSIC.get()))
                         .build())
                 .build();
     }

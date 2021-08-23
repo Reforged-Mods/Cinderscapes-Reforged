@@ -1,41 +1,31 @@
 package com.terraformersmc.cinderscapes.init;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 import com.terraformersmc.cinderscapes.Cinderscapes;
-
-import com.terraformersmc.cinderscapes.mixin.SoundEventAccessor;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class CinderscapesSoundEvents {
 
 	// Acts as a kind of local registry for sound events added by Cinderscapes
-	private static final Map<Identifier, SoundEvent> SOUND_EVENTS = new LinkedHashMap<>();
+	private static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, Cinderscapes.ID);
 
-	public static final SoundEvent ASHY_SHOALS_MUSIC = add(new SoundEvent(Cinderscapes.id("music.nether.ashy_shoals")));
-	public static final SoundEvent BLACKSTONE_SHALES_MUSIC = add(new SoundEvent(Cinderscapes.id("music.nether.blackstone_shales")));
-	public static final SoundEvent LUMINOUS_GROVE_MUSIC = add(new SoundEvent(Cinderscapes.id("music.nether.luminous_grove")));
-	public static final SoundEvent QUARTZ_CANYON_MUSIC = add(new SoundEvent(Cinderscapes.id("music.nether.quartz_canyon")));
+	public static final RegistryObject<SoundEvent> ASHY_SHOALS_MUSIC = add("music.nether.ashy_shoals");
+	public static final RegistryObject<SoundEvent> BLACKSTONE_SHALES_MUSIC = add("music.nether.blackstone_shales");
+	public static final RegistryObject<SoundEvent> LUMINOUS_GROVE_MUSIC = add("music.nether.luminous_grove");
+	public static final RegistryObject<SoundEvent> QUARTZ_CANYON_MUSIC = add("music.nether.quartz_canyon");
 	
-	public static final SoundEvent MENU_MUSIC = add(new SoundEvent(Cinderscapes.id("music.menu")));
+	public static final RegistryObject<SoundEvent> MENU_MUSIC = add("music.menu");
 
-	public static final SoundEvent MUSIC_DISC_LUMINOUS_PLANTATION = add(new SoundEvent(Cinderscapes.id("music_disc.luminous_plantation")));
-	public static final SoundEvent MUSIC_DISC_CHILLING_IN_HELL = add(new SoundEvent(Cinderscapes.id("music_disc.chilling_in_hell")));
+	public static final RegistryObject<SoundEvent> MUSIC_DISC_LUMINOUS_PLANTATION = add("music_disc.luminous_plantation");
+	public static final RegistryObject<SoundEvent> MUSIC_DISC_CHILLING_IN_HELL = add("music_disc.chilling_in_hell");
 
-	private static <S extends SoundEvent> S add(S sound_event) {
-		SOUND_EVENTS.put(((SoundEventAccessor) sound_event).getId(), sound_event);
-		return sound_event;
+	private static RegistryObject<SoundEvent> add(String id) {
+		return SOUND_EVENTS.register(Cinderscapes.idAsString(id), () -> new SoundEvent(Cinderscapes.id(id)));
 	}
 
 	public static void init() {
-		for (Identifier id : SOUND_EVENTS.keySet()) {
-			Registry.register(Registry.SOUND_EVENT, id, SOUND_EVENTS.get(id));
-		}
-
 	}
 
 }

@@ -5,8 +5,6 @@ import com.terraformersmc.cinderscapes.decorator.CountSafelistRangeCeilingDecora
 import com.terraformersmc.cinderscapes.decorator.CountSafelistRangeFloorDecorator;
 import com.terraformersmc.cinderscapes.decorator.config.CountSafelistRangeDecoratorConfig;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;

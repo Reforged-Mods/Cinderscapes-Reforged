@@ -1,9 +1,11 @@
 package com.terraformersmc.cinderscapes;
 
+import com.terraformersmc.cinderscapes.client.CinderscapesClient;
 import com.terraformersmc.cinderscapes.config.CinderscapesConfig;
 import com.terraformersmc.cinderscapes.init.CinderscapesBiomes;
 import com.terraformersmc.cinderscapes.init.CinderscapesBlocks;
 import com.terraformersmc.cinderscapes.init.CinderscapesConfiguredFeatures;
+import com.terraformersmc.cinderscapes.init.CinderscapesConfiguredSurfaces;
 import com.terraformersmc.cinderscapes.init.CinderscapesDecorators;
 import com.terraformersmc.cinderscapes.init.CinderscapesFeatures;
 import com.terraformersmc.cinderscapes.init.CinderscapesGroups;
@@ -16,10 +18,14 @@ import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -36,6 +42,8 @@ public class Cinderscapes {
 
 	public Cinderscapes(){
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CinderscapesConfig.COMMON_SPEC);
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
 
 		CinderscapesItems.init();
 		CinderscapesBlocks.init();
@@ -53,13 +61,20 @@ public class Cinderscapes {
 		NoiseCollisionChecker.init();
 	}
 
+	@OnlyIn(Dist.CLIENT)
+	private void clientSetup(final FMLClientSetupEvent e){
+		CinderscapesClient.onInitializeClient(e);
+	}
+
 	private void setup(final FMLCommonSetupEvent e) {
 		e.enqueueWork(() -> {
 			CinderscapesConfiguredFeatures.init();
+			CinderscapesConfiguredSurfaces.init();
 		});
 
 	}
 
+	@SubscribeEvent
 	public void onRegister(final RegistryEvent.Register<?> event){
 		if (event.getRegistry() == ForgeRegistries.BLOCKS){
 			for (Identifier id : CinderscapesBlocks.BLOCKS.keySet()) {
@@ -91,7 +106,7 @@ public class Cinderscapes {
 	}
 
 	public void onInitialize() {
-		//todo
+		//todo fabric change
 		/*try {
 			SpawnRestrictionAccessor.callRegister(EntityType.ZOGLIN, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ZoglinEntity::canMobSpawn);
 		} catch (IllegalStateException e) {}*/

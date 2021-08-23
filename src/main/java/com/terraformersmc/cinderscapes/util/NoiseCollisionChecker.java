@@ -3,7 +3,6 @@ package com.terraformersmc.cinderscapes.util;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.JsonOps;
 import com.terraformersmc.cinderscapes.mixin.MultiNoiseBiomeSourceAccessor;
-import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.source.MultiNoiseBiomeSource;
@@ -17,9 +16,10 @@ public class NoiseCollisionChecker {
     public static void init() {
         check();
 
-        RegistryEntryAddedCallback.event(BuiltinRegistries.BIOME).register(((i, identifier, biome) -> {
+        //todo fabric change
+        /*RegistryEntryAddedCallback.event(BuiltinRegistries.BIOME).register(((i, identifier, biome) -> {
             check();
-        }));
+        }));*/
     }
 
     private static void check() {

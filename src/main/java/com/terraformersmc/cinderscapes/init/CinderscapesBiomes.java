@@ -5,11 +5,7 @@ import com.terraformersmc.cinderscapes.biome.AshyShoalsBiome;
 import com.terraformersmc.cinderscapes.biome.BlackstoneShalesBiome;
 import com.terraformersmc.cinderscapes.biome.LuminousGroveBiome;
 import com.terraformersmc.cinderscapes.biome.QuartzCanyonBiome;
-import com.terraformersmc.cinderscapes.config.CinderscapesConfig;
-import net.fabricmc.fabric.api.biome.v1.NetherBiomes;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.Pair;
-import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
@@ -17,9 +13,6 @@ import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class CinderscapesBiomes {
 
@@ -35,7 +28,7 @@ public class CinderscapesBiomes {
     // Required because something referencing this class has to be called in order to force the
     // static initializer to run (Minecraft's Bootstrap class does similar things)
     public static void init() {
-        //Todo
+        //Todo fabric change
         /*if (CinderscapesConfig.BIOME_OPTIONS.ENABLE_ASHY_SHOALS) {
             NetherBiomes.addNetherBiome(RegistryKey.of(Registry.BIOME_KEY, Cinderscapes.id("ashy_shoals")), AshyShoalsBiome.NOISE_POINT);
         }
