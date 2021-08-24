@@ -6,6 +6,7 @@ import com.terraformersmc.cinderscapes.mixin.MultiNoiseBiomeSourceAccessor;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.source.MultiNoiseBiomeSource;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class NoiseCollisionChecker {
-    public static void init() {
+    public static void init(FMLCommonSetupEvent event) {
         check();
 
         //todo fabric change

@@ -15,9 +15,14 @@ import com.terraformersmc.cinderscapes.init.CinderscapesSurfaces;
 import com.terraformersmc.cinderscapes.init.CinderscapesTrades;
 import com.terraformersmc.cinderscapes.util.NoiseCollisionChecker;
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnRestriction;
+import net.minecraft.entity.mob.ZoglinEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.server.network.SpawnLocating;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.Heightmap;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.RegistryEvent;
@@ -58,7 +63,8 @@ public class Cinderscapes {
 		CinderscapesBiomes.BIOMES.register(FMLJavaModLoadingContext.get().getModEventBus());
 		CinderscapesDecorators.DECORATORS.register(FMLJavaModLoadingContext.get().getModEventBus());
 
-		NoiseCollisionChecker.init();
+
+
 	}
 
 	@OnlyIn(Dist.CLIENT)
@@ -71,7 +77,9 @@ public class Cinderscapes {
 			CinderscapesConfiguredFeatures.init();
 			CinderscapesConfiguredSurfaces.init();
 		});
-
+		CinderscapesBiomes.initBiomeAdd();
+		NoiseCollisionChecker.init(e);
+		onInitialize();
 	}
 
 	@SubscribeEvent
@@ -106,10 +114,9 @@ public class Cinderscapes {
 	}
 
 	public void onInitialize() {
-		//todo fabric change
-		/*try {
-			SpawnRestrictionAccessor.callRegister(EntityType.ZOGLIN, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ZoglinEntity::canMobSpawn);
-		} catch (IllegalStateException e) {}*/
+		try {
+			SpawnRestriction.register(EntityType.ZOGLIN, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ZoglinEntity::canMobSpawn);
+		} catch (IllegalStateException ignored) {}
 
 
 	}
