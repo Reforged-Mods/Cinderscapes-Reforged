@@ -1,3 +1,5 @@
+import org.gradle.api.JavaVersion
+
 plugins {
     id 'dev.architectury.loom' version '0.7.2-SNAPSHOT'
     id "com.github.johnrengelman.shadow" version "7.0.0"
@@ -23,6 +25,11 @@ dependencies {
     forge "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
     modImplementation ("com.github.Trinsdar:NetherEndBiomeInjector:33be17")
+    modImplementation ("com.github.Trinsdar:Terraform-Reforged:d03821acac")
+
+    //modCompileOnly "mezz.jei:jei-1.16.4:${jei_version}"
+
+    /*def wood = "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
     modCompileOnly (wood){
         transitive = false
     }
@@ -32,7 +39,7 @@ dependencies {
     modCompileOnly (shapes){
         transitive = false
     }
-    shadowCommon shapes
+    shadowCommon shapes*/
 }
 
 repositories {
@@ -46,9 +53,14 @@ repositories {
         }
     }
     maven {
+        name = "Progwml6 (Just Enough Items)"
+        url = "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven {
         name = 'TerraformersMC'
         url = 'https://maven.terraformersmc.com/'
     }
+    maven { url 'https://jitpack.io' }
 }
 
 processResources {
@@ -64,6 +76,10 @@ processResources {
 // see http://yodaconditions.net/blog/fix-for-java-file-encoding-problems-with-gradle.html
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
+    def targetVersion = 8
+    if (JavaVersion.current().isJava9Compatible()) {
+        options.release = targetVersion
+    }
 }
 
 
