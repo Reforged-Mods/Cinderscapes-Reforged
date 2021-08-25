@@ -22,6 +22,6 @@ public class CinderscapesDecorators {
     }
 
     private static RegistryObject<Decorator<CountSafelistRangeDecoratorConfig>> add(String name, Decorator<CountSafelistRangeDecoratorConfig> config){
-        return DECORATORS.register(new Identifier(Cinderscapes.ID, name).toString(), () -> config);
+        return DECORATORS.register(name, () -> config);
     }
 }

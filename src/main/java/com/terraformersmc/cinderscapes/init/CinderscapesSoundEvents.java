@@ -9,7 +9,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class CinderscapesSoundEvents {
 
 	// Acts as a kind of local registry for sound events added by Cinderscapes
-	private static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, Cinderscapes.ID);
+	public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, Cinderscapes.ID);
 
 	public static final RegistryObject<SoundEvent> ASHY_SHOALS_MUSIC = add("music.nether.ashy_shoals");
 	public static final RegistryObject<SoundEvent> BLACKSTONE_SHALES_MUSIC = add("music.nether.blackstone_shales");
@@ -22,7 +22,7 @@ public class CinderscapesSoundEvents {
 	public static final RegistryObject<SoundEvent> MUSIC_DISC_CHILLING_IN_HELL = add("music_disc.chilling_in_hell");
 
 	private static RegistryObject<SoundEvent> add(String id) {
-		return SOUND_EVENTS.register(Cinderscapes.idAsString(id), () -> new SoundEvent(Cinderscapes.id(id)));
+		return SOUND_EVENTS.register(id, () -> new SoundEvent(Cinderscapes.id(id)));
 	}
 
 	public static void init() {

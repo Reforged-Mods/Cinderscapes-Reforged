@@ -43,28 +43,28 @@ public class CinderscapesFeatures {
 
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, Cinderscapes.ID);
 
-    public static RegistryObject<Feature<DefaultFeatureConfig>> ASH_TOP_LAYER = FEATURES.register(idAsString("ash_top_layer"), AshTopLayerFeature::new);
-    public static RegistryObject<Feature<SimpleStateFeatureConfig>> SHALE_FEATURE = FEATURES.register(idAsString("shale"), ShaleFeature::new);
+    public static RegistryObject<Feature<DefaultFeatureConfig>> ASH_TOP_LAYER = FEATURES.register("ash_top_layer", AshTopLayerFeature::new);
+    public static RegistryObject<Feature<SimpleStateFeatureConfig>> SHALE_FEATURE = FEATURES.register("shale", ShaleFeature::new);
 
-    public static RegistryObject<Feature<DefaultFeatureConfig>> BLACKSTONE_SHALE = FEATURES.register(idAsString("blackstone_shale"), BlackstoneShaleFeature::new);
-    public static RegistryObject<Feature<DefaultFeatureConfig>> BLACKSTONE_LAVA_SHALE = FEATURES.register(idAsString("blackstone_lava_shale"), BlackstoneLavaShaleFeature::new);
-    public static RegistryObject<Feature<DefaultFeatureConfig>> BLACKSTONE_WEEPING_VINES = FEATURES.register(idAsString("blackstone_weeping_vines"), BlackstoneWeepingVinesFeature::new);
-    public static RegistryObject<Feature<SimpleStateFeatureConfig>> CEILING_SHARD = FEATURES.register(idAsString("ceiling_shard"), CeilingShardFeature::new);
-    public static RegistryObject<Feature<SimpleStateFeatureConfig>> FLOOR_SHARD = FEATURES.register(idAsString("floor_shard"), FloorShardFeature::new);
-    public static RegistryObject<Feature<DefaultFeatureConfig>> ASH_PILE = FEATURES.register(idAsString("ash_pile"), AshPileFeature::new);
+    public static RegistryObject<Feature<DefaultFeatureConfig>> BLACKSTONE_SHALE = FEATURES.register("blackstone_shale", BlackstoneShaleFeature::new);
+    public static RegistryObject<Feature<DefaultFeatureConfig>> BLACKSTONE_LAVA_SHALE = FEATURES.register("blackstone_lava_shale", BlackstoneLavaShaleFeature::new);
+    public static RegistryObject<Feature<DefaultFeatureConfig>> BLACKSTONE_WEEPING_VINES = FEATURES.register("blackstone_weeping_vines", BlackstoneWeepingVinesFeature::new);
+    public static RegistryObject<Feature<SimpleStateFeatureConfig>> CEILING_SHARD = FEATURES.register("ceiling_shard", CeilingShardFeature::new);
+    public static RegistryObject<Feature<SimpleStateFeatureConfig>> FLOOR_SHARD = FEATURES.register("floor_shard", FloorShardFeature::new);
+    public static RegistryObject<Feature<DefaultFeatureConfig>> ASH_PILE = FEATURES.register("ash_pile", AshPileFeature::new);
 
-    public static RegistryObject<Feature<CanopiedHugeFungusFeatureConfig>> CANOPIED_HUGE_FUNGUS = FEATURES.register(idAsString("canopied_huge_fungus"), CanopiedHugeFungusFeature::new);
+    public static RegistryObject<Feature<CanopiedHugeFungusFeatureConfig>> CANOPIED_HUGE_FUNGUS = FEATURES.register("canopied_huge_fungus", CanopiedHugeFungusFeature::new);
 
     public static CanopiedHugeFungusFeatureConfig UMBRAL_FUNGUS_CONFIG;
     public static CanopiedHugeFungusFeatureConfig UMBRAL_FUNGUS_NOT_PLANTED_CONFIG;
-    public static RegistryObject<Feature<DefaultFeatureConfig>> SHROOMLIGHT_BUSH = FEATURES.register(idAsString("shroomlight_bush"), ShroomlightBushFeature::new);
-    public static RegistryObject<Feature<DefaultFeatureConfig>> UMBRAL_VINE = FEATURES.register(idAsString("umbral_vine"), UmbralVineFeature::new);
+    public static RegistryObject<Feature<DefaultFeatureConfig>> SHROOMLIGHT_BUSH = FEATURES.register("shroomlight_bush", ShroomlightBushFeature::new);
+    public static RegistryObject<Feature<DefaultFeatureConfig>> UMBRAL_VINE = FEATURES.register("umbral_vine", UmbralVineFeature::new);
 
-    public static RegistryObject<Feature<DefaultFeatureConfig>> DEAD_TREE = FEATURES.register(idAsString("dead_tree"), DeadTreeFeature::new);
+    public static RegistryObject<Feature<DefaultFeatureConfig>> DEAD_TREE = FEATURES.register("dead_tree", DeadTreeFeature::new);
 
-    public static RegistryObject<Feature<PolypiteQuartzFeatureConfig>> POLYPITE_QUARTZ = FEATURES.register(idAsString("polypite_quartz"), PolypiteQuartzFeature::new);
+    public static RegistryObject<Feature<PolypiteQuartzFeatureConfig>> POLYPITE_QUARTZ = FEATURES.register("polypite_quartz", PolypiteQuartzFeature::new);
 
-    public static RegistryObject<Feature<VegetationFeatureConfig>> VEGETATION = FEATURES.register(idAsString("vegetation"), VegetationFeature::new);
+    public static RegistryObject<Feature<VegetationFeatureConfig>> VEGETATION = FEATURES.register("vegetation", VegetationFeature::new);
     public static VegetationFeatureConfig LUMINOUS_GROVE_VEGETATION_CONFIG;
     public static VegetationFeatureConfig ASHY_SHOALS_VEGETATION_CONFIG;
     public static VegetationFeatureConfig QUARTZ_CANYON_VEGETATION_CONFIG;

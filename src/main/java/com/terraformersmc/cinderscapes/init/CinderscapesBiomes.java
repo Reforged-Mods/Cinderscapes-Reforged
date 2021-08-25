@@ -54,14 +54,14 @@ public class CinderscapesBiomes {
         Identifier id = Cinderscapes.id(s);
         RegistryKey<Biome> key = RegistryKey.of(Registry.BIOME_KEY, id);
         BiomeDictionary.addTypes(key, new BiomeDictionary.Type[]{BiomeDictionary.Type.NETHER, BiomeDictionary.Type.HOT, BiomeDictionary.Type.DRY});
-        return BIOMES.register(id.toString(), b);
+        return BIOMES.register(s, b);
     }
 
     private static RegistryObject<Biome> add(String s, Supplier<Biome> b, BiomeDictionary.Type special) {
         Identifier id = Cinderscapes.id(s);
         RegistryKey<Biome> key = RegistryKey.of(Registry.BIOME_KEY, id);
         BiomeDictionary.addTypes(key, new BiomeDictionary.Type[]{BiomeDictionary.Type.NETHER, BiomeDictionary.Type.HOT, BiomeDictionary.Type.DRY, special});
-        return BIOMES.register(id.toString(), b);
+        return BIOMES.register(s, b);
     }
 
 }

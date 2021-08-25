@@ -15,6 +15,7 @@ import com.terraformersmc.cinderscapes.init.CinderscapesSurfaces;
 import com.terraformersmc.cinderscapes.init.CinderscapesTrades;
 import com.terraformersmc.cinderscapes.util.NoiseCollisionChecker;
 import net.minecraft.block.Block;
+import net.minecraft.block.ComposterBlock;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnRestriction;
 import net.minecraft.entity.mob.ZoglinEntity;
@@ -62,7 +63,10 @@ public class Cinderscapes {
 
 		CinderscapesBiomes.BIOMES.register(FMLJavaModLoadingContext.get().getModEventBus());
 		CinderscapesDecorators.DECORATORS.register(FMLJavaModLoadingContext.get().getModEventBus());
-
+		CinderscapesFeatures.FEATURES.register(FMLJavaModLoadingContext.get().getModEventBus());
+		CinderscapesSurfaces.SURFACE_BUILDERS.register(FMLJavaModLoadingContext.get().getModEventBus());
+		CinderscapesSoundEvents.SOUND_EVENTS.register(FMLJavaModLoadingContext.get().getModEventBus());
+		CinderscapesItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
 
 
 	}
@@ -80,6 +84,7 @@ public class Cinderscapes {
 		CinderscapesBiomes.initBiomeAdd();
 		NoiseCollisionChecker.init(e);
 		onInitialize();
+		ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(CinderscapesItems.BRAMBLE_BERRIES.get(), 0.3f);
 	}
 
 	@SubscribeEvent
@@ -94,14 +99,6 @@ public class Cinderscapes {
 			}
 		}
 		if (event.getRegistry() == ForgeRegistries.ITEMS){
-			for (Identifier id : CinderscapesItems.ITEMS.keySet()) {
-				Item item = CinderscapesItems.ITEMS.get(id);
-				if (item.getRegistryName() == null){
-					item.setRegistryName(id);
-				}
-				((IForgeRegistry)event.getRegistry()).register(item);
-			}
-
 			for (Identifier id : CinderscapesBlocks.ITEMS.keySet()) {
 				BlockItem item = CinderscapesBlocks.ITEMS.get(id);
 				if (item.getRegistryName() == null){
