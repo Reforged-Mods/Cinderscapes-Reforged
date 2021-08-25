@@ -1,5 +1,4 @@
 modLoader="javafml"
-#loaderVersion="[${loader_version},)"
 license="LGPLv3"
 loaderVersion="[31,)"
 issueTrackerURL="https://github.com/Trinsdar/Cinderscapes-Reforged/issues"
@@ -8,7 +7,6 @@ issueTrackerURL="https://github.com/Trinsdar/Cinderscapes-Reforged/issues"
 modId="cinderscapes"
 version="${version}"
 displayName="Cinderscapes"
-#updateJSONURL="http://myurl.me/"
 displayURL="https://github.com/Trinsdar/Cinderscapes-Reforged"
 logoFile="assets/cinderscapes/icon.png"
 credits="TerraformersMC for creating the fabric version"
@@ -17,14 +15,18 @@ description='''An expansion of Minecraft's Nether biomes!'''
 [[dependencies.cinderscapes]]
     modId="forge"
     mandatory=true
-    #versionRange="[${forge_version},)"
     versionRange="[36.1.0,)"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.cinderscapes]]
     modId="minecraft"
     mandatory=true
-    #versionRange="[${minecraft_version}]"
     versionRange="[1.16.5,)"
+    ordering="AFTER"
+    side="BOTH"
+[[dependencies.cinderscapes]]
+    modId="nebi"
+    mandatory=true
+    versionRange="[1.0.0,)"
     ordering="AFTER"
     side="BOTH"

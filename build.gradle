@@ -22,7 +22,7 @@ dependencies {
 
     forge "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    def wood = "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
+    modImplementation ("com.github.Trinsdar:NetherEndBiomeInjector:33be17")
     modCompileOnly (wood){
         transitive = false
     }
