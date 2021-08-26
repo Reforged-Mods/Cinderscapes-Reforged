@@ -22,8 +22,13 @@ import net.minecraft.entity.mob.ZoglinEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.server.network.SpawnLocating;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.Heightmap;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.decorator.Decorator;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.RegistryEvent;
@@ -61,13 +66,6 @@ public class Cinderscapes {
 		CinderscapesSoundEvents.init();
 		CinderscapesTrades.init();
 
-		CinderscapesBiomes.BIOMES.register(FMLJavaModLoadingContext.get().getModEventBus());
-		CinderscapesDecorators.DECORATORS.register(FMLJavaModLoadingContext.get().getModEventBus());
-		CinderscapesFeatures.FEATURES.register(FMLJavaModLoadingContext.get().getModEventBus());
-		CinderscapesSurfaces.SURFACE_BUILDERS.register(FMLJavaModLoadingContext.get().getModEventBus());
-		CinderscapesSoundEvents.SOUND_EVENTS.register(FMLJavaModLoadingContext.get().getModEventBus());
-		CinderscapesItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
-
 
 	}
 
@@ -79,16 +77,60 @@ public class Cinderscapes {
 	private void setup(final FMLCommonSetupEvent e) {
 		e.enqueueWork(() -> {
 			CinderscapesConfiguredFeatures.init();
-			CinderscapesConfiguredSurfaces.init();
 		});
 		CinderscapesBiomes.initBiomeAdd();
 		NoiseCollisionChecker.init(e);
 		onInitialize();
-		ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(CinderscapesItems.BRAMBLE_BERRIES.get(), 0.3f);
+		ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(CinderscapesItems.BRAMBLE_BERRIES, 0.3f);
 	}
 
 	@SubscribeEvent
 	public void onRegister(final RegistryEvent.Register<?> event){
+		if (event.getRegistry() == ForgeRegistries.FEATURES){
+			for (Identifier id : CinderscapesFeatures.FEATURES.keySet()){
+				Feature<?> feature = CinderscapesFeatures.FEATURES.get(id);
+				if (feature.getRegistryName() == null){
+					feature.setRegistryName(id);
+				}
+				((IForgeRegistry)event.getRegistry()).register(feature);
+			}
+		}
+		if (event.getRegistry() == ForgeRegistries.SURFACE_BUILDERS){
+			for (Identifier id : CinderscapesSurfaces.SURFACE_BUILDERS.keySet()){
+				SurfaceBuilder<?> feature = CinderscapesSurfaces.SURFACE_BUILDERS.get(id);
+				if (feature.getRegistryName() == null){
+					feature.setRegistryName(id);
+				}
+				((IForgeRegistry)event.getRegistry()).register(feature);
+			}
+		}
+		if (event.getRegistry() == ForgeRegistries.DECORATORS){
+			for (Identifier id : CinderscapesDecorators.DECORATORS.keySet()){
+				Decorator<?> feature = CinderscapesDecorators.DECORATORS.get(id);
+				if (feature.getRegistryName() == null){
+					feature.setRegistryName(id);
+				}
+				((IForgeRegistry)event.getRegistry()).register(feature);
+			}
+		}
+		if (event.getRegistry() == ForgeRegistries.SOUND_EVENTS){
+			for (Identifier id : CinderscapesSoundEvents.SOUND_EVENTS.keySet()){
+				SoundEvent feature = CinderscapesSoundEvents.SOUND_EVENTS.get(id);
+				if (feature.getRegistryName() == null){
+					feature.setRegistryName(id);
+				}
+				((IForgeRegistry)event.getRegistry()).register(feature);
+			}
+		}
+		if (event.getRegistry() == ForgeRegistries.BIOMES){
+			for (Identifier id : CinderscapesBiomes.BIOMES.keySet()){
+				Biome feature = CinderscapesBiomes.BIOMES.get(id);
+				if (feature.getRegistryName() == null){
+					feature.setRegistryName(id);
+				}
+				((IForgeRegistry)event.getRegistry()).register(feature);
+			}
+		}
 		if (event.getRegistry() == ForgeRegistries.BLOCKS){
 			for (Identifier id : CinderscapesBlocks.BLOCKS.keySet()) {
 				Block block = CinderscapesBlocks.BLOCKS.get(id);
@@ -99,6 +141,13 @@ public class Cinderscapes {
 			}
 		}
 		if (event.getRegistry() == ForgeRegistries.ITEMS){
+			for (Identifier id : CinderscapesItems.ITEMS.keySet()) {
+				Item item = CinderscapesItems.ITEMS.get(id);
+				if (item.getRegistryName() == null){
+					item.setRegistryName(id);
+				}
+				((IForgeRegistry)event.getRegistry()).register(item);
+			}
 			for (Identifier id : CinderscapesBlocks.ITEMS.keySet()) {
 				BlockItem item = CinderscapesBlocks.ITEMS.get(id);
 				if (item.getRegistryName() == null){

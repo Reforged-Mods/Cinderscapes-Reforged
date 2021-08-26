@@ -21,26 +21,27 @@ import java.util.function.Supplier;
 
 public class CinderscapesItems {
     // Acts as a kind of local registry for items added by Cinderscapes
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Cinderscapes.ID);
+    public static final Map<Identifier, Item> ITEMS = new LinkedHashMap<>();
 
-    public static final RegistryObject<Item> BRAMBLE_BERRIES = add("bramble_berries", () -> new AliasedBlockItem(CinderscapesBlocks.BRAMBLE_BERRY_BUSH, new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(2).saturationModifier(0.1F).alwaysEdible().snack().statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 600, 0), 0.8F).build())));
+    public static final Item BRAMBLE_BERRIES = add("bramble_berries", new AliasedBlockItem(CinderscapesBlocks.BRAMBLE_BERRY_BUSH, new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(2).saturationModifier(0.1F).alwaysEdible().snack().statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 600, 0), 0.8F).build())));
 
-    public static final RegistryObject<Item> UMBRAL_SIGN = add("umbral_sign", () -> new SignItem(new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS), CinderscapesBlocks.UMBRAL_SIGN, CinderscapesBlocks.UMBRAL_WALL_SIGN));
+    public static final Item UMBRAL_SIGN = add("umbral_sign", new SignItem(new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS), CinderscapesBlocks.UMBRAL_SIGN, CinderscapesBlocks.UMBRAL_WALL_SIGN));
 
-    public static final RegistryObject<Item> SCORCHED_SIGN = add("scorched_sign", () -> new SignItem(new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS), CinderscapesBlocks.SCORCHED_SIGN, CinderscapesBlocks.SCORCHED_WALL_SIGN));
-    public static final RegistryObject<Item> ASH_PILE = add("ash_pile", () -> new Item(new Item.Settings().group(ItemGroup.MATERIALS)));
+    public static final Item SCORCHED_SIGN = add("scorched_sign", new SignItem(new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS), CinderscapesBlocks.SCORCHED_SIGN, CinderscapesBlocks.SCORCHED_WALL_SIGN));
+    public static final Item ASH_PILE = add("ash_pile", new Item(new Item.Settings().group(ItemGroup.MATERIALS)));
 
-    public static final RegistryObject<Item> SULFUR = add("sulfur", () -> new Item(new Item.Settings().group(ItemGroup.MATERIALS)));
+    public static final Item SULFUR = add("sulfur", new Item(new Item.Settings().group(ItemGroup.MATERIALS)));
 
-    public static final RegistryObject<Item> ROSE_QUARTZ = add("rose_quartz", () -> new Item(new Item.Settings().group(ItemGroup.MATERIALS)));
-    public static final RegistryObject<Item> SMOKY_QUARTZ = add("smoky_quartz", () -> new Item(new Item.Settings().group(ItemGroup.MATERIALS)));
-    public static final RegistryObject<Item> SULFUR_QUARTZ = add("sulfur_quartz", () -> new Item(new Item.Settings().group(ItemGroup.MATERIALS)));
+    public static final Item ROSE_QUARTZ = add("rose_quartz", new Item(new Item.Settings().group(ItemGroup.MATERIALS)));
+    public static final Item SMOKY_QUARTZ = add("smoky_quartz", new Item(new Item.Settings().group(ItemGroup.MATERIALS)));
+    public static final Item SULFUR_QUARTZ = add("sulfur_quartz", new Item(new Item.Settings().group(ItemGroup.MATERIALS)));
 
-    public static final RegistryObject<Item> MUSIC_DISC_LUMINOUS_PLANTATION = add("music_disc_luminous_plantation", () -> new CinderscapesMusicDiscItem(14, CinderscapesSoundEvents.MUSIC_DISC_LUMINOUS_PLANTATION.get()));
-    public static final RegistryObject<Item> MUSIC_DISC_CHILLING_IN_HELL = add("music_disc_chilling_in_hell",() ->  new CinderscapesMusicDiscItem(14, CinderscapesSoundEvents.MUSIC_DISC_CHILLING_IN_HELL.get()));
+    public static final Item MUSIC_DISC_LUMINOUS_PLANTATION = add("music_disc_luminous_plantation", new CinderscapesMusicDiscItem(14, CinderscapesSoundEvents.MUSIC_DISC_LUMINOUS_PLANTATION));
+    public static final Item MUSIC_DISC_CHILLING_IN_HELL = add("music_disc_chilling_in_hell", new CinderscapesMusicDiscItem(14, CinderscapesSoundEvents.MUSIC_DISC_CHILLING_IN_HELL));
 
-    private static <I extends Item> RegistryObject<I> add(String name, Supplier<I> item) {
-        return ITEMS.register(name, item);
+    private static <I extends Item> I add(String name, I item) {
+        ITEMS.put(Cinderscapes.id(name), item);
+        return item;
     }
 
     public static void init() {

@@ -3,28 +3,37 @@ package com.terraformersmc.cinderscapes.init;
 import com.terraformersmc.cinderscapes.Cinderscapes;
 import com.terraformersmc.cinderscapes.surfacebuilder.AshyShoalsSurfaceBuilder;
 import net.minecraft.block.Blocks;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilder.SurfaceConfig;
 import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
-import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 // Contains all of the surface builders and surface configs added by Cinderscapes
 public class CinderscapesSurfaces {
     // Acts as a kind of local registry for surface builders added by Cinderscapes
-    public static final DeferredRegister<SurfaceBuilder<?>> SURFACE_BUILDERS = DeferredRegister.create(ForgeRegistries.SURFACE_BUILDERS, Cinderscapes.ID);
+    public static final Map<Identifier, SurfaceBuilder<?>> SURFACE_BUILDERS = new LinkedHashMap<>();
+    static final Map<Identifier, ConfiguredSurfaceBuilder<? extends SurfaceConfig>> CONFIGURED_SURFACE_BUILDERS = new HashMap<>();
 
     /////////////////////
     // SURFACE CONFIGS //
     /////////////////////
     public static final TernarySurfaceConfig LUMINOUS_NYLIUM_CONFIG = new TernarySurfaceConfig(CinderscapesBlocks.UMBRAL_NYLIUM.getDefaultState(), Blocks.NETHERRACK.getDefaultState(), CinderscapesBlocks.UMBRAL_WART_BLOCK.getDefaultState());
+    public static final ConfiguredSurfaceBuilder<TernarySurfaceConfig> CONFIGURED_LUMINOUS_GROVE = add("luminous_grove", SurfaceBuilder.NETHER_FOREST.withConfig(LUMINOUS_NYLIUM_CONFIG));
     static final TernarySurfaceConfig ASHY_SHOALS_CONFIG = new TernarySurfaceConfig(Blocks.NETHERRACK.getDefaultState(), Blocks.NETHERRACK.getDefaultState(), Blocks.MAGMA_BLOCK.getDefaultState());
 
     //////////////////////
     // SURFACE BUILDERS //
     //////////////////////
-    public static final RegistryObject<SurfaceBuilder<TernarySurfaceConfig>> ASHY_SHOALS = add("ashy_shoals", new AshyShoalsSurfaceBuilder());
+    public static final SurfaceBuilder<TernarySurfaceConfig> ASHY_SHOALS = add("ashy_shoals", new AshyShoalsSurfaceBuilder());
+    public static final ConfiguredSurfaceBuilder<TernarySurfaceConfig> CONFIGURED_ASHY_SHOALS = add("ashy_shoals", ASHY_SHOALS.withConfig(ASHY_SHOALS_CONFIG));
+
 
     /**
      * Adds a surface builder to the Cinderscapes local registry
@@ -33,13 +42,21 @@ public class CinderscapesSurfaces {
      * @param <S>     The specific class type of the surface builder
      * @return The surface builder that was registered in the Cinderscapes local surface builder registry
      */
-    private static <S extends SurfaceBuilder<? extends SurfaceConfig>> RegistryObject<S> add(String name, S s) {
-        return SURFACE_BUILDERS.register(name, () -> s);
+    private static <S extends SurfaceBuilder<? extends SurfaceConfig>> S add(String name, S s) {
+        SURFACE_BUILDERS.put(Cinderscapes.id(name), s);
+        RegistryKey.of(Registry.SURFACE_BUILD_KEY, Cinderscapes.id(name));
+        return s;
     }
 
     /**
      * Initializes the surface builders added by Cinderscapes
      */
     public static void init() {
+    }
+
+    static <SC extends SurfaceConfig> ConfiguredSurfaceBuilder<SC> add(String name, ConfiguredSurfaceBuilder<SC> s) {
+        CONFIGURED_SURFACE_BUILDERS.put(Cinderscapes.id(name), s);
+
+        return s;
     }
 }

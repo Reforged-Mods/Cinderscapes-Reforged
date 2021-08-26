@@ -1,8 +1,8 @@
 package com.terraformersmc.cinderscapes.biome;
 
 import com.terraformersmc.cinderscapes.init.CinderscapesConfiguredFeatures;
-import com.terraformersmc.cinderscapes.init.CinderscapesConfiguredSurfaces;
 import com.terraformersmc.cinderscapes.init.CinderscapesSoundEvents;
+import com.terraformersmc.cinderscapes.init.CinderscapesSurfaces;
 import com.terraformersmc.cinderscapes.mixin.DefaultBiomeCreatorAccessor;
 import net.minecraft.client.sound.MusicType;
 import net.minecraft.entity.EntityType;
@@ -45,14 +45,14 @@ public class LuminousGroveBiome {
                         .loopSound(SoundEvents.AMBIENT_WARPED_FOREST_LOOP)
                         .moodSound(new BiomeMoodSound(SoundEvents.AMBIENT_WARPED_FOREST_MOOD, 6000, 8, 2.0D))
                         .additionsSound(new BiomeAdditionsSound(SoundEvents.AMBIENT_WARPED_FOREST_ADDITIONS, 0.0111D))
-                        .music(MusicType.createIngameMusic(CinderscapesSoundEvents.LUMINOUS_GROVE_MUSIC.get()))
+                        .music(MusicType.createIngameMusic(CinderscapesSoundEvents.LUMINOUS_GROVE_MUSIC))
                         .build())
                 .build();
     }
 
     private static GenerationSettings createGenerationSettings() {
         GenerationSettings.Builder builder = new GenerationSettings.Builder();
-        builder.surfaceBuilder(CinderscapesConfiguredSurfaces.CONFIGURED_LUMINOUS_GROVE);
+        builder.surfaceBuilder(CinderscapesSurfaces.CONFIGURED_LUMINOUS_GROVE);
 
         // UMBRAL FUNGUS
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, CinderscapesConfiguredFeatures.CANOPIED_HUGE_FUNGUS);

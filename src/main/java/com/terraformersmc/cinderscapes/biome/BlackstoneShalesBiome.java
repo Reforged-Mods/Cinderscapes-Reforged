@@ -44,7 +44,7 @@ public class BlackstoneShalesBiome {
                         .loopSound(SoundEvents.AMBIENT_NETHER_WASTES_LOOP)
                         .moodSound(new BiomeMoodSound(SoundEvents.AMBIENT_BASALT_DELTAS_MOOD, 6000, 8, 2.0D))
                         .additionsSound(new BiomeAdditionsSound(SoundEvents.AMBIENT_BASALT_DELTAS_ADDITIONS, 0.0111D))
-                        .music(MusicType.createIngameMusic(CinderscapesSoundEvents.BLACKSTONE_SHALES_MUSIC.get()))
+                        .music(MusicType.createIngameMusic(CinderscapesSoundEvents.BLACKSTONE_SHALES_MUSIC))
                         .particleConfig(new BiomeParticleConfig(ParticleTypes.WHITE_ASH, 0.118093334F))
                         .build())
                 .build();

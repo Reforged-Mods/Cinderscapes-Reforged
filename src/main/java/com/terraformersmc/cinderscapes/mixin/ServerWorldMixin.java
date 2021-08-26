@@ -41,7 +41,7 @@ public abstract class ServerWorldMixin extends World {
             RegistryKey<Biome> biome = this.method_31081(pos).orElse(null);
 
             while (!(
-                    biome != null && biome.getRegistryName().equals(CinderscapesBiomes.ASHY_SHOALS.get().getRegistryName()) &&
+                    biome != null && biome.getRegistryName().equals(CinderscapesBiomes.ASHY_SHOALS.getRegistryName()) &&
                             state.isSideSolidFullSquare(this, pos, Direction.UP) &&
                             CinderscapesTags.ASH_PERMEABLE.contains(blockAbove(pos).getBlock()) &&
                             this.getBlockState(pos.up()).isAir() &&
