@@ -24,8 +24,6 @@ import java.util.function.Supplier;
 public class CinderscapesBiomes {
 
     // Acts as a kind of local registry for Cinderscape's custom biomes
-    DeferredRegister
-
     public static final Map<Identifier, Biome> BIOMES = new LinkedHashMap<>();
 
     public static final Biome BLACKSTONE_SHALES = add("blackstone_shales", BlackstoneShalesBiome.create());
