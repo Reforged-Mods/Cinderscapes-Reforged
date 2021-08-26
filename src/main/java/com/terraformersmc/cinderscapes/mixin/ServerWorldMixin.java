@@ -38,7 +38,7 @@ public abstract class ServerWorldMixin extends World {
         if (CinderscapesConfig.INSTANCE.ENABLE_ASH_FALL) {
             BlockPos pos = this.getRandomPosInChunk(i, 0, j, 15);
             BlockState state = getBlockState(pos);
-            RegistryKey<Biome> biome = this.method_31081(pos).orElse(null);
+            RegistryKey<Biome> biome = this.getBiomeKey(pos).orElse(null);
 
             while (!(
                     biome != null && biome.getRegistryName().equals(CinderscapesBiomes.ASHY_SHOALS.getRegistryName()) &&
@@ -49,7 +49,7 @@ public abstract class ServerWorldMixin extends World {
                     pos.getY() < 127) {
                 pos = pos.up();
                 state = getBlockState(pos);
-                biome = this.method_31081(pos).orElse(null);
+                biome = this.getBiomeKey(pos).orElse(null);
             }
             if (pos.getY() < 127) this.setBlockState(pos.up(), CinderscapesBlocks.ASH.getDefaultState());
         }
