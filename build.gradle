@@ -2,7 +2,7 @@ import org.gradle.api.JavaVersion
 
 plugins {
     id 'dev.architectury.loom' version '0.7.2-SNAPSHOT'
-    id "com.github.johnrengelman.shadow" version "7.0.0"
+    //id "com.github.johnrengelman.shadow" version "7.0.0"
 }
 
 
@@ -10,7 +10,21 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 configurations {
-    shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
+    //shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+        resources {
+            include '**/**'
+            srcDirs += 'src/generated/resources'
+            exclude '.cache'
+            exclude 'Thumbs.db'
+        }
+    }
 }
 
 loom {
@@ -24,7 +38,7 @@ dependencies {
 
     forge "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    modImplementation ("com.github.Reforged-Mods:NetherEndBiomeInjector:33be17904c") //d7bc649383
+    modImplementation ("com.github.Reforged-Mods:NetherEndBiomeInjector:1a6287") //d7bc649383
     modCompileOnly ("com.github.Reforged-Mods.Terraform-Reforged:terraform-wood-api-v1:d1712e223d")
     modCompileOnly ("com.github.Reforged-Mods.Terraform-Reforged:terraform-shapes-api-v1:d1712e223d")
     modRuntime ("com.github.Reforged-Mods.Terraform-Reforged:terraform:d1712e223d")
@@ -77,21 +91,4 @@ tasks.withType(JavaCompile) {
 task sourcesJar(type: Jar, dependsOn: classes) {
     classifier = "sources"
     from sourceSets.main.allSource
-}
-
-shadowJar {
-    configurations = [project.configurations.shadowCommon]
-    classifier "dev-shadow"
-
-}
-
-
-remapJar {
-    input.set shadowJar.archiveFile
-    dependsOn shadowJar
-    classifier ""
-}
-
-jar {
-    classifier "dev"
 }
