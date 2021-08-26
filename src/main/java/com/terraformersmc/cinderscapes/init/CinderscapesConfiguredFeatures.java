@@ -1,7 +1,6 @@
 package com.terraformersmc.cinderscapes.init;
 
 import com.google.common.base.Preconditions;
-import com.google.common.base.Supplier;
 import com.terraformersmc.cinderscapes.Cinderscapes;
 import com.terraformersmc.cinderscapes.block.PolypiteQuartzBlock;
 import com.terraformersmc.cinderscapes.decorator.config.CountSafelistRangeDecoratorConfig;
@@ -24,9 +23,7 @@ import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 
 import java.util.Arrays;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 public final class CinderscapesConfiguredFeatures {
 

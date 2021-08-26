@@ -2,7 +2,6 @@ package com.terraformersmc.cinderscapes.init;
 
 import com.terraformersmc.cinderscapes.Cinderscapes;
 import com.terraformersmc.cinderscapes.item.CinderscapesMusicDiscItem;
-import net.minecraft.block.ComposterBlock;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.AliasedBlockItem;
@@ -11,13 +10,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.SignItem;
 import net.minecraft.util.Identifier;
-import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.function.Supplier;
 
 public class CinderscapesItems {
     // Acts as a kind of local registry for items added by Cinderscapes

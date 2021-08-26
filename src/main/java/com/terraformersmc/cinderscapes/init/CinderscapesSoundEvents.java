@@ -3,9 +3,6 @@ package com.terraformersmc.cinderscapes.init;
 import com.terraformersmc.cinderscapes.Cinderscapes;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
-import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

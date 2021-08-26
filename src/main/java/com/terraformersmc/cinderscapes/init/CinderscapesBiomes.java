@@ -8,19 +8,13 @@ import com.terraformersmc.cinderscapes.biome.QuartzCanyonBiome;
 import com.terraformersmc.cinderscapes.config.CinderscapesConfig;
 import net.fabricmc.fabric.api.biome.v1.NetherBiomes;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.source.MultiNoiseBiomeSource;
 import net.minecraftforge.common.BiomeDictionary;
-import net.minecraftforge.fml.RegistryObject;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.function.Supplier;
 
 public class CinderscapesBiomes {
 
