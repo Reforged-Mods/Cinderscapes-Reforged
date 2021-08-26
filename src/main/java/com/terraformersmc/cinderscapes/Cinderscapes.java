@@ -53,6 +53,7 @@ public class Cinderscapes {
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CinderscapesConfig.COMMON_SPEC);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
+		FMLJavaModLoadingContext.get().getModEventBus().register(this);
 
 		CinderscapesItems.init();
 		CinderscapesBlocks.init();
