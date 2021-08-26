@@ -79,7 +79,7 @@ public class Cinderscapes {
 			CinderscapesConfiguredFeatures.init();
 			CinderscapesTags.init();
 		});
-		//CinderscapesBiomes.initBiomeAdd();
+		CinderscapesBiomes.initBiomeAdd();
 		NoiseCollisionChecker.init(e);
 		onInitialize();
 		ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(CinderscapesItems.BRAMBLE_BERRIES, 0.3f);
