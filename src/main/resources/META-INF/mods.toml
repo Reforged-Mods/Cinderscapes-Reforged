@@ -8,7 +8,6 @@ modId="cinderscapes"
 version="${version}"
 displayName="Cinderscapes"
 displayURL="https://github.com/Trinsdar/Cinderscapes-Reforged"
-logoFile="cinderscapes:icon.png"
 credits="TerraformersMC for creating the fabric version"
 authors="Trinsdar, Vaerian, NeusFear, TerraformersMC"
 description='''An expansion of Minecraft's Nether biomes!'''

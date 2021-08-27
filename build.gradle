@@ -13,20 +13,6 @@ configurations {
     //shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
 }
 
-sourceSets {
-    main {
-        java {
-            srcDir 'src/main/java'
-        }
-        resources {
-            include '**/**'
-            srcDirs += 'src/generated/resources'
-            exclude '.cache'
-            exclude 'Thumbs.db'
-        }
-    }
-}
-
 loom {
     mixinConfigs = ["cinderscapes.mixins.json"]
     useFabricMixin = true
