@@ -41,7 +41,7 @@ dependencies {
     modImplementation ("com.github.Reforged-Mods:NetherEndBiomeInjector:33be17904c") //d7bc649383
     modCompileOnly ("com.github.Reforged-Mods.Terraform-Reforged:terraform-wood-api-v1:d1712e223d")
     modCompileOnly ("com.github.Reforged-Mods.Terraform-Reforged:terraform-shapes-api-v1:d1712e223d")
-    modRuntime ("com.github.Reforged-Mods.Terraform-Reforged:terraform:d1712e223d")
+    modRuntime ("com.github.Reforged-Mods.Terraform-Reforged:terraform:9a44204cbc")
 }
 
 repositories {

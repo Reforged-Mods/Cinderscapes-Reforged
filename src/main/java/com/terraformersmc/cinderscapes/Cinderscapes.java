@@ -11,6 +11,7 @@ import com.terraformersmc.cinderscapes.init.CinderscapesGroups;
 import com.terraformersmc.cinderscapes.init.CinderscapesItems;
 import com.terraformersmc.cinderscapes.init.CinderscapesSoundEvents;
 import com.terraformersmc.cinderscapes.init.CinderscapesSurfaces;
+import com.terraformersmc.cinderscapes.init.CinderscapesTags;
 import com.terraformersmc.cinderscapes.init.CinderscapesTrades;
 import com.terraformersmc.cinderscapes.util.NoiseCollisionChecker;
 import net.minecraft.block.Block;
@@ -76,6 +77,7 @@ public class Cinderscapes {
 	private void setup(final FMLCommonSetupEvent e) {
 		e.enqueueWork(() -> {
 			CinderscapesConfiguredFeatures.init();
+			CinderscapesTags.init();
 		});
 		//CinderscapesBiomes.initBiomeAdd();
 		NoiseCollisionChecker.init(e);
