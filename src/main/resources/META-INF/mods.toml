@@ -24,8 +24,14 @@ description='''An expansion of Minecraft's Nether biomes!'''
     ordering="AFTER"
     side="BOTH"
 [[dependencies.cinderscapes]]
-    modId="nebi"
+    modId="fabric-biome-api"
     mandatory=true
     versionRange="[1.0.0,)"
     ordering="AFTER"
     side="BOTH"
+[[dependencies.cinderscapes]]
+modId="terraform"
+mandatory=true
+versionRange="[1.0.0,)"
+ordering="AFTER"
+side="BOTH"
