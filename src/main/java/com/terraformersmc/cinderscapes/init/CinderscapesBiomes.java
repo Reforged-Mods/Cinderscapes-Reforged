@@ -49,7 +49,7 @@ public class CinderscapesBiomes {
     private static RegistryKey<Biome> add(String s, Biome b) {
         Identifier id = Cinderscapes.id(s);
         RegistryKey<Biome> key = RegistryKey.of(Registry.BIOME_KEY, id);
-        BiomeDictionary.addTypes(key, new BiomeDictionary.Type[]{BiomeDictionary.Type.NETHER, BiomeDictionary.Type.HOT, BiomeDictionary.Type.DRY});
+        BiomeDictionary.addTypes(key, BiomeDictionary.Type.NETHER, BiomeDictionary.Type.HOT, BiomeDictionary.Type.DRY);
         BIOMES.put(id, b);
         return key;
     }
@@ -57,7 +57,7 @@ public class CinderscapesBiomes {
     private static RegistryKey<Biome> add(String s, Biome b, BiomeDictionary.Type special) {
         Identifier id = Cinderscapes.id(s);
         RegistryKey<Biome> key = RegistryKey.of(Registry.BIOME_KEY, id);
-        BiomeDictionary.addTypes(key, new BiomeDictionary.Type[]{BiomeDictionary.Type.NETHER, BiomeDictionary.Type.HOT, BiomeDictionary.Type.DRY, special});
+        BiomeDictionary.addTypes(key, BiomeDictionary.Type.NETHER, BiomeDictionary.Type.HOT, BiomeDictionary.Type.DRY, special);
         BIOMES.put(id, b);
         return key;
     }
