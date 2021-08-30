@@ -3,8 +3,6 @@ package com.terraformersmc.cinderscapes.init;
 import com.terraformersmc.cinderscapes.Cinderscapes;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.collection.DefaultedList;
-import net.minecraft.util.registry.Registry;
 
 // Contains the item groups added by Cinderscapes
 public class CinderscapesGroups {
@@ -22,12 +20,6 @@ public class CinderscapesGroups {
         @Override
         public ItemStack createIcon() {
             return CinderscapesBlocks.UMBRAL_FUNGUS.asItem().getDefaultStack();
-        }
-
-        public void appendStacks(DefaultedList<ItemStack> list) {
-            Registry.ITEM.stream().filter((item) -> {
-                return Registry.ITEM.getId(item).getNamespace().equals(Cinderscapes.ID);
-            }).forEach((item) -> list.add(new ItemStack(item)));
         }
 
     }
