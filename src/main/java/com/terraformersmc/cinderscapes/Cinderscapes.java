@@ -86,6 +86,7 @@ public class Cinderscapes {
 	}
 
 	@SubscribeEvent
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	public void onRegister(final RegistryEvent.Register<?> event){
 		if (event.getRegistry() == ForgeRegistries.FEATURES){
 			for (Identifier id : CinderscapesFeatures.FEATURES.keySet()){
