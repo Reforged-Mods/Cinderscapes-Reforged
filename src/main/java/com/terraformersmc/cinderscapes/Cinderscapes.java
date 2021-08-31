@@ -1,5 +1,6 @@
 package com.terraformersmc.cinderscapes;
 
+import com.google.common.collect.ImmutableSet;
 import com.terraformersmc.cinderscapes.client.CinderscapesClient;
 import com.terraformersmc.cinderscapes.config.CinderscapesConfig;
 import com.terraformersmc.cinderscapes.init.CinderscapesBiomes;
@@ -13,6 +14,7 @@ import com.terraformersmc.cinderscapes.init.CinderscapesSoundEvents;
 import com.terraformersmc.cinderscapes.init.CinderscapesSurfaces;
 import com.terraformersmc.cinderscapes.init.CinderscapesTags;
 import com.terraformersmc.cinderscapes.init.CinderscapesTrades;
+import com.terraformersmc.cinderscapes.mixin.CarverAccessor;
 import com.terraformersmc.cinderscapes.util.NoiseCollisionChecker;
 import net.minecraft.block.Block;
 import net.minecraft.block.ComposterBlock;
@@ -25,6 +27,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.carver.Carver;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
@@ -79,6 +82,7 @@ public class Cinderscapes {
 			CinderscapesConfiguredFeatures.init();
 			CinderscapesTags.init();
 		});
+		((CarverAccessor) Carver.NETHER_CAVE).setAlwaysCarvableBlocks(ImmutableSet.<Block>builder().addAll(((CarverAccessor) Carver.NETHER_CAVE).getAlwaysCarvableBlocks()).add(CinderscapesBlocks.UMBRAL_NYLIUM).build());
 		CinderscapesBiomes.initBiomeAdd();
 		NoiseCollisionChecker.init(e);
 		onInitialize();
