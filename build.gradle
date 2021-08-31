@@ -23,10 +23,10 @@ dependencies {
 
     forge "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    modImplementation ("com.github.Reforged-Mods:FabricBiomeApiReforged:main-SNAPSHOT") //d7bc649383
-    modCompileOnly ("com.github.Reforged-Mods.Terraform-Reforged:terraform-wood-api-v1:d1712e223d")
-    modCompileOnly ("com.github.Reforged-Mods.Terraform-Reforged:terraform-shapes-api-v1:d1712e223d")
-    modRuntime ("com.github.Reforged-Mods.Terraform-Reforged:terraform:9a44204cbc")
+    modImplementation ("com.github.Reforged-Mods:FabricBiomeApiReforged:1.0.2") //d7bc649383
+    modCompileOnly ("com.github.Reforged-Mods.Terraform-Reforged:terraform-wood-api-v1:cd09adabc2")
+    modCompileOnly ("com.github.Reforged-Mods.Terraform-Reforged:terraform-shapes-api-v1:cd09adabc2")
+    modRuntime ("com.github.Reforged-Mods.Terraform-Reforged:terraform:cd09adabc2")
 }
 
 repositories {

@@ -10,7 +10,7 @@
       "item": "minecraft:redstone_torch"
     },
     "X": {
-      "tag": "c:quartz"
+      "tag": "forge:gems/quartz"
     },
     "I": {
       "item": "minecraft:stone"

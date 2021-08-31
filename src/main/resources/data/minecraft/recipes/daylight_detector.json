@@ -7,7 +7,7 @@
   ],
   "key": {
     "Q": {
-      "tag": "c:quartz"
+      "tag": "forge:gems/quartz"
     },
     "G": {
       "item": "minecraft:glass"
