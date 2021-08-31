@@ -75,9 +75,6 @@ public interface AbstractBlockSettingsAccessor {
     void setRandomTicks(boolean ticksRandomly);
 
     @Accessor
-    void setMaterialColorFactory(Function<BlockState, MaterialColor> materialColorFunction);
-
-    @Accessor
     void setDynamicBounds(boolean dynamicBounds);
 
     @Accessor
