@@ -41,6 +41,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.apache.logging.log4j.LogManager;
@@ -68,6 +69,9 @@ public class Cinderscapes {
 		CinderscapesBiomes.init();
 		CinderscapesSoundEvents.init();
 		CinderscapesTrades.init();
+		if (FMLEnvironment.dist.isClient()){
+			CinderscapesClient.addSigns();
+		}
 
 
 	}
