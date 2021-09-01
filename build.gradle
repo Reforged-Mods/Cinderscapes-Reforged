@@ -26,7 +26,8 @@ dependencies {
     modImplementation ("com.github.Reforged-Mods:FabricBiomeApiReforged:1.0.2") //d7bc649383
     modCompileOnly ("com.github.Reforged-Mods.Terraform-Reforged:terraform-wood-api-v1:cd09adabc2")
     modCompileOnly ("com.github.Reforged-Mods.Terraform-Reforged:terraform-shapes-api-v1:cd09adabc2")
-    modRuntime ("com.github.Reforged-Mods.Terraform-Reforged:terraform:cd09adabc2")
+    modCompileOnly ("com.github.Reforged-Mods.Terraform-Reforged:terraform-utils-v1:158551e7aa")
+    modRuntime ("com.github.Reforged-Mods.Terraform-Reforged:terraform:158551e7aa")
 }
 
 repositories {

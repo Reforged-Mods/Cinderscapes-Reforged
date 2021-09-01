@@ -3,8 +3,6 @@
   "package": "com.terraformersmc.cinderscapes.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "AbstractBlockAccessor",
-    "AbstractBlockSettingsAccessor",
     "MultiNoiseBiomeSourceAccessor",
     "ServerWorldMixin",
     "NetherrackBlockMixin",
