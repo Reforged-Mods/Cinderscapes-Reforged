@@ -76,7 +76,6 @@ public class Cinderscapes {
 
 	}
 
-	@OnlyIn(Dist.CLIENT)
 	private void clientSetup(final FMLClientSetupEvent e){
 		CinderscapesClient.onInitializeClient(e);
 	}
