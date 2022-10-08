@@ -2,8 +2,6 @@ package com.terraformersmc.cinderscapes.init;
 
 import com.terraformersmc.cinderscapes.Cinderscapes;
 import com.terraformersmc.cinderscapes.loottables.IntegratedEntry;
-import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
-import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.loot.condition.LootCondition;
@@ -23,7 +21,8 @@ public class CinderscapesTrades {
 
     public static void init() {
 
-        LootTableEvents.MODIFY.register((resourceManager, manager, id, supplier, setter) -> {
+        //todo fabric change
+        /*LootTableLoadingCallback.EVENT.register((resourceManager, manager, id, supplier, setter) -> {
             if (BARTERING_LOOT_TABLE_ID.equals(id)) {
                 supplier.modifyPools((pools) -> {
                     pools   .with(new IntegratedEntry(CinderscapesItems.ROSE_QUARTZ, 20, 0, new LootCondition[]{}, new LootFunction[]{SetCountLootFunction.builder(UniformLootNumberProvider.create(5, 12)).build()}))
@@ -46,6 +45,6 @@ public class CinderscapesTrades {
             factories.add((entity, random) -> new TradeOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(CinderscapesBlocks.SULFUR_QUARTZ_BLOCK, 1), 12, 30, 0.05F));
             factories.add((entity, random) -> new TradeOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(CinderscapesBlocks.SMOKY_QUARTZ_PILLAR, 1), 12, 30, 0.05F));
             factories.add((entity, random) -> new TradeOffer(new ItemStack(Items.EMERALD, 1), new ItemStack(CinderscapesBlocks.SMOKY_QUARTZ_BLOCK, 1), 12, 30, 0.05F));
-        });
+        });*/
     }
 }

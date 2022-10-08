@@ -11,6 +11,15 @@ configurations {
     shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
 }
 
+dependencies {
+    implementation(project(path: ':common'))
+    implementation(project(path: ':client'))
+    def deps = [":common", ":worldgen", "client"]
+    for (String s : deps){
+        shadowCommon(project(path: s, configuration: "remapped"))
+    }
+}
+
 allprojects {
     apply plugin: 'dev.architectury.loom'
     apply plugin: 'java'

@@ -6,12 +6,18 @@ import com.terraformersmc.cinderscapes.biome.BlackstoneShalesBiome;
 import com.terraformersmc.cinderscapes.biome.LuminousGroveBiome;
 import com.terraformersmc.cinderscapes.biome.QuartzCavernBiome;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.BiomeDictionary;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class CinderscapesBiomes {
+    // Acts as a kind of local registry for Cinderscape's custom biomes
+    public static final Map<Identifier, Biome> BIOMES = new LinkedHashMap<>();
+
     public static final RegistryKey<Biome> ASHY_SHOALS = add("ashy_shoals", AshyShoalsBiome.create());
     public static final RegistryKey<Biome> BLACKSTONE_SHALES = add("blackstone_shales", BlackstoneShalesBiome.create());
     public static final RegistryKey<Biome> LUMINOUS_GROVE = add("luminous_grove", LuminousGroveBiome.create());
@@ -32,7 +38,16 @@ public class CinderscapesBiomes {
     private static RegistryKey<Biome> add(String s, Biome b) {
         Identifier id = Cinderscapes.id(s);
         RegistryKey<Biome> key = RegistryKey.of(Registry.BIOME_KEY, id);
-        Registry.register(BuiltinRegistries.BIOME, key, b);
+        BiomeDictionary.addTypes(key, BiomeDictionary.Type.NETHER, BiomeDictionary.Type.HOT, BiomeDictionary.Type.DRY);
+        BIOMES.put(id, b);
+        return key;
+    }
+
+    private static RegistryKey<Biome> add(String s, Biome b, BiomeDictionary.Type special) {
+        Identifier id = Cinderscapes.id(s);
+        RegistryKey<Biome> key = RegistryKey.of(Registry.BIOME_KEY, id);
+        BiomeDictionary.addTypes(key, BiomeDictionary.Type.NETHER, BiomeDictionary.Type.HOT, BiomeDictionary.Type.DRY, special);
+        BIOMES.put(id, b);
         return key;
     }
 }

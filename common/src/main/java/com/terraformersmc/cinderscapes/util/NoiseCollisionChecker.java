@@ -1,16 +1,15 @@
 package com.terraformersmc.cinderscapes.util;
 
-import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
-import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.world.biome.source.util.MultiNoiseUtil;
 
 public class NoiseCollisionChecker {
     public static void init() {
         check();
 
-        RegistryEntryAddedCallback.event(BuiltinRegistries.BIOME).register(((i, identifier, biome) -> {
+        //todo fabric change
+        /*RegistryEntryAddedCallback.event(BuiltinRegistries.BIOME).register(((i, identifier, biome) -> {
             check();
-        }));
+        }));*/
     }
 
     private static void check() {
