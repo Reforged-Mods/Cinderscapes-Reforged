@@ -15,16 +15,11 @@ public class CinderscapesDatagen{
 		CinderscapesBlockTagProvider.init();
 		CinderscapesBlockTagProvider.init();
 		CinderscapesItemTagProvider.init();
-
+		CinderscapesRecipeProvider.init();
 	}
 
 	@SubscribeEvent
 	public static void onResourcePackAddAfter(RRPEvent.AfterVanilla event){
 		event.addPack(RUNTIME_RESOURCE_PACK);
-	}
-
-	@Override
-	public void onInitializeDataGenerator(FabricDataGenerator dataGenerator) {
-		dataGenerator.addProvider(CinderscapesRecipeProvider::new);
 	}
 }

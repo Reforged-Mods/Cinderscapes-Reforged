@@ -1,7 +1,6 @@
 package com.terraformersmc.cinderscapes.data;
 
 import com.google.common.collect.ImmutableMap;
-import com.terraformersmc.cinderscapes.Cinderscapes;
 import com.terraformersmc.cinderscapes.init.CinderscapesBlocks;
 import com.terraformersmc.cinderscapes.init.CinderscapesItems;
 import com.terraformersmc.cinderscapes.tag.CinderscapesItemTags;
@@ -11,41 +10,21 @@ import net.devtech.arrp.json.recipe.JKeys;
 import net.devtech.arrp.json.recipe.JPattern;
 import net.devtech.arrp.json.recipe.JRecipe;
 import net.devtech.arrp.json.recipe.JResult;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.advancement.criterion.InventoryChangedCriterion;
-import net.minecraft.block.Blocks;
-import net.minecraft.data.server.recipe.CraftingRecipeJsonBuilder;
-import net.minecraft.data.server.recipe.RecipeJsonProvider;
-import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
-import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
-import net.minecraft.predicate.NbtPredicate;
-import net.minecraft.predicate.NumberRange;
-import net.minecraft.predicate.item.EnchantmentPredicate;
-import net.minecraft.predicate.item.ItemPredicate;
-import net.minecraft.recipe.Ingredient;
 import net.minecraft.tag.ItemTags;
-import net.minecraft.tag.Tag;
 import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraftforge.common.Tags;
 
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.function.Consumer;
 
 import static com.terraformersmc.cinderscapes.data.CinderscapesDatagen.RUNTIME_RESOURCE_PACK;
 
-public class CinderscapesRecipeProvider extends FabricRecipeProvider {
-	public CinderscapesRecipeProvider(FabricDataGenerator dataGenerator) {
-		super(dataGenerator);
-	}
-
-	@Override
-	protected void generateRecipes(Consumer<RecipeJsonProvider> exporter) {
+public class CinderscapesRecipeProvider {
+	public static void init() {
 		// vanilla recipes
 		createShapedRecipe(ImmutableMap.of("T", Items.REDSTONE_TORCH, "Q", CinderscapesItemTags.QUARTZ, "S", Tags.Items.STONE), Items.COMPARATOR, null, " T ", "TQT", "SSS");
 		createShapedRecipe(ImmutableMap.of("G", Tags.Items.GLASS_COLORLESS, "Q", CinderscapesItemTags.QUARTZ, "W", ItemTags.WOODEN_SLABS), Items.DAYLIGHT_DETECTOR, null, "GGG", "QQQ", "WWW");
@@ -73,16 +52,16 @@ public class CinderscapesRecipeProvider extends FabricRecipeProvider {
 		createStairsRecipe(CinderscapesBlocks.ROSE_QUARTZ_STAIRS, List.of(CinderscapesBlocks.CHISELED_ROSE_QUARTZ_BLOCK, CinderscapesBlocks.ROSE_QUARTZ_BLOCK, CinderscapesBlocks.ROSE_QUARTZ_PILLAR));
 		offerStonecuttingRecipe(CinderscapesBlocks.ROSE_QUARTZ_STAIRS, CinderscapesBlocks.ROSE_QUARTZ_BLOCK);
 		offerSmelting(List.of(CinderscapesBlocks.ROSE_QUARTZ_BLOCK), CinderscapesBlocks.SMOOTH_ROSE_QUARTZ, 0.1f, 200, "building_blocks");
-		offerSlabRecipe(exporter, CinderscapesBlocks.SMOOTH_ROSE_QUARTZ_SLAB, CinderscapesBlocks.SMOOTH_ROSE_QUARTZ);
+		createSlabRecipe(CinderscapesBlocks.SMOOTH_ROSE_QUARTZ_SLAB, CinderscapesBlocks.SMOOTH_ROSE_QUARTZ);
 		offerStonecuttingRecipe(CinderscapesBlocks.SMOOTH_ROSE_QUARTZ_SLAB, CinderscapesBlocks.SMOOTH_ROSE_QUARTZ, 2);
 		createStairsRecipe(CinderscapesBlocks.SMOOTH_ROSE_QUARTZ_STAIRS, CinderscapesBlocks.SMOOTH_ROSE_QUARTZ);
 		offerStonecuttingRecipe(CinderscapesBlocks.SMOOTH_ROSE_QUARTZ_STAIRS, CinderscapesBlocks.SMOOTH_ROSE_QUARTZ);
 
-		offerChiseledBlockRecipe(exporter, CinderscapesBlocks.CHISELED_SMOKY_QUARTZ_BLOCK, CinderscapesBlocks.SMOKY_QUARTZ_SLAB);
+		offerChiseledBlockRecipe(CinderscapesBlocks.CHISELED_SMOKY_QUARTZ_BLOCK, CinderscapesBlocks.SMOKY_QUARTZ_SLAB);
 		offerStonecuttingRecipe(CinderscapesBlocks.CHISELED_SMOKY_QUARTZ_BLOCK, CinderscapesBlocks.SMOKY_QUARTZ_BLOCK);
 		offerSmelting(List.of(CinderscapesBlocks.SMOKY_QUARTZ_ORE), CinderscapesItems.SMOKY_QUARTZ, 0.2f, 200, "misc");
 		createShapedRecipe(ImmutableMap.of("q", CinderscapesItems.SMOKY_QUARTZ), CinderscapesBlocks.SMOKY_QUARTZ_BLOCK, null, "qq", "qq");
-		offerPolishedStoneRecipe(exporter, CinderscapesBlocks.SMOKY_QUARTZ_BRICKS, CinderscapesBlocks.SMOKY_QUARTZ_BLOCK);
+		offerPolishedStoneRecipe(CinderscapesBlocks.SMOKY_QUARTZ_BRICKS, CinderscapesBlocks.SMOKY_QUARTZ_BLOCK);
 		offerStonecuttingRecipe(CinderscapesBlocks.SMOKY_QUARTZ_BRICKS, CinderscapesBlocks.SMOKY_QUARTZ_BLOCK);
 		offerBlasting(List.of(CinderscapesBlocks.SMOKY_QUARTZ_ORE), CinderscapesItems.SMOKY_QUARTZ, 0.2f, 100, "misc");
 		createShapedRecipe(ImmutableMap.of("Q", CinderscapesBlocks.SMOKY_QUARTZ_BLOCK), CinderscapesBlocks.SMOKY_QUARTZ_PILLAR, 2, null, "smoky_quartz_pillar", "Q", "Q");
@@ -92,16 +71,16 @@ public class CinderscapesRecipeProvider extends FabricRecipeProvider {
 		createStairsRecipe(CinderscapesBlocks.SMOKY_QUARTZ_STAIRS, List.of(CinderscapesBlocks.CHISELED_SMOKY_QUARTZ_BLOCK, CinderscapesBlocks.SMOKY_QUARTZ_BLOCK, CinderscapesBlocks.SMOKY_QUARTZ_PILLAR));
 		offerStonecuttingRecipe(CinderscapesBlocks.SMOKY_QUARTZ_STAIRS, CinderscapesBlocks.SMOKY_QUARTZ_BLOCK);
 		offerSmelting(List.of(CinderscapesBlocks.SMOKY_QUARTZ_BLOCK), CinderscapesBlocks.SMOOTH_SMOKY_QUARTZ, 0.1f, 200, "building_blocks");
-		offerSlabRecipe(exporter, CinderscapesBlocks.SMOOTH_SMOKY_QUARTZ_SLAB, CinderscapesBlocks.SMOOTH_SMOKY_QUARTZ);
+		createSlabRecipe(CinderscapesBlocks.SMOOTH_SMOKY_QUARTZ_SLAB, CinderscapesBlocks.SMOOTH_SMOKY_QUARTZ);
 		offerStonecuttingRecipe(CinderscapesBlocks.SMOOTH_SMOKY_QUARTZ_SLAB, CinderscapesBlocks.SMOOTH_SMOKY_QUARTZ, 2);
 		createStairsRecipe(CinderscapesBlocks.SMOOTH_SMOKY_QUARTZ_STAIRS, CinderscapesBlocks.SMOOTH_SMOKY_QUARTZ);
 		offerStonecuttingRecipe(CinderscapesBlocks.SMOOTH_SMOKY_QUARTZ_STAIRS, CinderscapesBlocks.SMOOTH_SMOKY_QUARTZ);
 
-		offerChiseledBlockRecipe(exporter, CinderscapesBlocks.CHISELED_SULFUR_QUARTZ_BLOCK, CinderscapesBlocks.SULFUR_QUARTZ_SLAB);
+		offerChiseledBlockRecipe(CinderscapesBlocks.CHISELED_SULFUR_QUARTZ_BLOCK, CinderscapesBlocks.SULFUR_QUARTZ_SLAB);
 		offerStonecuttingRecipe(CinderscapesBlocks.CHISELED_SULFUR_QUARTZ_BLOCK, CinderscapesBlocks.SULFUR_QUARTZ_BLOCK);
 		offerSmelting(List.of(CinderscapesBlocks.SULFUR_QUARTZ_ORE), CinderscapesItems.SULFUR_QUARTZ, 0.2f, 200, "misc");
 		createShapedRecipe(ImmutableMap.of("q", CinderscapesItems.SULFUR_QUARTZ), CinderscapesBlocks.SULFUR_QUARTZ_BLOCK, null, "qq", "qq");
-		offerPolishedStoneRecipe(exporter, CinderscapesBlocks.SULFUR_QUARTZ_BRICKS, CinderscapesBlocks.SULFUR_QUARTZ_BLOCK);
+		offerPolishedStoneRecipe(CinderscapesBlocks.SULFUR_QUARTZ_BRICKS, CinderscapesBlocks.SULFUR_QUARTZ_BLOCK);
 		offerStonecuttingRecipe(CinderscapesBlocks.SULFUR_QUARTZ_BRICKS, CinderscapesBlocks.SULFUR_QUARTZ_BLOCK);
 		offerBlasting(List.of(CinderscapesBlocks.SULFUR_QUARTZ_ORE), CinderscapesItems.SULFUR_QUARTZ, 0.2f, 100, "misc");
 		createShapedRecipe(ImmutableMap.of("Q", CinderscapesBlocks.SULFUR_QUARTZ_BLOCK), CinderscapesBlocks.SULFUR_QUARTZ_PILLAR, 2, null, "sulfur_quartz_pillar", "Q", "Q");
@@ -111,7 +90,7 @@ public class CinderscapesRecipeProvider extends FabricRecipeProvider {
 		createStairsRecipe(CinderscapesBlocks.SULFUR_QUARTZ_STAIRS, List.of(CinderscapesBlocks.CHISELED_SULFUR_QUARTZ_BLOCK, CinderscapesBlocks.SULFUR_QUARTZ_BLOCK, CinderscapesBlocks.SULFUR_QUARTZ_PILLAR));
 		offerStonecuttingRecipe(CinderscapesBlocks.SULFUR_QUARTZ_STAIRS, CinderscapesBlocks.SULFUR_QUARTZ_BLOCK);
 		offerSmelting(List.of(CinderscapesBlocks.SULFUR_QUARTZ_BLOCK), CinderscapesBlocks.SMOOTH_SULFUR_QUARTZ, 0.1f, 200, "building_blocks");
-		offerSlabRecipe(exporter, CinderscapesBlocks.SMOOTH_SULFUR_QUARTZ_SLAB, CinderscapesBlocks.SMOOTH_SULFUR_QUARTZ);
+		createSlabRecipe(CinderscapesBlocks.SMOOTH_SULFUR_QUARTZ_SLAB, CinderscapesBlocks.SMOOTH_SULFUR_QUARTZ);
 		offerStonecuttingRecipe(CinderscapesBlocks.SMOOTH_SULFUR_QUARTZ_SLAB, CinderscapesBlocks.SMOOTH_SULFUR_QUARTZ, 2);
 		createStairsRecipe(CinderscapesBlocks.SMOOTH_SULFUR_QUARTZ_STAIRS, CinderscapesBlocks.SMOOTH_SULFUR_QUARTZ);
 		offerStonecuttingRecipe(CinderscapesBlocks.SMOOTH_SULFUR_QUARTZ_STAIRS, CinderscapesBlocks.SMOOTH_SULFUR_QUARTZ);
@@ -124,9 +103,9 @@ public class CinderscapesRecipeProvider extends FabricRecipeProvider {
 		createFenceGateRecipe(CinderscapesBlocks.SCORCHED_FENCE_GATE, CinderscapesBlocks.SCORCHED_PLANKS);
 		createShapedRecipe(ImmutableMap.of("L", CinderscapesBlocks.SCORCHED_STEM), CinderscapesBlocks.SCORCHED_HYPHAE, 3, "bark", "scorched_hyphae", "LL", "LL");
 		offerPlanksRecipe(CinderscapesBlocks.SCORCHED_PLANKS, CinderscapesItemTags.SCORCHED_STEMS);
-		createPressurePlateRecipe(exporter, CinderscapesBlocks.SCORCHED_PRESSURE_PLATE, CinderscapesBlocks.SCORCHED_PLANKS);
+		createPressurePlateRecipe(CinderscapesBlocks.SCORCHED_PRESSURE_PLATE, CinderscapesBlocks.SCORCHED_PLANKS);
 		createSignRecipe(CinderscapesItems.SCORCHED_SIGN, CinderscapesBlocks.SCORCHED_PLANKS);
-		offerSlabRecipe(exporter, CinderscapesBlocks.SCORCHED_SLAB, CinderscapesBlocks.SCORCHED_PLANKS);
+		createSlabRecipe(CinderscapesBlocks.SCORCHED_SLAB, CinderscapesBlocks.SCORCHED_PLANKS);
 		createStairsRecipe(CinderscapesBlocks.SCORCHED_STAIRS, CinderscapesBlocks.SCORCHED_PLANKS);
 		createTrapdoorRecipe(CinderscapesBlocks.SCORCHED_TRAPDOOR, CinderscapesBlocks.SCORCHED_PLANKS);
 		createShapedRecipe(ImmutableMap.of("L", CinderscapesBlocks.STRIPPED_SCORCHED_STEM), CinderscapesBlocks.STRIPPED_SCORCHED_HYPHAE, 3, "bark", "stripped_scorched_hyphae", "LL", "LL");
@@ -137,9 +116,9 @@ public class CinderscapesRecipeProvider extends FabricRecipeProvider {
 		createFenceGateRecipe(CinderscapesBlocks.UMBRAL_FENCE_GATE, CinderscapesBlocks.UMBRAL_PLANKS);
 		createShapedRecipe(ImmutableMap.of("L", CinderscapesBlocks.UMBRAL_STEM), CinderscapesBlocks.UMBRAL_HYPHAE, 3, "bark", "umbral_hyphae", "LL", "LL");
 		offerPlanksRecipe(CinderscapesBlocks.UMBRAL_PLANKS, CinderscapesItemTags.UMBRAL_STEMS);
-		createPressurePlateRecipe(exporter, CinderscapesBlocks.UMBRAL_PRESSURE_PLATE, CinderscapesBlocks.UMBRAL_PLANKS);
+		createPressurePlateRecipe(CinderscapesBlocks.UMBRAL_PRESSURE_PLATE, CinderscapesBlocks.UMBRAL_PLANKS);
 		createSignRecipe(CinderscapesItems.UMBRAL_SIGN, CinderscapesBlocks.UMBRAL_PLANKS);
-		offerSlabRecipe(exporter, CinderscapesBlocks.UMBRAL_SLAB, CinderscapesBlocks.UMBRAL_PLANKS);
+		createSlabRecipe(CinderscapesBlocks.UMBRAL_SLAB, CinderscapesBlocks.UMBRAL_PLANKS);
 		createStairsRecipe(CinderscapesBlocks.UMBRAL_STAIRS, CinderscapesBlocks.UMBRAL_PLANKS);
 		createTrapdoorRecipe(CinderscapesBlocks.UMBRAL_TRAPDOOR, CinderscapesBlocks.UMBRAL_PLANKS);
 		createShapedRecipe(ImmutableMap.of("L", CinderscapesBlocks.STRIPPED_UMBRAL_STEM), CinderscapesBlocks.STRIPPED_UMBRAL_HYPHAE, 3, "bark", "stripped_umbral_hyphae", "LL", "LL");
@@ -227,10 +206,43 @@ public class CinderscapesRecipeProvider extends FabricRecipeProvider {
 		offerShapelessRecipe(output, "planks", 4, input);
 	}
 
+	protected static void createPressurePlateRecipe(ItemConvertible output, ItemConvertible input) {
+		createShapedRecipe(ImmutableMap.of("W", input), output, null, "WW");
+	}
 
+	protected static void createSlabRecipe(ItemConvertible output, List<ItemConvertible> input) {
+		JIngredient ingredient = JIngredient.ingredient();
+		input.forEach(i -> ingredient.item(i.asItem()));
+		createShapedRecipe(ImmutableMap.of("X", ingredient), output, 6, null, output.asItem().getRegistryName().getPath(), "XXX");
+	}
 
-	@Override
-	protected Identifier getRecipeIdentifier(Identifier identifier) {
-		return new Identifier(Cinderscapes.NAMESPACE, identifier.getPath());
+	protected static void createStairsRecipe(ItemConvertible output, List<ItemConvertible> input) {
+		JIngredient ingredient = JIngredient.ingredient();
+		input.forEach(i -> ingredient.item(i.asItem()));
+		createShapedRecipe(ImmutableMap.of("X", ingredient), output, 4, null, output.asItem().getRegistryName().getPath(), "X  ", "XX ", "XXX");
+	}
+
+	protected static void createSlabRecipe(ItemConvertible output, ItemConvertible input) {
+		createSlabRecipe(output, List.of(input));
+	}
+
+	protected static void createStairsRecipe(ItemConvertible output, ItemConvertible input) {
+		createStairsRecipe(output, List.of(input));
+	}
+
+	protected static void createTrapdoorRecipe(ItemConvertible output, ItemConvertible input) {
+		createShapedRecipe(ImmutableMap.of("X", input), output, 2, null, output.asItem().getRegistryName().getPath(), "XXX", "XXX");
+	}
+
+	protected static void createSignRecipe(ItemConvertible output, ItemConvertible input) {
+		createShapedRecipe(ImmutableMap.of("W", input, "S", Items.STICK), output, 3, "sign", output.asItem().getRegistryName().getPath(), "WWW", "WWW", " S ");
+	}
+
+	public static void offerPolishedStoneRecipe(ItemConvertible output, ItemConvertible input) {
+		createShapedRecipe(ImmutableMap.of("S", input), output, 4, null, output.asItem().getRegistryName().getPath(), "SS", "SS");
+	}
+
+	public static void offerChiseledBlockRecipe(ItemConvertible output, ItemConvertible input) {
+		createShapedRecipe(ImmutableMap.of("X", input), output, null, "X", "X");
 	}
 }
