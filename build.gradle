@@ -1,132 +1,93 @@
+import org.gradle.api.JavaVersion
+
 plugins {
     id 'java'
-    id 'maven-publish'
-    id 'idea'
-    id 'eclipse'
-    id 'fabric-loom' version '0.12-SNAPSHOT'
-    id 'io.github.juuxel.loom-quiltflower' version '1.7.3'
+    id 'dev.architectury.loom' version '0.12.0-SNAPSHOT' apply false
+    id "com.github.johnrengelman.shadow" version "7.0.0"
 }
 
-apply from: 'https://raw.githubusercontent.com/TerraformersMC/GradleScripts/2.5/ferry.gradle'
 
-repositories {
-    maven {
-        name = 'TerraformersMC'
-        url = 'https://maven.terraformersmc.com/'
-    }
-    maven { url "https://maven.shedaniel.me" }
-}
-
-dependencies {
-    minecraft "com.mojang:minecraft:$project.minecraft_version"
-    mappings "net.fabricmc:yarn:$project.yarn_mappings:v2"
-
-    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-
-    modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
-
-    includeMod "terraform-api", "com.terraformersmc.terraform-api:terraform-biome-remapper-api-v1:${project.terraform_biome_remapper_api_version}"
-    includeMod "terraform-api", "com.terraformersmc.terraform-api:terraform-shapes-api-v1:${project.terraform_shapes_api_version}"
-    includeMod "terraform-api", "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
-
-    includeMod "cloth-config", "me.shedaniel.cloth:cloth-config-fabric:${project.clothconfig_version}"
-
-    afterEvaluate {
-        subprojects.each {
-            testmodImplementation sourceSets.main.output
-            implementation project(path: "${it.name}", configuration: "namedElements")
-            include project("${it.name}:")
-        }
-    }
+configurations {
+    shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
 }
 
 allprojects {
+    apply plugin: 'dev.architectury.loom'
     apply plugin: 'java'
-    apply plugin: 'idea'
-    apply plugin: 'eclipse'
-    apply plugin: 'maven-publish'
-    apply plugin: 'fabric-loom'
-    // apply plugin: 'io.github.juuxel.loom-quiltflower-mini'
 
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-    group = project.maven_group
-
-    sourceSets {
-        testmod {
-            compileClasspath += main.compileClasspath
-            runtimeClasspath += main.runtimeClasspath
-        }
-    }
-
-    // quiltflower {
-    // 	addToRuntimeClasspath.set(true)
-    // }
-
-    configurations {
-        dev {
-            canBeResolved = false
-            canBeConsumed = true
-        }
-    }
-
-    jar {
-        classifier = "dev"
-    }
-
-    afterEvaluate {
-        processResources {
-            inputs.property "version", project.version
-
-            filesMatching("fabric.mod.json") {
-                expand "version": project.version
-            }
-        }
-    }
-
-    //task sourcesJar(type: Jar, dependsOn: classes) {
-    //	classifier = "sources"
-    //	from sourceSets.main.allSource
-    //}
-
-    tasks.withType(JavaCompile) {
-        it.options.encoding = "UTF-8"
-        it.options.release = 17
-    }
 
     repositories {
+        maven {
+            url "https://maven.shedaniel.me"
+            content {
+                includeGroup "me.shedaniel.cloth.api"
+                includeGroup "me.sargunvohra.mcmods"
+                includeGroup "me.shedaniel.cloth"
+                includeGroup "me.shedaniel"
+            }
+        }
+        maven {
+            name = "Progwml6 (Just Enough Items)"
+            url = "https://dvs1.progwml6.com/files/maven/"
+        }
         maven {
             name = 'TerraformersMC'
             url = 'https://maven.terraformersmc.com/'
         }
+        maven { url 'https://jitpack.io' }
+    }
 
-        // Cloth Config
-        maven {
-            url = "https://maven.shedaniel.me"
-        }
+    dependencies {
+        minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
+        mappings "net.fabricmc:yarn:${rootProject.minecraft_version}+${rootProject.yarn_mappings}:v2"
+
+        forge "net.minecraftforge:forge:${rootProject.minecraft_version}-${rootProject.forge_version}"
+
+        modImplementation ("com.github.Reforged-Mods:FabricBiomeApiReforged:${rootProject.fbapi_reforged_version}") //d7bc649383
+        modCompileOnly ("com.github.Reforged-Mods.Terraform-Reforged:terraform-biome-remapper-api-v1:${rootProject.terraform_version}")
+        modCompileOnly ("com.github.Reforged-Mods.Terraform-Reforged:terraform-wood-api-v1:${rootProject.terraform_version}")
+        modCompileOnly ("com.github.Reforged-Mods.Terraform-Reforged:terraform-shapes-api-v1:${rootProject.terraform_version}")
+        modCompileOnly ("com.github.Reforged-Mods.Terraform-Reforged:terraform-utils-v1:${rootProject.terraform_version}")
+        modRuntimeOnly ("com.github.Reforged-Mods.Terraform-Reforged:terraform:${rootProject.terraform_version}")
+
+        modImplementation "me.shedaniel.cloth:cloth-config-forge:${rootProject.clothconfig_version}"
+    }
+}
+
+loom {
+    forge{
+        mixinConfigs = ["mixins.cinderscapes-common.json", "mixins.cinderscapes-worldgen.json"]
+    }
+}
+
+processResources {
+    inputs.property "version", project.version
+
+    filesMatching("META-INF/mods.toml") {
+        expand "version": project.version
     }
 }
 
 subprojects {
-    dependencies {
-        minecraft "com.mojang:minecraft:${project.minecraft_version}"
-        mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-
-        modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-        modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-
-        modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
-
-        modImplementation "com.terraformersmc.terraform-api:terraform-biome-remapper-api-v1:${project.terraform_biome_remapper_api_version}"
-        modImplementation "com.terraformersmc.terraform-api:terraform-shapes-api-v1:${project.terraform_shapes_api_version}"
-        modImplementation "com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}"
-
-        modImplementation "me.shedaniel.cloth:cloth-config-fabric:${project.clothconfig_version}"
-    }
-
     version = rootProject.version
 
     runClient.enabled = false
+}
+
+// ensure that the encoding is set to UTF-8, no matter what the system default is
+// this fixes some edge cases with special characters not displaying correctly
+// see http://yodaconditions.net/blog/fix-for-java-file-encoding-problems-with-gradle.html
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+
+// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
+// if it is present.
+// If you remove this task, sources will not be generated.
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = "sources"
+    from sourceSets.main.allSource
 }

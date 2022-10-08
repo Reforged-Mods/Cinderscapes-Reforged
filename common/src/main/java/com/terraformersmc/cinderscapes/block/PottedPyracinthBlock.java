@@ -1,25 +1,24 @@
 package com.terraformersmc.cinderscapes.block;
 
 import com.terraformersmc.cinderscapes.init.CinderscapesBlocks;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Random;
 
 public class PottedPyracinthBlock extends FlowerPotBlock {
     public PottedPyracinthBlock() {
-        super(CinderscapesBlocks.PYRACINTH, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM));
+        super(CinderscapesBlocks.PYRACINTH, Settings.copy(Blocks.POTTED_ALLIUM));
     }
 
     @Override
-    @Environment(EnvType.CLIENT)
+    @OnlyIn(Dist.CLIENT)
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         double x = pos.getX() + 0.5;
         double z = pos.getZ() + 0.5;

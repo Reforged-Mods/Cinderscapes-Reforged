@@ -2,6 +2,9 @@ archivesBaseName = "cinderscapes-worldgen"
 
 loom {
     accessWidenerPath = file("src/main/resources/cinderscapes-worldgen.accesswidener")
+    forge{
+        mixinConfigs = ["mixins.cinderscapes-worldgen.json"]
+    }
 }
 
 dependencies {

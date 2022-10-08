@@ -1,5 +1,9 @@
 archivesBaseName = "cinderscapes-common"
 
+dependencies {
+    modImplementation(include("com.github.Reforged-Mods:ARRP-forge:0.5.7"))
+}
+
 loom {
     accessWidenerPath = file("src/main/resources/cinderscapes-common.accesswidener")
 

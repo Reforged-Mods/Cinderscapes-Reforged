@@ -1,15 +1,30 @@
 package com.terraformersmc.cinderscapes.data;
 
-import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import com.terraformersmc.cinderscapes.Cinderscapes;
+import net.devtech.arrp.api.RRPEvent;
+import net.devtech.arrp.api.RuntimeResourcePack;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
-public class CinderscapesDatagen implements DataGeneratorEntrypoint {
+@Mod.EventBusSubscriber(modid = Cinderscapes.NAMESPACE, bus = Mod.EventBusSubscriber.Bus.MOD)
+public class CinderscapesDatagen{
+	public static final RuntimeResourcePack RUNTIME_RESOURCE_PACK = RuntimeResourcePack.create("cinderscapes:dynamic");
+
+	public static void init(){
+		CinderscapesBiomeTagProvider.init();
+		CinderscapesBlockTagProvider.init();
+		CinderscapesBlockTagProvider.init();
+		CinderscapesItemTagProvider.init();
+
+	}
+
+	@SubscribeEvent
+	public static void onResourcePackAddAfter(RRPEvent.AfterVanilla event){
+		event.addPack(RUNTIME_RESOURCE_PACK);
+	}
+
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator dataGenerator) {
-		dataGenerator.addProvider(CinderscapesBiomeTagProvider::new);
-		dataGenerator.addProvider(CinderscapesBlockLootTableProvider::new);
-		dataGenerator.addProvider(CinderscapesBlockTagProvider::new);
-		dataGenerator.addProvider(CinderscapesItemTagProvider::new);
 		dataGenerator.addProvider(CinderscapesRecipeProvider::new);
 	}
 }

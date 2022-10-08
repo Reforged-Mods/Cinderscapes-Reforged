@@ -4,8 +4,6 @@ import com.terraformersmc.cinderscapes.block.AshLayerBlock;
 import com.terraformersmc.cinderscapes.block.BrambleBerryBushBlock;
 import com.terraformersmc.cinderscapes.init.CinderscapesBlocks;
 import com.terraformersmc.cinderscapes.init.CinderscapesItems;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.BlockLootTableGenerator;
 import net.minecraft.enchantment.Enchantments;
@@ -27,15 +25,11 @@ import net.minecraft.predicate.StatePredicate;
 import net.minecraft.predicate.item.EnchantmentPredicate;
 import net.minecraft.predicate.item.ItemPredicate;
 
-public class CinderscapesBlockLootTableProvider extends FabricBlockLootTableProvider {
-	protected CinderscapesBlockLootTableProvider(FabricDataGenerator dataGenerator) {
-		super(dataGenerator);
-	}
+public class CinderscapesBlockLootTableProvider {
 
-	@Override
-	protected void generateBlockLootTables() {
+	public static void init() {
 		// simple blocks
-		addDrop(CinderscapesBlocks.ASH_BLOCK);
+		/*addDrop(CinderscapesBlocks.ASH_BLOCK);
 		addDrop(CinderscapesBlocks.CHISELED_ROSE_QUARTZ_BLOCK);
 		addDrop(CinderscapesBlocks.CHISELED_SMOKY_QUARTZ_BLOCK);
 		addDrop(CinderscapesBlocks.CHISELED_SULFUR_QUARTZ_BLOCK);
@@ -194,6 +188,6 @@ public class CinderscapesBlockLootTableProvider extends FabricBlockLootTableProv
                         ItemEntry.builder(CinderscapesBlocks.ASH_BLOCK)
                 	)
         		))
-		));
+		));*/
 	}
 }
