@@ -82,17 +82,12 @@ loom {
 }
 
 dependencies {
-    include("com.github.Reforged-Mods:ARRP-forge:0.5.7.2")
-    include("me.shedaniel.cloth:cloth-config-forge:${rootProject.clothconfig_version}")
-    compileOnly(project(path: ':common')){
-        transitive = false
-    }
-    compileOnly(project(path: ':client')){
-        transitive = false
-    }
+    modImplementation(include("com.github.Reforged-Mods:ARRP-forge:0.5.7.2"))
+    modImplementation(include("me.shedaniel.cloth:cloth-config-forge:${rootProject.clothconfig_version}"))
     def deps = [":common", ":worldgen", "client"]
     for (String s : deps){
         include(project(path: s, configuration: "remapped"))
+        modImplementation(project(path: s))
     }
 }
 
