@@ -1,5 +1,6 @@
 package com.terraformersmc.cinderscapes;
 
+import com.terraformersmc.cinderscapes.biome.CinderscapesBiomeRemappings;
 import com.terraformersmc.cinderscapes.config.CinderscapesConfig;
 import com.terraformersmc.cinderscapes.init.CinderscapesBiomes;
 import com.terraformersmc.cinderscapes.init.CinderscapesBlocks;
@@ -57,6 +58,7 @@ public class Cinderscapes {
 	public Cinderscapes(){
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 		FMLJavaModLoadingContext.get().getModEventBus().register(this);
+		CinderscapesBiomeRemappings.init();
 
 		CinderscapesGroups.init();
 	}

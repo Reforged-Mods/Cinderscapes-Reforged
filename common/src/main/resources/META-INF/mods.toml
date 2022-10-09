@@ -4,28 +4,22 @@ loaderVersion="[40,)"
 issueTrackerURL="https://github.com/Trinsdar/Cinderscapes-Reforged/issues"
 
 [[mods]]
-modId="cinderscapes"
+modId="cinderscapes_common"
 version="${version}"
-displayName="Cinderscapes Reforged"
+displayName="Cinderscapes: Common Reforged"
 displayURL="https://github.com/Trinsdar/Cinderscapes-Reforged"
 credits="TerraformersMC for creating the fabric version"
 authors="Trinsdar, Vaerian, NeusFear, TerraformersMC"
 description='''An expansion of Minecraft's Nether biomes!'''
-[[dependencies.cinderscapes]]
+[[dependencies.cinderscapes_common]]
 modId="forge"
 mandatory=true
-versionRange="[40.1.73,)"
+versionRange="[40.1.0,)"
 ordering="AFTER"
 side="BOTH"
-[[dependencies.cinderscapes]]
+[[dependencies.cinderscapes_common]]
 modId="minecraft"
 mandatory=true
 versionRange="[1.18.2,)"
-ordering="AFTER"
-side="BOTH"
-[[dependencies.cinderscapes]]
-modId="terraform"
-mandatory=true
-versionRange="[3.1.0,)"
 ordering="AFTER"
 side="BOTH"

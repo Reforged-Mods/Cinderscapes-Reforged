@@ -3,7 +3,6 @@ import org.gradle.api.JavaVersion
 plugins {
     id 'java'
     id 'dev.architectury.loom' version '0.12.0-SNAPSHOT' apply false
-    id "com.github.johnrengelman.shadow" version "7.0.0"
 }
 
 
@@ -54,6 +53,14 @@ allprojects {
 
         modImplementation "me.shedaniel.cloth:cloth-config-forge:${rootProject.clothconfig_version}"
     }
+
+    processResources {
+        inputs.property "version", project.version
+
+        filesMatching("META-INF/mods.toml") {
+            expand "version": project.version
+        }
+    }
 }
 
 subprojects {
@@ -68,12 +75,14 @@ subprojects {
 loom {
     accessWidenerPath = file("src/main/resources/cinderscapes.accesswidener")
     forge{
-        mixinConfigs = ["mixins.cinderscapes-common.json", "mixins.cinderscapes-worldgen.json"]
+        //convertAccessWideners = true
+        //extraAccessWideners.add("cinderscapes.accesswidener")
+        mixinConfigs = ["mixins.cinderscapes-common.json", "mixins.cinderscapes-worldgen.json","arrp.mixins.json"]
     }
 }
 
 dependencies {
-    include("com.github.Reforged-Mods:ARRP-forge:0.5.7")
+    include("com.github.Reforged-Mods:ARRP-forge:0.5.7.2")
     include("me.shedaniel.cloth:cloth-config-forge:${rootProject.clothconfig_version}")
     compileOnly(project(path: ':common')){
         transitive = false
@@ -83,33 +92,7 @@ dependencies {
     }
     def deps = [":common", ":worldgen", "client"]
     for (String s : deps){
-        shadowCommon(project(path: s, configuration: "remapped"))
-    }
-}
-
-shadowJar {
-    exclude "fabric.mod.json"
-    from zipTree(remapJar.archiveFile)
-    assemble.dependsOn shadowJar
-    configurations = [project.configurations.shadowCommon]
-    classifier ""
-}
-
-afterEvaluate{
-    remapJar {
-        classifier "thin"
-    }
-
-    jar {
-        classifier "dev"
-    }
-}
-
-processResources {
-    inputs.property "version", project.version
-
-    filesMatching("META-INF/mods.toml") {
-        expand "version": project.version
+        include(project(path: s, configuration: "remapped"))
     }
 }
 
