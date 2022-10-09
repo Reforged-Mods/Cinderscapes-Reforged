@@ -74,6 +74,7 @@ loom {
 
 dependencies {
     include("com.github.Reforged-Mods:ARRP-forge:0.5.7")
+    include("me.shedaniel.cloth:cloth-config-forge:${rootProject.clothconfig_version}")
     compileOnly(project(path: ':common')){
         transitive = false
     }
