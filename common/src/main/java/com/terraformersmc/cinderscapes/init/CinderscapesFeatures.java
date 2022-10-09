@@ -67,6 +67,8 @@ public class CinderscapesFeatures {
     public static ReplaceBlobsFeatureConfig BLACKSTONE_REPLACE_CONFIG;
 
     public static void init() {
+        UMBRAL_FUNGUS_CONFIG = new CanopiedHugeFungusFeatureConfig(CinderscapesBlocks.UMBRAL_NYLIUM.getDefaultState(), CinderscapesBlocks.UMBRAL_HYPHAE.getDefaultState(), CinderscapesBlocks.UMBRAL_STEM.getDefaultState(), CinderscapesBlocks.UMBRAL_WART_BLOCK.getDefaultState(), CinderscapesBlocks.UMBRAL_FLESH_BLOCK.getDefaultState(), Blocks.SHROOMLIGHT.getDefaultState(), true);
+        UMBRAL_FUNGUS_NOT_PLANTED_CONFIG = UMBRAL_FUNGUS_CONFIG.withPlanted(false);
 
         LUMINOUS_GROVE_VEGETATION_CONFIG = new VegetationFeatureConfig(
                 new WeightedBlockStateProvider(DataPool.<BlockState>builder()
