@@ -252,13 +252,6 @@ public class CinderscapesBlocks {
         if (!CinderscapesConfig.INSTANCE.easterEggs) {
             Cinderscapes.HIDDEN_ITEMS.add(CinderscapesBlocks.NODZOL.asItem());
         }
-
-        for (Identifier id : ITEMS.keySet()) {
-            Registry.register(Registry.ITEM, id, ITEMS.get(id));
-        }
-        for (Identifier id : BLOCKS.keySet()) {
-            Registry.register(Registry.BLOCK, id, BLOCKS.get(id));
-        }
     }
 
     public static void registerCompostableBlocks() {
