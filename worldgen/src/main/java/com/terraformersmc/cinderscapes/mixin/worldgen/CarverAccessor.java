@@ -1,4 +1,4 @@
-package com.terraformersmc.cinderscapes.mixin;
+package com.terraformersmc.cinderscapes.mixin.worldgen;
 
 import net.minecraft.block.Block;
 import net.minecraft.world.gen.carver.Carver;

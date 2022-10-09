@@ -1,4 +1,4 @@
-package com.terraformersmc.cinderscapes.mixin;
+package com.terraformersmc.cinderscapes.mixin.worldgen;
 
 import com.terraformersmc.cinderscapes.surfacebuilders.CinderscapesSurfaceBuilder;
 import com.terraformersmc.cinderscapes.surfacebuilders.CinderscapesSurfaceBuilders;

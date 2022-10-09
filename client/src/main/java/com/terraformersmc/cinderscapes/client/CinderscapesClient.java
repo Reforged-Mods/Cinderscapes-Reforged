@@ -1,4 +1,4 @@
-package com.terraformersmc.cinderscapes;
+package com.terraformersmc.cinderscapes.client;
 
 import com.terraformersmc.cinderscapes.init.CinderscapesBlocks;
 import com.terraformersmc.terraform.sign.SpriteIdentifierRegistry;

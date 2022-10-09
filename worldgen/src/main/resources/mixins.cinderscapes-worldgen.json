@@ -3,8 +3,8 @@
   "package": "com.terraformersmc.cinderscapes.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "MixinSurfaceBuilder",
-    "CarverAccessor"
+    "worldgen.MixinSurfaceBuilder",
+    "worldgen.CarverAccessor"
   ],
   "client": [
   ],

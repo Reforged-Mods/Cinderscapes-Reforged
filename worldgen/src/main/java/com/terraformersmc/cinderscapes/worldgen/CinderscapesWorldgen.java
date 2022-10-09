@@ -1,8 +1,9 @@
-package com.terraformersmc.cinderscapes;
+package com.terraformersmc.cinderscapes.worldgen;
 
 import com.google.common.collect.ImmutableSet;
+import com.terraformersmc.cinderscapes.Cinderscapes;
 import com.terraformersmc.cinderscapes.init.CinderscapesBlocks;
-import com.terraformersmc.cinderscapes.mixin.CarverAccessor;
+import com.terraformersmc.cinderscapes.mixin.worldgen.CarverAccessor;
 import com.terraformersmc.cinderscapes.surfacebuilders.CinderscapesSurfaceBuilders;
 import com.terraformersmc.cinderscapes.worldgen.CinderscapesBiomeAPIGeneration;
 import net.minecraft.block.Block;
