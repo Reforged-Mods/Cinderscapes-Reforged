@@ -1,31 +1,9 @@
 archivesBaseName = "cinderscapes-common"
 
 dependencies {
-    modImplementation(include("com.github.Reforged-Mods:ARRP-forge:0.5.7"))
+    modImplementation("com.github.Reforged-Mods:ARRP-forge:0.5.7")
 }
 
 loom {
     accessWidenerPath = file("src/main/resources/cinderscapes-common.accesswidener")
-
-    runs {
-        datagen {
-            server()
-
-            name = "Data Generation"
-            runDir = "build/datagen"
-
-            vmArg("-Dfabric-api.datagen")
-            vmArg("-Dfabric-api.datagen.output-dir=${file("src/main/generated")}")
-        }
-    }
-}
-
-sourceSets {
-    main {
-        resources {
-            srcDirs += [
-                    "src/main/generated"
-            ]
-        }
-    }
 }

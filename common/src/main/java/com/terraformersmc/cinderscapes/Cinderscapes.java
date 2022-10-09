@@ -28,9 +28,13 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModContainer;
 import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.apache.commons.lang3.StringUtils;
@@ -40,6 +44,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
+@Mod("cinderscapes_common")
 public class Cinderscapes {
 	public static final String NAMESPACE = "cinderscapes";
 	public static final Logger LOGGER = LogManager.getLogger(StringUtils.capitalize(NAMESPACE));
@@ -51,7 +56,6 @@ public class Cinderscapes {
 
 	public Cinderscapes(){
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-		//FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
 		FMLJavaModLoadingContext.get().getModEventBus().register(this);
 
 		CinderscapesGroups.init();
@@ -69,6 +73,8 @@ public class Cinderscapes {
 	@SubscribeEvent
 	@SuppressWarnings({"unchecked", "rawtypes"})
 	public void onRegister(final RegistryEvent.Register<?> event){
+		ModContainer previous = ModLoadingContext.get().getActiveContainer();
+		ModLoadingContext.get().setActiveContainer(ModList.get().getModContainerById(NAMESPACE).orElseThrow());
 		if (event.getRegistry() == ForgeRegistries.FEATURES){
 			for (Identifier id : CinderscapesFeatures.FEATURES.keySet()){
 				Feature<?> feature = CinderscapesFeatures.FEATURES.get(id);
@@ -131,7 +137,7 @@ public class Cinderscapes {
 				((IForgeRegistry)event.getRegistry()).register(item);
 			}
 		}
-
+		ModLoadingContext.get().setActiveContainer(previous);
 	}
 
 	public void onInitialize() {

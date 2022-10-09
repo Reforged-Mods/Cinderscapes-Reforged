@@ -11,15 +11,6 @@ configurations {
     shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
 }
 
-dependencies {
-    implementation(project(path: ':common'))
-    implementation(project(path: ':client'))
-    def deps = [":common", ":worldgen", "client"]
-    for (String s : deps){
-        shadowCommon(project(path: s, configuration: "remapped"))
-    }
-}
-
 allprojects {
     apply plugin: 'dev.architectury.loom'
     apply plugin: 'java'
@@ -65,9 +56,51 @@ allprojects {
     }
 }
 
+subprojects {
+
+    configurations { remapped }
+    artifacts.add("remapped", remapJar)
+    version = rootProject.version
+
+    runClient.enabled = false
+}
+
 loom {
+    accessWidenerPath = file("src/main/resources/cinderscapes.accesswidener")
     forge{
         mixinConfigs = ["mixins.cinderscapes-common.json", "mixins.cinderscapes-worldgen.json"]
+    }
+}
+
+dependencies {
+    include("com.github.Reforged-Mods:ARRP-forge:0.5.7")
+    compileOnly(project(path: ':common')){
+        transitive = false
+    }
+    compileOnly(project(path: ':client')){
+        transitive = false
+    }
+    def deps = [":common", ":worldgen", "client"]
+    for (String s : deps){
+        shadowCommon(project(path: s, configuration: "remapped"))
+    }
+}
+
+shadowJar {
+    exclude "fabric.mod.json"
+    from zipTree(remapJar.archiveFile)
+    assemble.dependsOn shadowJar
+    configurations = [project.configurations.shadowCommon]
+    classifier ""
+}
+
+afterEvaluate{
+    remapJar {
+        classifier "thin"
+    }
+
+    jar {
+        classifier "dev"
     }
 }
 
@@ -77,12 +110,6 @@ processResources {
     filesMatching("META-INF/mods.toml") {
         expand "version": project.version
     }
-}
-
-subprojects {
-    version = rootProject.version
-
-    runClient.enabled = false
 }
 
 // ensure that the encoding is set to UTF-8, no matter what the system default is

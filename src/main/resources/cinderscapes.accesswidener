@@ -1,0 +1,9 @@
+accessWidener v1 named
+
+accessible  method  net/minecraft/util/math/Vec3i setX (I)Lnet/minecraft/util/math/Vec3i;
+accessible  method  net/minecraft/util/math/Vec3i setY (I)Lnet/minecraft/util/math/Vec3i;
+accessible  method  net/minecraft/util/math/Vec3i setZ (I)Lnet/minecraft/util/math/Vec3i;
+accessible  class   net/minecraft/world/gen/surfacebuilder/MaterialRules$BlockStateRule
+accessible  class   net/minecraft/world/gen/surfacebuilder/MaterialRules$MaterialRuleContext
+accessible  method  net/minecraft/world/gen/surfacebuilder/MaterialRules$MaterialRuleContext method_39551 ()I
+accessible  method  net/minecraft/world/gen/surfacebuilder/SurfaceBuilder getNoiseSampler (Lnet/minecraft/util/registry/RegistryKey;)Lnet/minecraft/util/math/noise/DoublePerlinNoiseSampler;
