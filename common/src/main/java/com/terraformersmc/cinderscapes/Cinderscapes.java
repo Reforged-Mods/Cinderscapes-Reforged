@@ -58,7 +58,6 @@ public class Cinderscapes {
 	public Cinderscapes(){
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 		FMLJavaModLoadingContext.get().getModEventBus().register(this);
-		CinderscapesBiomeRemappings.init();
 
 		CinderscapesGroups.init();
 	}

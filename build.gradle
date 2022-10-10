@@ -45,11 +45,11 @@ allprojects {
         forge "net.minecraftforge:forge:${rootProject.minecraft_version}-${rootProject.forge_version}"
 
         modImplementation ("com.github.Reforged-Mods:FabricBiomeApiReforged:${rootProject.fbapi_reforged_version}") //d7bc649383
-        modCompileOnly ("com.github.Reforged-Mods.Terraform-Reforged:terraform-biome-remapper-api-v1:${rootProject.terraform_version}")
-        modCompileOnly ("com.github.Reforged-Mods.Terraform-Reforged:terraform-wood-api-v1:${rootProject.terraform_version}")
-        modCompileOnly ("com.github.Reforged-Mods.Terraform-Reforged:terraform-shapes-api-v1:${rootProject.terraform_version}")
-        modCompileOnly ("com.github.Reforged-Mods.Terraform-Reforged:terraform-utils-v1:${rootProject.terraform_version}")
-        modRuntimeOnly ("com.github.Reforged-Mods.Terraform-Reforged:terraform:${rootProject.terraform_version}")
+        modImplementation("com.github.Reforged-Mods.Terraform-Reforged:terraform-biome-remapper-api-v1:${rootProject.terraform_version}")
+        modImplementation("com.github.Reforged-Mods.Terraform-Reforged:terraform-wood-api-v1:${rootProject.terraform_version}")
+        modImplementation("com.github.Reforged-Mods.Terraform-Reforged:terraform-shapes-api-v1:${rootProject.terraform_version}")
+        modImplementation("com.github.Reforged-Mods.Terraform-Reforged:terraform-utils-v1:${rootProject.terraform_version}")
+        //modRuntimeOnly ("com.github.Reforged-Mods.Terraform-Reforged:build:${rootProject.terraform_version}")
 
         modImplementation "me.shedaniel.cloth:cloth-config-forge:${rootProject.clothconfig_version}"
     }

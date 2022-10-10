@@ -1,31 +1,16 @@
 package com.terraformersmc.cinderscapes.biome;
 
+import com.google.common.collect.ImmutableMap;
 import com.terraformersmc.cinderscapes.Cinderscapes;
-import com.terraformersmc.cinderscapes.init.CinderscapesBiomes;
-import net.minecraft.world.biome.Biome;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import com.terraformersmc.terraform.biomeremapper.api.BiomeRemapper;
+import com.terraformersmc.terraform.biomeremapper.api.BiomeRemapperApi;
+import com.terraformersmc.terraform.biomeremapper.api.DataVersions;
 
-public class CinderscapesBiomeRemappings {
-	public static void onRemap(RegistryEvent.MissingMappings<Biome> event){
-		Cinderscapes.LOGGER.info("Missing mappings");
-		for (RegistryEvent.MissingMappings.Mapping<Biome> map : event.getMappings(Cinderscapes.NAMESPACE)) {
-			Cinderscapes.LOGGER.info(map.key);
-			if (map.key.getPath().equals("quartz_canyon")){
-				Biome[] biome = new Biome[1];
-				CinderscapesBiomes.BIOMES.forEach((k, v) -> {
-					if (k.getPath().equals("quartz_cavern")){
-						map.remap(v);
-					}
-				});
-
-			}
-		}
-	}
-
-	public static void init(){
-		MinecraftForge.EVENT_BUS.addGenericListener(Biome.class, CinderscapesBiomeRemappings::onRemap);
+@BiomeRemapper
+public class CinderscapesBiomeRemappings implements BiomeRemapperApi {
+	public void init() {
+		register(Cinderscapes.NAMESPACE, DataVersions.V_1_18_2, ImmutableMap.<String, String>builder()
+				.put("cinderscapes:quartz_canyon", "cinderscapes:quartz_cavern")
+				.build());
 	}
 }
