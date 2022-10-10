@@ -11,4 +11,5 @@ loom {
 
 dependencies {
     implementation project(path: ':common')
+    modImplementation ("com.github.Reforged-Mods:FabricBiomeApiReforged:${rootProject.fbapi_reforged_version}")
 }
