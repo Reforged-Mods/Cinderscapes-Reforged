@@ -84,10 +84,11 @@ loom {
 dependencies {
     modImplementation(include("com.github.Reforged-Mods:ARRP-forge:0.5.7.2"))
     modImplementation(include("me.shedaniel.cloth:cloth-config-forge:${rootProject.clothconfig_version}"))
-    def deps = [":common", ":worldgen", "client"]
-    for (String s : deps){
-        include(project(path: s, configuration: "remapped"))
-        modImplementation(project(path: s))
+    afterEvaluate {
+        subprojects.each {
+            implementation project(path: "${it.name}", configuration: "namedElements")
+            include project("${it.name}:")
+        }
     }
 }
 
