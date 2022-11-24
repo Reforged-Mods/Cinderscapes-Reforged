@@ -10,7 +10,7 @@ public class CinderscapesBiomeTagProvider {
 
 	public static void init() {
 		// biome categories
-		RUNTIME_RESOURCE_PACK.addTag(BiomeTags.IS_NETHER.id(), JTag.tag()
+		RUNTIME_RESOURCE_PACK.addTag(CinderscapesDatagen.tagID(BiomeTags.IS_NETHER), JTag.tag()
 				.add(CinderscapesBiomes.ASHY_SHOALS.getValue())
 				.add(CinderscapesBiomes.LUMINOUS_GROVE.getValue())
 				.add(CinderscapesBiomes.BLACKSTONE_SHALES.getValue())

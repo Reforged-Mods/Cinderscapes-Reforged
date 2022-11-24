@@ -6,7 +6,7 @@ issueTrackerURL="https://github.com/Trinsdar/Cinderscapes-Reforged/issues"
 [[mods]]
 modId="cinderscapes_common"
 version="${version}"
-displayName="Cinderscapes: Common Reforged"
+displayName="Cinderscapes Reforged: Common"
 displayURL="https://github.com/Trinsdar/Cinderscapes-Reforged"
 credits="TerraformersMC for creating the fabric version"
 authors="Trinsdar, Vaerian, NeusFear, TerraformersMC"
@@ -26,24 +26,24 @@ side="BOTH"
 [[dependencies.cinderscapes_common]]
 modId="terraform_utils"
 mandatory=true
-versionRange="[3.1.0,)"
+versionRange="*"
 ordering="AFTER"
 side="BOTH"
 [[dependencies.cinderscapes_common]]
 modId="terraform_biome_remapper"
 mandatory=true
-versionRange="[3.1.0,)"
+versionRange="*"
 ordering="AFTER"
 side="BOTH"
 [[dependencies.cinderscapes_common]]
 modId="terraform_wood_api_v1"
 mandatory=true
-versionRange="[3.1.0,)"
+versionRange="*"
 ordering="AFTER"
 side="BOTH"
 [[dependencies.cinderscapes_common]]
 modId="terraform_shapes_api_v1"
 mandatory=true
-versionRange="[3.1.0,)"
+versionRange="*"
 ordering="AFTER"
 side="BOTH"

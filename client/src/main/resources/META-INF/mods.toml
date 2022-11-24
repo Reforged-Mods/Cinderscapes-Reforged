@@ -6,7 +6,7 @@ issueTrackerURL="https://github.com/Trinsdar/Cinderscapes-Reforged/issues"
 [[mods]]
 modId="cinderscapes_client"
 version="${version}"
-displayName="Cinderscapes: Client Reforged"
+displayName="Cinderscapes Reforged: Client"
 displayURL="https://github.com/Trinsdar/Cinderscapes-Reforged"
 credits="TerraformersMC for creating the fabric version"
 authors="Trinsdar, Vaerian, NeusFear, TerraformersMC"

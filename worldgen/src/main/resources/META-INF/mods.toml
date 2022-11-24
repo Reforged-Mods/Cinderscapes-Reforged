@@ -6,7 +6,7 @@ issueTrackerURL="https://github.com/Trinsdar/Cinderscapes-Reforged/issues"
 [[mods]]
 modId="cinderscapes_worldgen"
 version="${version}"
-displayName="Cinderscapes: World Generation Reforged"
+displayName="Cinderscapes Reforged: World Generation"
 displayURL="https://github.com/Trinsdar/Cinderscapes-Reforged"
 credits="TerraformersMC for creating the fabric version"
 authors="Trinsdar, Vaerian, NeusFear, TerraformersMC"
