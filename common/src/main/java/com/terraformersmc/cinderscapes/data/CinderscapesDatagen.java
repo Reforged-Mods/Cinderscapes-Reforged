@@ -5,11 +5,12 @@ import net.devtech.arrp.api.RRPEvent;
 import net.devtech.arrp.api.RuntimeResourcePack;
 import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = Cinderscapes.NAMESPACE, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = Cinderscapes.NAMESPACE + "_common", bus = Mod.EventBusSubscriber.Bus.MOD)
 public class CinderscapesDatagen{
 	public static final RuntimeResourcePack RUNTIME_RESOURCE_PACK = RuntimeResourcePack.create("cinderscapes:dynamic");
 
@@ -28,6 +29,7 @@ public class CinderscapesDatagen{
 	}
 
 	public static Identifier tagID(TagKey<?> key){
-		return new Identifier(key.id().getNamespace(), key.registry().getValue().getPath() + "/" + key.id().getPath());
+		String suffix = key.registry() == Registry.BIOME_KEY ? "" : "s";
+		return new Identifier(key.id().getNamespace(), key.registry().getValue().getPath() + suffix + "/" + key.id().getPath());
 	}
 }
