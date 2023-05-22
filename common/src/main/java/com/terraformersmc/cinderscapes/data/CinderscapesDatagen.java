@@ -24,7 +24,7 @@ public class CinderscapesDatagen{
 	}
 
 	@SubscribeEvent
-	public static void onResourcePackAddAfter(RRPEvent.AfterVanilla event){
+	public static void onResourcePackAddAfter(RRPEvent.BeforeUser event){
 		event.addPack(RUNTIME_RESOURCE_PACK);
 	}
 

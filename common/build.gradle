@@ -1,7 +1,7 @@
 archivesBaseName = "cinderscapes-common"
 
 dependencies {
-    modImplementation("com.github.Reforged-Mods:ARRP-forge:0.5.7")
+    modImplementation(include("com.github.Reforged-Mods:ARRP-forge:0.6.7-1.18.2"))
 }
 
 loom {
