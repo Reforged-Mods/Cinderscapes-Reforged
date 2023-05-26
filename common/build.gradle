@@ -4,6 +4,16 @@ dependencies {
     modImplementation(include("com.github.Reforged-Mods:ARRP-forge:0.6.7-1.18.2"))
 }
 
+sourceSets {
+    main {
+        resources {
+            srcDirs += [
+                    "src/main/generated"
+            ]
+        }
+    }
+}
+
 loom {
     accessWidenerPath = file("src/main/resources/cinderscapes-common.accesswidener")
     forge{

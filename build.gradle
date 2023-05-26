@@ -9,11 +9,20 @@ plugins {
 apply from: 'https://raw.githubusercontent.com/Reforged-Mods/GradleScripts/2.5-arch-loom/ferry.gradle'
 
 loom {
+    runs {
+        data {
+            data()
+            //vmArg("--output=${file("common/src/generated")}")
+        }
+    }
     accessWidenerPath = file("src/main/resources/cinderscapes.accesswidener")
     forge{
+        dataGen {
+            mod "cinderscapes_common"
+        }
         //convertAccessWideners = true
         //extraAccessWideners.add("cinderscapes.accesswidener")
-        mixinConfigs = ["mixins.cinderscapes-common.json", "mixins.cinderscapes-worldgen.json","arrp.mixins.json"]
+        mixinConfigs = ["mixins.cinderscapes-common.json", "mixins.cinderscapes-worldgen.json"]
     }
 }
 

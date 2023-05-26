@@ -69,7 +69,6 @@ public class Cinderscapes {
 		//((CarverAccessor) Carver.NETHER_CAVE).setAlwaysCarvableBlocks(ImmutableSet.<Block>builder().addAll(((CarverAccessor) Carver.NETHER_CAVE).getAlwaysCarvableBlocks()).add(CinderscapesBlocks.UMBRAL_NYLIUM).build());
 		NoiseCollisionChecker.init();
 		onInitialize();
-		CinderscapesDatagen.init();
 		ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(CinderscapesItems.BRAMBLE_BERRIES, 0.3f);
 	}
 

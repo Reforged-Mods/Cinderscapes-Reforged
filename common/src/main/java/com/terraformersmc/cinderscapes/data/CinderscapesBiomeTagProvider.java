@@ -1,20 +1,27 @@
 package com.terraformersmc.cinderscapes.data;
 
+import com.terraformersmc.cinderscapes.Cinderscapes;
 import com.terraformersmc.cinderscapes.init.CinderscapesBiomes;
-import net.devtech.arrp.json.tags.JTag;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.server.BiomeTagProvider;
 import net.minecraft.tag.BiomeTags;
+import net.minecraft.tag.TagKey;
+import net.minecraftforge.common.data.ExistingFileHelper;
 
-import static com.terraformersmc.cinderscapes.data.CinderscapesDatagen.RUNTIME_RESOURCE_PACK;
+public class CinderscapesBiomeTagProvider extends BiomeTagProvider {
 
-public class CinderscapesBiomeTagProvider {
+	protected CinderscapesBiomeTagProvider(DataGenerator arg, ExistingFileHelper helper) {
+		super(arg, Cinderscapes.NAMESPACE, helper);
+	}
 
-	public static void init() {
+	@Override
+	protected void configure() {
 		// biome categories
-		RUNTIME_RESOURCE_PACK.addTag(CinderscapesDatagen.tagID(BiomeTags.IS_NETHER), JTag.tag()
-				.add(CinderscapesBiomes.ASHY_SHOALS.getValue())
-				.add(CinderscapesBiomes.LUMINOUS_GROVE.getValue())
-				.add(CinderscapesBiomes.BLACKSTONE_SHALES.getValue())
-				.add(CinderscapesBiomes.QUARTZ_CAVERN.getValue()));
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), BiomeTags.IS_NETHER.id()))
+				.add(CinderscapesBiomes.ASHY_SHOALS)
+				.add(CinderscapesBiomes.BLACKSTONE_SHALES)
+				.add(CinderscapesBiomes.LUMINOUS_GROVE)
+				.add(CinderscapesBiomes.QUARTZ_CAVERN);
 
 		/*this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), ConventionalBiomeTags.NETHER_FORESTS.id()))
 				.add(CinderscapesBiomes.LUMINOUS_GROVE);
@@ -27,9 +34,11 @@ public class CinderscapesBiomeTagProvider {
 
 
 		// biome structure generation tags
-		RUNTIME_RESOURCE_PACK.addTag(BiomeTags.BASTION_REMNANT_HAS_STRUCTURE.id(), JTag.tag()
-				.add(CinderscapesBiomes.ASHY_SHOALS.getValue())
-				.add(CinderscapesBiomes.LUMINOUS_GROVE.getValue()));
-		RUNTIME_RESOURCE_PACK.addTag(BiomeTags.NETHER_FOSSIL_HAS_STRUCTURE.id(), JTag.tag().add(CinderscapesBiomes.ASHY_SHOALS.getValue()));
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), BiomeTags.BASTION_REMNANT_HAS_STRUCTURE.id()))
+				.add(CinderscapesBiomes.ASHY_SHOALS)
+				.add(CinderscapesBiomes.LUMINOUS_GROVE);
+
+		this.getOrCreateTagBuilder(TagKey.of(this.registry.getKey(), BiomeTags.NETHER_FOSSIL_HAS_STRUCTURE.id()))
+				.add(CinderscapesBiomes.ASHY_SHOALS);
 	}
 }

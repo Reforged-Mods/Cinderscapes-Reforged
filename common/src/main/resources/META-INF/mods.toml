@@ -30,12 +30,6 @@ versionRange="*"
 ordering="AFTER"
 side="BOTH"
 [[dependencies.cinderscapes_common]]
-modId="terraform_biome_remapper"
-mandatory=true
-versionRange="*"
-ordering="AFTER"
-side="BOTH"
-[[dependencies.cinderscapes_common]]
 modId="terraform_wood_api_v1"
 mandatory=true
 versionRange="*"
