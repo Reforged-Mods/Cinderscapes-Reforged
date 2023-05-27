@@ -76,7 +76,7 @@ public class Cinderscapes {
 	@SuppressWarnings({"unchecked", "rawtypes"})
 	public void onRegister(final RegistryEvent.Register<?> event){
 		ModContainer previous = ModLoadingContext.get().getActiveContainer();
-		ModLoadingContext.get().setActiveContainer(ModList.get().getModContainerById(NAMESPACE).orElseThrow());
+		ModLoadingContext.get().setActiveContainer(ModList.get().getModContainerById(NAMESPACE).isPresent() ? ModList.get().getModContainerById(NAMESPACE).get() : previous);
 		if (event.getRegistry() == ForgeRegistries.FEATURES){
 			for (Identifier id : CinderscapesFeatures.FEATURES.keySet()){
 				Feature<?> feature = CinderscapesFeatures.FEATURES.get(id);

@@ -9,17 +9,8 @@ plugins {
 apply from: 'https://raw.githubusercontent.com/Reforged-Mods/GradleScripts/2.5-arch-loom/ferry.gradle'
 
 loom {
-    runs {
-        data {
-            data()
-            //vmArg("--output=${file("common/src/generated")}")
-        }
-    }
     accessWidenerPath = file("src/main/resources/cinderscapes.accesswidener")
     forge{
-        dataGen {
-            mod "cinderscapes_common"
-        }
         //convertAccessWideners = true
         //extraAccessWideners.add("cinderscapes.accesswidener")
         mixinConfigs = ["mixins.cinderscapes-common.json", "mixins.cinderscapes-worldgen.json"]
@@ -59,8 +50,6 @@ dependencies {
     modImplementation "com.github.Reforged-Mods.Terraform-Reforged:terraform-shapes-api-v1:${project.terraform_version}"
     modImplementation "com.github.Reforged-Mods.Terraform-Reforged:terraform-wood-api-v1:${project.terraform_version}"
     modImplementation "com.github.Reforged-Mods.Terraform-Reforged:terraform-utils-v1:${project.terraform_version}"
-
-    modImplementation(include("com.github.Reforged-Mods:ARRP-forge:0.5.7.2"))
 
     includeMod "cloth-config", "me.shedaniel.cloth:cloth-config-forge:${project.clothconfig_version}"
 

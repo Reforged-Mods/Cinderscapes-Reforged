@@ -1,22 +1,17 @@
 archivesBaseName = "cinderscapes-common"
 
-dependencies {
-    modImplementation(include("com.github.Reforged-Mods:ARRP-forge:0.6.7-1.18.2"))
-}
-
-sourceSets {
-    main {
-        resources {
-            srcDirs += [
-                    "src/generated"
-            ]
+loom {
+    runs {
+        data {
+            data()
+            //vmArg("--output=${file("common/src/generated")}")
         }
     }
-}
-
-loom {
     accessWidenerPath = file("src/main/resources/cinderscapes-common.accesswidener")
     forge{
+        dataGen {
+            mod "cinderscapes_common"
+        }
         convertAccessWideners = true
         extraAccessWideners.add("cinderscapes-common.accesswidener")
         mixinConfigs = ["mixins.cinderscapes-common.json"]
