@@ -11,8 +11,8 @@ apply from: 'https://raw.githubusercontent.com/Reforged-Mods/GradleScripts/2.5-a
 loom {
     accessWidenerPath = file("src/main/resources/cinderscapes.accesswidener")
     forge{
-        //convertAccessWideners = true
-        //extraAccessWideners.add("cinderscapes.accesswidener")
+        convertAccessWideners = true
+        extraAccessWideners.add("cinderscapes.accesswidener")
         mixinConfigs = ["mixins.cinderscapes-common.json", "mixins.cinderscapes-worldgen.json"]
     }
 }
