@@ -211,7 +211,7 @@ public class CinderscapesBlockTagProvider extends BlockTagProvider {
 			.add(CinderscapesBlocks.ASH)
 			.add(CinderscapesBlocks.ASH_BLOCK);
 
-		
+
 		// local block tags
 		this.getOrCreateTagBuilder(CinderscapesBlockTags.ASH_PERMEABLE)
 			.addTag(BlockTags.NYLIUM)

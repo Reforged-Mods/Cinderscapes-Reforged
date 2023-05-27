@@ -168,35 +168,35 @@ public class CinderscapesBlockLootTableProvider extends BlockLootTableGenerator 
 
 		// multi-layer drops
 		addDrop(CinderscapesBlocks.ASH, block -> LootTable.builder().pool(LootPool.builder().conditionally(
-				EntityPropertiesLootCondition
-					.create(LootContext.EntityTarget.THIS)).with(AlternativeEntry.builder(AlternativeEntry.builder(
-						ItemEntry.builder(CinderscapesItems.ASH_PILE).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 1))),
-						ItemEntry.builder(CinderscapesItems.ASH_PILE).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 2)))
-							.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(2))),
-						ItemEntry.builder(CinderscapesItems.ASH_PILE).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 3)))
-							.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(3))),
-						ItemEntry.builder(CinderscapesItems.ASH_PILE).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 4)))
-							.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(4))),
-						ItemEntry.builder(CinderscapesItems.ASH_PILE).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 5)))
-							.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(5))),
-						ItemEntry.builder(CinderscapesItems.ASH_PILE).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 6)))
-							.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(6))),
-						ItemEntry.builder(CinderscapesItems.ASH_PILE).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 7)))
-							.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(7))),
-						ItemEntry.builder(CinderscapesItems.ASH_PILE).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(8)))
-					)
-					.conditionally(MatchToolLootCondition.builder(ItemPredicate.Builder.create().enchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, NumberRange.IntRange.atLeast(1)))).invert()),
-				AlternativeEntry.builder(
-					ItemEntry.builder(CinderscapesBlocks.ASH).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 1))),
-					ItemEntry.builder(CinderscapesBlocks.ASH).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(2))).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 2))),
-					ItemEntry.builder(CinderscapesBlocks.ASH).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(3))).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 3))),
-					ItemEntry.builder(CinderscapesBlocks.ASH).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(4))).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 4))),
-					ItemEntry.builder(CinderscapesBlocks.ASH).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(5))).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 5))),
-					ItemEntry.builder(CinderscapesBlocks.ASH).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(6))).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 6))),
-					ItemEntry.builder(CinderscapesBlocks.ASH).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(7))).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 7))),
-					ItemEntry.builder(CinderscapesBlocks.ASH_BLOCK)
+			EntityPropertiesLootCondition
+				.create(LootContext.EntityTarget.THIS)).with(AlternativeEntry.builder(AlternativeEntry.builder(
+                    ItemEntry.builder(CinderscapesItems.ASH_PILE).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 1))),
+                	ItemEntry.builder(CinderscapesItems.ASH_PILE).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 2)))
+                        .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(2))),
+                	ItemEntry.builder(CinderscapesItems.ASH_PILE).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 3)))
+                        .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(3))),
+                	ItemEntry.builder(CinderscapesItems.ASH_PILE).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 4)))
+                        .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(4))),
+                	ItemEntry.builder(CinderscapesItems.ASH_PILE).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 5)))
+                        .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(5))),
+                	ItemEntry.builder(CinderscapesItems.ASH_PILE).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 6)))
+                        .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(6))),
+                	ItemEntry.builder(CinderscapesItems.ASH_PILE).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 7)))
+                        .apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(7))),
+	                ItemEntry.builder(CinderscapesItems.ASH_PILE).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(8)))
 				)
-			))
+				.conditionally(MatchToolLootCondition.builder(ItemPredicate.Builder.create().enchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, NumberRange.IntRange.atLeast(1)))).invert()),
+                	AlternativeEntry.builder(
+                        ItemEntry.builder(CinderscapesBlocks.ASH).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 1))),
+                        ItemEntry.builder(CinderscapesBlocks.ASH).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(2))).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 2))),
+                        ItemEntry.builder(CinderscapesBlocks.ASH).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(3))).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 3))),
+                        ItemEntry.builder(CinderscapesBlocks.ASH).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(4))).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 4))),
+                        ItemEntry.builder(CinderscapesBlocks.ASH).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(5))).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 5))),
+                        ItemEntry.builder(CinderscapesBlocks.ASH).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(6))).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 6))),
+                        ItemEntry.builder(CinderscapesBlocks.ASH).apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(7))).conditionally(BlockStatePropertyLootCondition.builder(block).properties(StatePredicate.Builder.create().exactMatch(AshLayerBlock.LAYERS, 7))),
+                        ItemEntry.builder(CinderscapesBlocks.ASH_BLOCK)
+                	)
+        		))
 		));
 	}
 

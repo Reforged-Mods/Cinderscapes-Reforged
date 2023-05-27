@@ -123,7 +123,7 @@ public class CinderscapesItemTagProvider extends ItemTagProvider {
 			.add(CinderscapesBlocks.UMBRAL_STEM.asItem())
 			.add(CinderscapesBlocks.UMBRAL_TRAPDOOR.asItem())
 			.add(CinderscapesBlocks.UMBRAL_WALL_SIGN.asItem());
-		
+
 		this.getOrCreateTagBuilder(ItemTags.PLANKS)
 			.add(CinderscapesBlocks.SCORCHED_PLANKS.asItem())
 			.add(CinderscapesBlocks.UMBRAL_PLANKS.asItem());
@@ -157,7 +157,7 @@ public class CinderscapesItemTagProvider extends ItemTagProvider {
 		this.getOrCreateTagBuilder(ItemTags.WOODEN_BUTTONS)
 			.add(CinderscapesBlocks.SCORCHED_BUTTON.asItem())
 			.add(CinderscapesBlocks.UMBRAL_BUTTON.asItem());
-		
+
 		this.getOrCreateTagBuilder(ItemTags.WOODEN_DOORS)
 			.add(CinderscapesBlocks.SCORCHED_DOOR.asItem())
 			.add(CinderscapesBlocks.UMBRAL_DOOR.asItem());
