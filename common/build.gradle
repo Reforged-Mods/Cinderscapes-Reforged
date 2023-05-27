@@ -1,19 +1,5 @@
 archivesBaseName = "cinderscapes-common"
 
-dependencies {
-    modImplementation(include("com.github.Reforged-Mods:ARRP-forge:0.6.7-1.18.2"))
-}
-
-sourceSets {
-    main {
-        resources {
-            srcDirs += [
-                    "src/generated"
-            ]
-        }
-    }
-}
-
 loom {
     runs {
         data {
