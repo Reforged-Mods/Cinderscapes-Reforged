@@ -68,14 +68,14 @@ public class CinderscapesRecipeProvider extends RecipeProvider {
 				.pattern("AAA")
 				.input('A', CinderscapesBlocks.ASH_BLOCK)
 				.criterion("has_ash_blocks", InventoryChangedCriterion.Conditions.items(CinderscapesBlocks.ASH_BLOCK))
-				.offerTo(exporter);
+				.offerTo(exporter, new Identifier(Cinderscapes.NAMESPACE, "ash"));
 
 		ShapedRecipeJsonBuilder.create(CinderscapesBlocks.ASH_BLOCK, 1)
 				.pattern("aa")
 				.pattern("aa")
 				.input('a', CinderscapesItems.ASH_PILE)
 				.criterion("has_ash_piles", InventoryChangedCriterion.Conditions.items(CinderscapesItems.ASH_PILE))
-				.offerTo(exporter);
+				.offerTo(exporter, new Identifier(Cinderscapes.NAMESPACE, "ash_block"));
 
 		ShapelessRecipeJsonBuilder.create(Items.GUNPOWDER, 1)
 				.input(CinderscapesItemTags.SULFURS)
@@ -83,7 +83,7 @@ public class CinderscapesRecipeProvider extends RecipeProvider {
 				.input(Items.BONE_MEAL)
 				.criterion("has_sulfurs", InventoryChangedCriterion.Conditions.items(
 						new ItemPredicate(CinderscapesItemTags.SULFURS, null, NumberRange.IntRange.ANY, NumberRange.IntRange.ANY, EnchantmentPredicate.ARRAY_OF_ANY, EnchantmentPredicate.ARRAY_OF_ANY, null, NbtPredicate.ANY)))
-				.offerTo(exporter);
+				.offerTo(exporter, new Identifier(Cinderscapes.NAMESPACE, "gunpowder"));
 
 
 		// quartz recipes
