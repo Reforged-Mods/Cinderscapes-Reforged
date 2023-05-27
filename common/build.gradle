@@ -15,8 +15,17 @@ sourceSets {
 }
 
 loom {
+    runs {
+        data {
+            data()
+            //vmArg("--output=${file("common/src/generated")}")
+        }
+    }
     accessWidenerPath = file("src/main/resources/cinderscapes-common.accesswidener")
     forge{
+        dataGen {
+            mod "cinderscapes_common"
+        }
         convertAccessWideners = true
         extraAccessWideners.add("cinderscapes-common.accesswidener")
         mixinConfigs = ["mixins.cinderscapes-common.json"]
