@@ -21,7 +21,7 @@ public class CinderscapesBiomes {
     public static final RegistryKey<Biome> ASHY_SHOALS = add("ashy_shoals", AshyShoalsBiome.create());
     public static final RegistryKey<Biome> BLACKSTONE_SHALES = add("blackstone_shales", BlackstoneShalesBiome.create());
     public static final RegistryKey<Biome> LUMINOUS_GROVE = add("luminous_grove", LuminousGroveBiome.create());
-    public static final RegistryKey<Biome> QUARTZ_CAVERN = add("quartz_cavern", QuartzCavernBiome.create());
+    public static final RegistryKey<Biome> QUARTZ_CAVERN = add("quartz_canyon", QuartzCavernBiome.create());
 
     // Required because something referencing this class has to be called in order to force the
     // static initializer to run (Minecraft's Bootstrap class does similar things)
