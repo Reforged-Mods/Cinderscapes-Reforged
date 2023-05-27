@@ -4,6 +4,7 @@ import com.terraformersmc.cinderscapes.Cinderscapes;
 import com.terraformersmc.cinderscapes.init.CinderscapesBlocks;
 import com.terraformersmc.cinderscapes.init.CinderscapesItems;
 import com.terraformersmc.cinderscapes.tag.CinderscapesItemTags;
+import com.terraformersmc.terraform.utils.TerraformRecipeProvider;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.server.RecipeProvider;
@@ -22,7 +23,7 @@ import net.minecraft.util.Identifier;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class CinderscapesRecipeProvider extends RecipeProvider {
+public class CinderscapesRecipeProvider extends TerraformRecipeProvider {
 	public CinderscapesRecipeProvider(DataGenerator root) {
 		super(root);
 	}
@@ -275,7 +276,7 @@ public class CinderscapesRecipeProvider extends RecipeProvider {
 				.offerTo(exporter);
 	}
 
-	//@Override
+	@Override
 	protected Identifier getRecipeIdentifier(Identifier identifier) {
 		return new Identifier(Cinderscapes.NAMESPACE, identifier.getPath());
 	}
