@@ -80,9 +80,9 @@ allprojects {
         }
     }
 
-    // quiltflower {
-    // 	addToRuntimeClasspath.set(true)
-    // }
+    quiltflower {
+    	addToRuntimeClasspath.set(true)
+    }
 
     configurations {
         dev {

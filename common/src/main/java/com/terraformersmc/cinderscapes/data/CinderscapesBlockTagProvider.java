@@ -46,6 +46,10 @@ public class CinderscapesBlockTagProvider extends BlockTagProvider {
 			.add(CinderscapesBlocks.UMBRAL_HYPHAE)
 			.add(CinderscapesBlocks.UMBRAL_STEM);
 
+		this.getOrCreateTagBuilder(BlockTags.NETHER_CARVER_REPLACEABLES)
+			.add(CinderscapesBlocks.UMBRAL_NYLIUM)
+			.add(CinderscapesBlocks.UMBRAL_WART_BLOCK);
+
 		this.getOrCreateTagBuilder(BlockTags.NON_FLAMMABLE_WOOD)
 			.add(CinderscapesBlocks.SCORCHED_BUTTON)
 			.add(CinderscapesBlocks.SCORCHED_DOOR)
@@ -210,6 +214,16 @@ public class CinderscapesBlockTagProvider extends BlockTagProvider {
 		this.getOrCreateTagBuilder(BlockTags.SHOVEL_MINEABLE)
 			.add(CinderscapesBlocks.ASH)
 			.add(CinderscapesBlocks.ASH_BLOCK);
+
+
+		// conventional tags
+		getOrCreateTagBuilder(ConventionalBlockTags.ORES)
+				.add(CinderscapesBlocks.SULFUR_ORE);
+
+		getOrCreateTagBuilder(ConventionalBlockTags.QUARTZ_ORES)
+				.add(CinderscapesBlocks.ROSE_QUARTZ_ORE)
+				.add(CinderscapesBlocks.SMOKY_QUARTZ_ORE)
+				.add(CinderscapesBlocks.SULFUR_QUARTZ_ORE);
 
 
 		// local block tags

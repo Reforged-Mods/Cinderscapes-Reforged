@@ -44,6 +44,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.Items;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -71,17 +72,17 @@ public class CinderscapesBlocks {
     public static final Block STRIPPED_SCORCHED_HYPHAE = add("stripped_scorched_hyphae", new PillarBlock(TerraformBlockSettings.copyOf(Blocks.STRIPPED_WARPED_HYPHAE).mapColor(MapColor.LIGHT_GRAY)), ItemGroup.BUILDING_BLOCKS);
     public static final Block SCORCHED_HYPHAE = add("scorched_hyphae", new StrippableLogBlock(() -> STRIPPED_SCORCHED_HYPHAE, MapColor.CLEAR, TerraformBlockSettings.copyOf(Blocks.WARPED_HYPHAE).mapColor(MapColor.LIGHT_GRAY)), ItemGroup.BUILDING_BLOCKS);
 
-    public static final Block SCORCHED_PLANKS = add("scorched_planks", new Block(TerraformBlockSettings.copyOf(Blocks.WARPED_PLANKS).mapColor(MapColor.LIGHT_GRAY)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block SCORCHED_SLAB = add("scorched_slab", new SlabBlock(TerraformBlockSettings.copyOf(Blocks.WARPED_SLAB).mapColor(MapColor.LIGHT_GRAY)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block SCORCHED_PRESSURE_PLATE = add("scorched_pressure_plate", new TerraformPressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, TerraformBlockSettings.copyOf(Blocks.WARPED_PRESSURE_PLATE).mapColor(MapColor.LIGHT_GRAY)), ItemGroup.REDSTONE);
-    public static final Block SCORCHED_FENCE = add("scorched_fence", new FenceBlock(TerraformBlockSettings.copyOf(Blocks.WARPED_FENCE).mapColor(MapColor.LIGHT_GRAY)), ItemGroup.DECORATIONS);
-    public static final Block SCORCHED_TRAPDOOR = add("scorched_trapdoor", new TerraformTrapdoorBlock(TerraformBlockSettings.copyOf(Blocks.WARPED_TRAPDOOR).mapColor(MapColor.LIGHT_GRAY)), ItemGroup.REDSTONE);
-    public static final Block SCORCHED_FENCE_GATE = add("scorched_fence_gate", new FenceGateBlock(TerraformBlockSettings.copyOf(Blocks.WARPED_FENCE_GATE).mapColor(MapColor.LIGHT_GRAY)), ItemGroup.REDSTONE);
-    public static final Block SCORCHED_STAIRS = add("scorched_stairs", new TerraformStairsBlock(SCORCHED_PLANKS, TerraformBlockSettings.copyOf(Blocks.WARPED_STAIRS).mapColor(MapColor.LIGHT_GRAY)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block SCORCHED_BUTTON = add("scorched_button", new TerraformButtonBlock(TerraformBlockSettings.copyOf(Blocks.WARPED_BUTTON).mapColor(MapColor.LIGHT_GRAY)), ItemGroup.REDSTONE);
-    public static final Block SCORCHED_DOOR = add("scorched_door", new TerraformDoorBlock(TerraformBlockSettings.copyOf(Blocks.WARPED_DOOR).mapColor(MapColor.LIGHT_GRAY)), ItemGroup.REDSTONE);
-    public static final Block SCORCHED_SIGN = add("scorched_sign", new TerraformSignBlock(Cinderscapes.id("entity/signs/scorched"), TerraformBlockSettings.copyOf(Blocks.WARPED_SIGN).mapColor(MapColor.LIGHT_GRAY)));
-    public static final Block SCORCHED_WALL_SIGN = add("scorched_wall_sign", new TerraformWallSignBlock(Cinderscapes.id("entity/signs/scorched"), TerraformBlockSettings.copyOf(Blocks.WARPED_WALL_SIGN).mapColor(MapColor.LIGHT_GRAY)));
+    public static final Block SCORCHED_PLANKS = add("scorched_planks", new Block(FabricBlockSettings.copyOf(Blocks.WARPED_PLANKS).mapColor(MapColor.LIGHT_GRAY)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block SCORCHED_SLAB = add("scorched_slab", new SlabBlock(FabricBlockSettings.copyOf(Blocks.WARPED_SLAB).mapColor(MapColor.LIGHT_GRAY)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block SCORCHED_PRESSURE_PLATE = add("scorched_pressure_plate", new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(Blocks.WARPED_PRESSURE_PLATE).mapColor(MapColor.LIGHT_GRAY)), ItemGroup.REDSTONE);
+    public static final Block SCORCHED_FENCE = add("scorched_fence", new FenceBlock(FabricBlockSettings.copyOf(Blocks.WARPED_FENCE).mapColor(MapColor.LIGHT_GRAY)), ItemGroup.DECORATIONS);
+    public static final Block SCORCHED_TRAPDOOR = add("scorched_trapdoor", new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_TRAPDOOR).mapColor(MapColor.LIGHT_GRAY)), ItemGroup.REDSTONE);
+    public static final Block SCORCHED_FENCE_GATE = add("scorched_fence_gate", new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.WARPED_FENCE_GATE).mapColor(MapColor.LIGHT_GRAY)), ItemGroup.REDSTONE);
+    public static final Block SCORCHED_STAIRS = add("scorched_stairs", new StairsBlock(SCORCHED_PLANKS.getDefaultState(), FabricBlockSettings.copyOf(Blocks.WARPED_STAIRS).mapColor(MapColor.LIGHT_GRAY)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block SCORCHED_BUTTON = add("scorched_button", new WoodenButtonBlock(FabricBlockSettings.copyOf(Blocks.WARPED_BUTTON).mapColor(MapColor.LIGHT_GRAY)), ItemGroup.REDSTONE);
+    public static final Block SCORCHED_DOOR = add("scorched_door", new DoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_DOOR).mapColor(MapColor.LIGHT_GRAY)), ItemGroup.REDSTONE);
+    public static final Block SCORCHED_SIGN = add("scorched_sign", new TerraformSignBlock(Cinderscapes.id("entity/signs/scorched"), FabricBlockSettings.copyOf(Blocks.WARPED_SIGN).mapColor(MapColor.LIGHT_GRAY)));
+    public static final Block SCORCHED_WALL_SIGN = add("scorched_wall_sign", new TerraformWallSignBlock(Cinderscapes.id("entity/signs/scorched"), FabricBlockSettings.copyOf(Blocks.WARPED_WALL_SIGN).mapColor(MapColor.LIGHT_GRAY)));
 
     public static final Block SCORCHED_SHRUB = add("scorched_shrub", new CinderscapesNetherPlantBlock(Settings.copy(Blocks.DEAD_BUSH), (state) -> Block.createCuboidShape(2.0, 0.0, 2.0, 14.0, 14.0, 14.0)), ItemGroup.DECORATIONS);
     public static final Block POTTED_SCORCHED_SHRUB = add("potted_scorched_shrub", new FlowerPotBlock(SCORCHED_SHRUB, Settings.copy(Blocks.POTTED_DEAD_BUSH)));
@@ -117,17 +118,17 @@ public class CinderscapesBlocks {
     public static final Block UMBRAL_WART_BLOCK = add("umbral_wart_block", new CinderscapesTransparentBlock(TerraformBlockSettings.copyOf(Blocks.WARPED_WART_BLOCK).mapColor(MapColor.BLUE).nonOpaque()), ItemGroup.BUILDING_BLOCKS);
     public static final Block UMBRAL_FLESH_BLOCK = add("umbral_flesh_block", new CinderscapesTransparentBlock(TerraformBlockSettings.copyOf(UMBRAL_WART_BLOCK).luminance(15)), ItemGroup.BUILDING_BLOCKS);
 
-    public static final Block UMBRAL_PLANKS = add("umbral_planks", new Block(TerraformBlockSettings.copyOf(Blocks.WARPED_PLANKS).mapColor(MapColor.BLUE)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block UMBRAL_SLAB = add("umbral_slab", new SlabBlock(TerraformBlockSettings.copyOf(Blocks.WARPED_SLAB).mapColor(MapColor.BLUE)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block UMBRAL_PRESSURE_PLATE = add("umbral_pressure_plate", new TerraformPressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, TerraformBlockSettings.copyOf(Blocks.WARPED_PRESSURE_PLATE).mapColor(MapColor.BLUE)), ItemGroup.REDSTONE);
-    public static final Block UMBRAL_FENCE = add("umbral_fence", new FenceBlock(TerraformBlockSettings.copyOf(Blocks.WARPED_FENCE).mapColor(MapColor.BLUE)), ItemGroup.DECORATIONS);
-    public static final Block UMBRAL_TRAPDOOR = add("umbral_trapdoor", new TerraformTrapdoorBlock(TerraformBlockSettings.copyOf(Blocks.WARPED_TRAPDOOR).mapColor(MapColor.BLUE)), ItemGroup.REDSTONE);
-    public static final Block UMBRAL_FENCE_GATE = add("umbral_fence_gate", new FenceGateBlock(TerraformBlockSettings.copyOf(Blocks.WARPED_FENCE_GATE).mapColor(MapColor.BLUE)), ItemGroup.REDSTONE);
-    public static final Block UMBRAL_STAIRS = add("umbral_stairs", new TerraformStairsBlock(UMBRAL_PLANKS, TerraformBlockSettings.copyOf(Blocks.WARPED_STAIRS).mapColor(MapColor.BLUE)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block UMBRAL_BUTTON = add("umbral_button", new TerraformButtonBlock(TerraformBlockSettings.copyOf(Blocks.WARPED_BUTTON).mapColor(MapColor.BLUE)), ItemGroup.REDSTONE);
-    public static final Block UMBRAL_DOOR = add("umbral_door", new TerraformDoorBlock(TerraformBlockSettings.copyOf(Blocks.WARPED_DOOR).mapColor(MapColor.BLUE)), ItemGroup.REDSTONE);
-    public static final Block UMBRAL_SIGN = add("umbral_sign", new TerraformSignBlock(Cinderscapes.id("entity/signs/umbral"), TerraformBlockSettings.copyOf(Blocks.WARPED_SIGN).mapColor(MapColor.BLUE)));
-    public static final Block UMBRAL_WALL_SIGN = add("umbral_wall_sign", new TerraformWallSignBlock(Cinderscapes.id("entity/signs/umbral"), TerraformBlockSettings.copyOf(Blocks.WARPED_WALL_SIGN).mapColor(MapColor.BLUE)));
+    public static final Block UMBRAL_PLANKS = add("umbral_planks", new Block(FabricBlockSettings.copyOf(Blocks.WARPED_PLANKS).mapColor(MapColor.BLUE)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block UMBRAL_SLAB = add("umbral_slab", new SlabBlock(FabricBlockSettings.copyOf(Blocks.WARPED_SLAB).mapColor(MapColor.BLUE)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block UMBRAL_PRESSURE_PLATE = add("umbral_pressure_plate", new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copyOf(Blocks.WARPED_PRESSURE_PLATE).mapColor(MapColor.BLUE)), ItemGroup.REDSTONE);
+    public static final Block UMBRAL_FENCE = add("umbral_fence", new FenceBlock(FabricBlockSettings.copyOf(Blocks.WARPED_FENCE).mapColor(MapColor.BLUE)), ItemGroup.DECORATIONS);
+    public static final Block UMBRAL_TRAPDOOR = add("umbral_trapdoor", new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_TRAPDOOR).mapColor(MapColor.BLUE)), ItemGroup.REDSTONE);
+    public static final Block UMBRAL_FENCE_GATE = add("umbral_fence_gate", new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.WARPED_FENCE_GATE).mapColor(MapColor.BLUE)), ItemGroup.REDSTONE);
+    public static final Block UMBRAL_STAIRS = add("umbral_stairs", new StairsBlock(UMBRAL_PLANKS.getDefaultState(), FabricBlockSettings.copyOf(Blocks.WARPED_STAIRS).mapColor(MapColor.BLUE)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block UMBRAL_BUTTON = add("umbral_button", new WoodenButtonBlock(FabricBlockSettings.copyOf(Blocks.WARPED_BUTTON).mapColor(MapColor.BLUE)), ItemGroup.REDSTONE);
+    public static final Block UMBRAL_DOOR = add("umbral_door", new DoorBlock(FabricBlockSettings.copyOf(Blocks.WARPED_DOOR).mapColor(MapColor.BLUE)), ItemGroup.REDSTONE);
+    public static final Block UMBRAL_SIGN = add("umbral_sign", new TerraformSignBlock(Cinderscapes.id("entity/signs/umbral"), FabricBlockSettings.copyOf(Blocks.WARPED_SIGN).mapColor(MapColor.BLUE)));
+    public static final Block UMBRAL_WALL_SIGN = add("umbral_wall_sign", new TerraformWallSignBlock(Cinderscapes.id("entity/signs/umbral"), FabricBlockSettings.copyOf(Blocks.WARPED_WALL_SIGN).mapColor(MapColor.BLUE)));
 
     // Other
 
@@ -171,16 +172,16 @@ public class CinderscapesBlocks {
     public static final Block POTTED_POLYPITE_SULFUR_QUARTZ = add("potted_polypite_sulfur_quartz", new FlowerPotBlock(POLYPITE_SULFUR_QUARTZ, TerraformBlockSettings.copyOf(Blocks.FLOWER_POT)));
 
     public static final Block SULFUR_QUARTZ_ORE = addOre("sulfur_quartz_ore", ItemGroup.BUILDING_BLOCKS, 1, MapColor.YELLOW);
-    public static final Block SULFUR_QUARTZ_BLOCK = add("sulfur_quartz_block", new Block(TerraformBlockSettings.copyOf(Blocks.QUARTZ_BLOCK).mapColor(MapColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block CHISELED_SULFUR_QUARTZ_BLOCK = add("chiseled_sulfur_quartz_block", new Block(TerraformBlockSettings.copyOf(Blocks.QUARTZ_BLOCK).mapColor(MapColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block SULFUR_QUARTZ_PILLAR = add("sulfur_quartz_pillar", new PillarBlock(TerraformBlockSettings.copyOf(Blocks.QUARTZ_PILLAR).mapColor(MapColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block SULFUR_QUARTZ_STAIRS = add("sulfur_quartz_stairs", new TerraformStairsBlock(SULFUR_QUARTZ_BLOCK, TerraformBlockSettings.copyOf(Blocks.QUARTZ_STAIRS).mapColor(MapColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block SULFUR_QUARTZ_SLAB = add("sulfur_quartz_slab", new SlabBlock(TerraformBlockSettings.copyOf(Blocks.QUARTZ_SLAB).mapColor(MapColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block SMOOTH_SULFUR_QUARTZ = add("smooth_sulfur_quartz", new Block(TerraformBlockSettings.copyOf(Blocks.SMOOTH_QUARTZ).mapColor(MapColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block SMOOTH_SULFUR_QUARTZ_STAIRS = add("smooth_sulfur_quartz_stairs", new TerraformStairsBlock(SMOOTH_SULFUR_QUARTZ, TerraformBlockSettings.copyOf(Blocks.SMOOTH_QUARTZ_STAIRS).mapColor(MapColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block SMOOTH_SULFUR_QUARTZ_SLAB = add("smooth_sulfur_quartz_slab", new SlabBlock(TerraformBlockSettings.copyOf(Blocks.SMOOTH_QUARTZ_SLAB).mapColor(MapColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block SULFUR_QUARTZ_BRICKS = add("sulfur_quartz_bricks", new Block(TerraformBlockSettings.copyOf(Blocks.QUARTZ_BRICKS).mapColor(MapColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block CRYSTALLINE_SULFUR_QUARTZ = add("crystalline_sulfur_quartz", new CinderscapesTransparentBlock(TerraformBlockSettings.copyOf(CRYSTALLINE_QUARTZ).mapColor(MapColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block SULFUR_QUARTZ_BLOCK = add("sulfur_quartz_block", new Block(FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK).mapColor(MapColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block CHISELED_SULFUR_QUARTZ_BLOCK = add("chiseled_sulfur_quartz_block", new Block(FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK).mapColor(MapColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block SULFUR_QUARTZ_PILLAR = add("sulfur_quartz_pillar", new PillarBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_PILLAR).mapColor(MapColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block SULFUR_QUARTZ_STAIRS = add("sulfur_quartz_stairs", new StairsBlock(SULFUR_QUARTZ_BLOCK.getDefaultState(), FabricBlockSettings.copyOf(Blocks.QUARTZ_STAIRS).mapColor(MapColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block SULFUR_QUARTZ_SLAB = add("sulfur_quartz_slab", new SlabBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_SLAB).mapColor(MapColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block SMOOTH_SULFUR_QUARTZ = add("smooth_sulfur_quartz", new Block(FabricBlockSettings.copyOf(Blocks.SMOOTH_QUARTZ).mapColor(MapColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block SMOOTH_SULFUR_QUARTZ_STAIRS = add("smooth_sulfur_quartz_stairs", new StairsBlock(SMOOTH_SULFUR_QUARTZ.getDefaultState(), FabricBlockSettings.copyOf(Blocks.SMOOTH_QUARTZ_STAIRS).mapColor(MapColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block SMOOTH_SULFUR_QUARTZ_SLAB = add("smooth_sulfur_quartz_slab", new SlabBlock(FabricBlockSettings.copyOf(Blocks.SMOOTH_QUARTZ_SLAB).mapColor(MapColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block SULFUR_QUARTZ_BRICKS = add("sulfur_quartz_bricks", new Block(FabricBlockSettings.copyOf(Blocks.QUARTZ_BRICKS).mapColor(MapColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block CRYSTALLINE_SULFUR_QUARTZ = add("crystalline_sulfur_quartz", new CinderscapesTransparentBlock(FabricBlockSettings.copyOf(CRYSTALLINE_QUARTZ).mapColor(MapColor.YELLOW)), ItemGroup.BUILDING_BLOCKS);
 
     // Rose Quartz
 
@@ -188,16 +189,16 @@ public class CinderscapesBlocks {
     public static final Block POTTED_POLYPITE_ROSE_QUARTZ = add("potted_polypite_rose_quartz", new FlowerPotBlock(POLYPITE_ROSE_QUARTZ, TerraformBlockSettings.copyOf(Blocks.FLOWER_POT)));
 
     public static final Block ROSE_QUARTZ_ORE = addOre("rose_quartz_ore", ItemGroup.BUILDING_BLOCKS, 1, MapColor.PINK);
-    public static final Block ROSE_QUARTZ_BLOCK = add("rose_quartz_block", new Block(TerraformBlockSettings.copyOf(Blocks.QUARTZ_BLOCK).mapColor(MapColor.PINK)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block CHISELED_ROSE_QUARTZ_BLOCK = add("chiseled_rose_quartz_block", new Block(TerraformBlockSettings.copyOf(Blocks.QUARTZ_BLOCK).mapColor(MapColor.PINK)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block ROSE_QUARTZ_PILLAR = add("rose_quartz_pillar", new PillarBlock(TerraformBlockSettings.copyOf(Blocks.QUARTZ_PILLAR).mapColor(MapColor.PINK)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block ROSE_QUARTZ_STAIRS = add("rose_quartz_stairs", new TerraformStairsBlock(ROSE_QUARTZ_BLOCK, TerraformBlockSettings.copyOf(Blocks.QUARTZ_STAIRS).mapColor(MapColor.PINK)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block ROSE_QUARTZ_SLAB = add("rose_quartz_slab", new SlabBlock(TerraformBlockSettings.copyOf(Blocks.QUARTZ_SLAB).mapColor(MapColor.PINK)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block SMOOTH_ROSE_QUARTZ = add("smooth_rose_quartz", new Block(TerraformBlockSettings.copyOf(Blocks.SMOOTH_QUARTZ).mapColor(MapColor.PINK)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block SMOOTH_ROSE_QUARTZ_STAIRS = add("smooth_rose_quartz_stairs", new TerraformStairsBlock(SMOOTH_ROSE_QUARTZ, TerraformBlockSettings.copyOf(Blocks.SMOOTH_QUARTZ_STAIRS).mapColor(MapColor.PINK)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block SMOOTH_ROSE_QUARTZ_SLAB = add("smooth_rose_quartz_slab", new SlabBlock(TerraformBlockSettings.copyOf(Blocks.SMOOTH_QUARTZ_SLAB).mapColor(MapColor.PINK)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block ROSE_QUARTZ_BRICKS = add("rose_quartz_bricks", new Block(TerraformBlockSettings.copyOf(Blocks.QUARTZ_BRICKS).mapColor(MapColor.PINK)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block CRYSTALLINE_ROSE_QUARTZ = add("crystalline_rose_quartz", new CinderscapesTransparentBlock(TerraformBlockSettings.copyOf(CRYSTALLINE_QUARTZ).mapColor(MapColor.PINK)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block ROSE_QUARTZ_BLOCK = add("rose_quartz_block", new Block(FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK).mapColor(MapColor.PINK)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block CHISELED_ROSE_QUARTZ_BLOCK = add("chiseled_rose_quartz_block", new Block(FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK).mapColor(MapColor.PINK)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block ROSE_QUARTZ_PILLAR = add("rose_quartz_pillar", new PillarBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_PILLAR).mapColor(MapColor.PINK)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block ROSE_QUARTZ_STAIRS = add("rose_quartz_stairs", new StairsBlock(ROSE_QUARTZ_BLOCK.getDefaultState(), FabricBlockSettings.copyOf(Blocks.QUARTZ_STAIRS).mapColor(MapColor.PINK)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block ROSE_QUARTZ_SLAB = add("rose_quartz_slab", new SlabBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_SLAB).mapColor(MapColor.PINK)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block SMOOTH_ROSE_QUARTZ = add("smooth_rose_quartz", new Block(FabricBlockSettings.copyOf(Blocks.SMOOTH_QUARTZ).mapColor(MapColor.PINK)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block SMOOTH_ROSE_QUARTZ_STAIRS = add("smooth_rose_quartz_stairs", new StairsBlock(SMOOTH_ROSE_QUARTZ.getDefaultState(), FabricBlockSettings.copyOf(Blocks.SMOOTH_QUARTZ_STAIRS).mapColor(MapColor.PINK)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block SMOOTH_ROSE_QUARTZ_SLAB = add("smooth_rose_quartz_slab", new SlabBlock(FabricBlockSettings.copyOf(Blocks.SMOOTH_QUARTZ_SLAB).mapColor(MapColor.PINK)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block ROSE_QUARTZ_BRICKS = add("rose_quartz_bricks", new Block(FabricBlockSettings.copyOf(Blocks.QUARTZ_BRICKS).mapColor(MapColor.PINK)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block CRYSTALLINE_ROSE_QUARTZ = add("crystalline_rose_quartz", new CinderscapesTransparentBlock(FabricBlockSettings.copyOf(CRYSTALLINE_QUARTZ).mapColor(MapColor.PINK)), ItemGroup.BUILDING_BLOCKS);
 
     // Smoky Quartz
 
@@ -205,16 +206,16 @@ public class CinderscapesBlocks {
     public static final Block POTTED_POLYPITE_SMOKY_QUARTZ = add("potted_polypite_smoky_quartz", new FlowerPotBlock(POLYPITE_SMOKY_QUARTZ, TerraformBlockSettings.copyOf(Blocks.FLOWER_POT)));
 
     public static final Block SMOKY_QUARTZ_ORE = addOre("smoky_quartz_ore", ItemGroup.BUILDING_BLOCKS, 1, MapColor.GRAY);
-    public static final Block SMOKY_QUARTZ_BLOCK = add("smoky_quartz_block", new Block(TerraformBlockSettings.copyOf(Blocks.QUARTZ_BLOCK).mapColor(MapColor.GRAY)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block CHISELED_SMOKY_QUARTZ_BLOCK = add("chiseled_smoky_quartz_block", new Block(TerraformBlockSettings.copyOf(Blocks.QUARTZ_BLOCK).mapColor(MapColor.GRAY)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block SMOKY_QUARTZ_PILLAR = add("smoky_quartz_pillar", new PillarBlock(TerraformBlockSettings.copyOf(Blocks.QUARTZ_PILLAR).mapColor(MapColor.GRAY)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block SMOKY_QUARTZ_STAIRS = add("smoky_quartz_stairs", new TerraformStairsBlock(SMOKY_QUARTZ_BLOCK, TerraformBlockSettings.copyOf(Blocks.QUARTZ_STAIRS).mapColor(MapColor.GRAY)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block SMOKY_QUARTZ_SLAB = add("smoky_quartz_slab", new SlabBlock(TerraformBlockSettings.copyOf(Blocks.QUARTZ_SLAB).mapColor(MapColor.GRAY)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block SMOOTH_SMOKY_QUARTZ = add("smooth_smoky_quartz", new Block(TerraformBlockSettings.copyOf(Blocks.SMOOTH_QUARTZ).mapColor(MapColor.GRAY)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block SMOOTH_SMOKY_QUARTZ_STAIRS = add("smooth_smoky_quartz_stairs", new TerraformStairsBlock(SMOOTH_SMOKY_QUARTZ, TerraformBlockSettings.copyOf(Blocks.SMOOTH_QUARTZ_STAIRS).mapColor(MapColor.GRAY)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block SMOOTH_SMOKY_QUARTZ_SLAB = add("smooth_smoky_quartz_slab", new SlabBlock(TerraformBlockSettings.copyOf(Blocks.SMOOTH_QUARTZ_SLAB).mapColor(MapColor.GRAY)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block SMOKY_QUARTZ_BRICKS = add("smoky_quartz_bricks", new Block(TerraformBlockSettings.copyOf(Blocks.QUARTZ_BRICKS).mapColor(MapColor.GRAY)), ItemGroup.BUILDING_BLOCKS);
-    public static final Block CRYSTALLINE_SMOKY_QUARTZ = add("crystalline_smoky_quartz", new CinderscapesTransparentBlock(TerraformBlockSettings.copyOf(CRYSTALLINE_QUARTZ).mapColor(MapColor.GRAY)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block SMOKY_QUARTZ_BLOCK = add("smoky_quartz_block", new Block(FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK).mapColor(MapColor.GRAY)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block CHISELED_SMOKY_QUARTZ_BLOCK = add("chiseled_smoky_quartz_block", new Block(FabricBlockSettings.copyOf(Blocks.QUARTZ_BLOCK).mapColor(MapColor.GRAY)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block SMOKY_QUARTZ_PILLAR = add("smoky_quartz_pillar", new PillarBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_PILLAR).mapColor(MapColor.GRAY)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block SMOKY_QUARTZ_STAIRS = add("smoky_quartz_stairs", new StairsBlock(SMOKY_QUARTZ_BLOCK.getDefaultState(), FabricBlockSettings.copyOf(Blocks.QUARTZ_STAIRS).mapColor(MapColor.GRAY)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block SMOKY_QUARTZ_SLAB = add("smoky_quartz_slab", new SlabBlock(FabricBlockSettings.copyOf(Blocks.QUARTZ_SLAB).mapColor(MapColor.GRAY)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block SMOOTH_SMOKY_QUARTZ = add("smooth_smoky_quartz", new Block(FabricBlockSettings.copyOf(Blocks.SMOOTH_QUARTZ).mapColor(MapColor.GRAY)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block SMOOTH_SMOKY_QUARTZ_STAIRS = add("smooth_smoky_quartz_stairs", new StairsBlock(SMOOTH_SMOKY_QUARTZ.getDefaultState(), FabricBlockSettings.copyOf(Blocks.SMOOTH_QUARTZ_STAIRS).mapColor(MapColor.GRAY)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block SMOOTH_SMOKY_QUARTZ_SLAB = add("smooth_smoky_quartz_slab", new SlabBlock(FabricBlockSettings.copyOf(Blocks.SMOOTH_QUARTZ_SLAB).mapColor(MapColor.GRAY)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block SMOKY_QUARTZ_BRICKS = add("smoky_quartz_bricks", new Block(FabricBlockSettings.copyOf(Blocks.QUARTZ_BRICKS).mapColor(MapColor.GRAY)), ItemGroup.BUILDING_BLOCKS);
+    public static final Block CRYSTALLINE_SMOKY_QUARTZ = add("crystalline_smoky_quartz", new CinderscapesTransparentBlock(FabricBlockSettings.copyOf(CRYSTALLINE_QUARTZ).mapColor(MapColor.GRAY)), ItemGroup.BUILDING_BLOCKS);
 
     public static final Block NODZOL = add("nodzol", new Block(Settings.copy(Blocks.NETHERRACK)));
 
@@ -252,26 +253,41 @@ public class CinderscapesBlocks {
         if (!CinderscapesConfig.INSTANCE.easterEggs) {
             Cinderscapes.HIDDEN_ITEMS.add(CinderscapesBlocks.NODZOL.asItem());
         }
+
+        for (Identifier id : ITEMS.keySet()) {
+            Registry.register(Registry.ITEM, id, ITEMS.get(id));
+        }
+        for (Identifier id : BLOCKS.keySet()) {
+            Registry.register(Registry.BLOCK, id, BLOCKS.get(id));
+        }
+
+        addCompostables();
     }
 
-    public static void registerCompostableBlocks() {
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(TWILIGHT_FESCUES.asItem(), 0.3f);
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(TWILIGHT_TENDRILS.asItem(), 0.3f);
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(SCORCHED_TENDRILS.asItem(), 0.3f);
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(SCORCHED_SPROUTS.asItem(), 0.3f);
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(SCORCHED_SHRUB.asItem(), 0.3f);
+    private static void addCompostables() {
+        CompostingChanceRegistry compostingRegistry = CompostingChanceRegistry.INSTANCE;
+        float FLOWER_CHANCE = compostingRegistry.get(Items.POPPY);
+        float FUNGUS_CHANCE = compostingRegistry.get(Items.CRIMSON_FUNGUS);
+        float GRASS_CHANCE = compostingRegistry.get(Items.GRASS);
+        float WART_BLOCK_CHANCE = compostingRegistry.get(Items.NETHER_WART_BLOCK);
 
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(CRYSTINIUM.asItem(), 0.65f);
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(PYRACINTH.asItem(), 0.65f);
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(PHOTOFERN.asItem(), 0.65f);
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(TALL_PHOTOFERN.asItem(), 0.65f);
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(LUMINOUS_POD.asItem(), 0.65f);
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(UMBRAL_FUNGUS.asItem(), 0.65f);
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(GHASTLY_ECTOPLASM.asItem(), 0.65f);
+        compostingRegistry.add(SCORCHED_SHRUB, GRASS_CHANCE);
+        compostingRegistry.add(SCORCHED_SPROUTS, GRASS_CHANCE);
+        compostingRegistry.add(SCORCHED_TENDRILS, GRASS_CHANCE);
+        compostingRegistry.add(TWILIGHT_FESCUES, GRASS_CHANCE);
+        compostingRegistry.add(TWILIGHT_TENDRILS, GRASS_CHANCE);
 
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(UMBRAL_WART_BLOCK.asItem(), 0.85f);
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(UMBRAL_FLESH_BLOCK.asItem(), 0.85f);
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(TWILIGHT_VINE_BLOCK.asItem(), 0.85f);
+        compostingRegistry.add(CRYSTINIUM, FLOWER_CHANCE);
+        compostingRegistry.add(GHASTLY_ECTOPLASM, FLOWER_CHANCE);
+        compostingRegistry.add(LUMINOUS_POD, FLOWER_CHANCE);
+        compostingRegistry.add(PHOTOFERN, FLOWER_CHANCE);
+        compostingRegistry.add(PYRACINTH, FLOWER_CHANCE);
+        compostingRegistry.add(TALL_PHOTOFERN, FLOWER_CHANCE);
+        compostingRegistry.add(UMBRAL_FUNGUS, FUNGUS_CHANCE);
+
+        compostingRegistry.add(TWILIGHT_VINE_BLOCK, WART_BLOCK_CHANCE);
+        compostingRegistry.add(UMBRAL_FLESH_BLOCK, WART_BLOCK_CHANCE);
+        compostingRegistry.add(UMBRAL_WART_BLOCK, WART_BLOCK_CHANCE);
     }
 
     private static boolean never(BlockState blockState, BlockView blockView, BlockPos pos) {

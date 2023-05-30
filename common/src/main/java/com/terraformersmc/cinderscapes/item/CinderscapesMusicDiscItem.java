@@ -6,7 +6,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Rarity;
 
 public class CinderscapesMusicDiscItem extends MusicDiscItem {
-    public CinderscapesMusicDiscItem(int comparatorOutput, SoundEvent sound) {
-        super(comparatorOutput, sound, new Settings().maxCount(1).group(ItemGroup.MISC).rarity(Rarity.RARE));
+    public CinderscapesMusicDiscItem(int comparatorOutput, SoundEvent sound, int lengthInSeconds) {
+        super(comparatorOutput, sound, new FabricItemSettings().maxCount(1).group(ItemGroup.MISC).rarity(Rarity.RARE), lengthInSeconds);
     }
 }
