@@ -12,6 +12,8 @@ loom {
         dataGen {
             mod "cinderscapes_common"
         }
+        convertAccessWideners = true
+        extraAccessWideners.add("cinderscapes-common.accesswidener")
         mixinConfigs = ["mixins.cinderscapes-common.json"]
     }
 }
