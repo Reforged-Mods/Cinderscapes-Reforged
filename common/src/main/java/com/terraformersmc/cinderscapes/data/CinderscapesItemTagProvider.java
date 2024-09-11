@@ -80,6 +80,14 @@ public class CinderscapesItemTagProvider extends ItemTagProvider {
 			.add(CinderscapesBlocks.SMOKY_QUARTZ_ORE.asItem())
 			.add(CinderscapesBlocks.SULFUR_QUARTZ_ORE.asItem());
 
+		this.getOrCreateTagBuilder(CinderscapesItemTags.STRIPPED_LOGS)
+			.add(CinderscapesBlocks.STRIPPED_SCORCHED_STEM.asItem())
+			.add(CinderscapesBlocks.STRIPPED_UMBRAL_STEM.asItem());
+
+		this.getOrCreateTagBuilder(CinderscapesItemTags.STRIPPED_WOOD)
+			.add(CinderscapesBlocks.STRIPPED_SCORCHED_HYPHAE.asItem())
+			.add(CinderscapesBlocks.STRIPPED_UMBRAL_HYPHAE.asItem());
+
 		this.getOrCreateTagBuilder(CinderscapesItemTags.SULFUR_ORES)
 			.add(CinderscapesBlocks.SULFUR_ORE.asItem());
 
@@ -88,6 +96,9 @@ public class CinderscapesItemTagProvider extends ItemTagProvider {
 
 
 		// vanilla item tags
+		this.getOrCreateTagBuilder(ItemTags.FOX_FOOD)
+			.add(CinderscapesBlocks.BRAMBLE_BERRIES);
+
 		this.getOrCreateTagBuilder(ItemTags.LOGS)
 			.addTag(CinderscapesItemTags.SCORCHED_STEMS)
 			.addTag(CinderscapesItemTags.UMBRAL_STEMS);
@@ -154,6 +165,9 @@ public class CinderscapesItemTagProvider extends ItemTagProvider {
 			.add(CinderscapesBlocks.SMOOTH_SULFUR_QUARTZ_STAIRS.asItem())
 			.add(CinderscapesBlocks.SULFUR_QUARTZ_STAIRS.asItem());
 
+		this.getOrCreateTagBuilder(ItemTags.WART_BLOCKS)
+			.add(CinderscapesBlocks.UMBRAL_WART_BLOCK.asItem());
+
 		this.getOrCreateTagBuilder(ItemTags.WOODEN_BUTTONS)
 			.add(CinderscapesBlocks.SCORCHED_BUTTON.asItem())
 			.add(CinderscapesBlocks.UMBRAL_BUTTON.asItem());
@@ -165,7 +179,6 @@ public class CinderscapesItemTagProvider extends ItemTagProvider {
 		this.getOrCreateTagBuilder(ItemTags.WOODEN_FENCES)
 			.add(CinderscapesBlocks.SCORCHED_FENCE.asItem())
 			.add(CinderscapesBlocks.UMBRAL_FENCE.asItem());
-
 		this.getOrCreateTagBuilder(ItemTags.WOODEN_PRESSURE_PLATES)
 			.add(CinderscapesBlocks.SCORCHED_PRESSURE_PLATE.asItem())
 			.add(CinderscapesBlocks.UMBRAL_PRESSURE_PLATE.asItem());

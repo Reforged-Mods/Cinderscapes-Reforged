@@ -3,19 +3,9 @@ package com.terraformersmc.cinderscapes.init;
 import com.terraformersmc.cinderscapes.Cinderscapes;
 import com.terraformersmc.cinderscapes.item.CinderscapesMusicDiscItem;
 import net.minecraft.MinecraftVersion;
-import net.minecraft.block.ComposterBlock;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.AliasedBlockItem;
-import net.minecraft.item.FoodComponent;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.SignItem;
+import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 public class CinderscapesItems {
     // Acts as a kind of local registry for items added by Cinderscapes
@@ -41,9 +31,12 @@ public class CinderscapesItems {
     public static Item MUSIC_DISC_LUMINOUS_PLANTATION;
     public static Item MUSIC_DISC_CHILLING_IN_HELL;
 
-    private static <I extends Item> I add(String name, I item) {
-        ITEMS.put(Cinderscapes.id(name), item);
-        return item;
+    public static <I extends Item> I add(String name, I item) {
+        if (item instanceof BlockItem blockItem) {
+            blockItem.appendBlocks(Item.BLOCK_ITEMS, item);
+        }
+
+        return Registry.register(Registry.ITEM, Identifier.of(Cinderscapes.NAMESPACE, name), item);
     }
 
     public static void init() {
@@ -53,11 +46,5 @@ public class CinderscapesItems {
             MUSIC_DISC_LUMINOUS_PLANTATION = add("music_disc_luminous_plantation", new CinderscapesMusicDiscItem(14, CinderscapesSoundEvents.MUSIC_DISC_LUMINOUS_PLANTATION, 231));
             MUSIC_DISC_CHILLING_IN_HELL = add("music_disc_chilling_in_hell", new CinderscapesMusicDiscItem(14, CinderscapesSoundEvents.MUSIC_DISC_CHILLING_IN_HELL, 136));
         }
-
-        for (Identifier id : ITEMS.keySet()) {
-            Registry.register(Registry.ITEM, id, ITEMS.get(id));
-        }
-
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(BRAMBLE_BERRIES, 0.3f);
     }
 }

@@ -86,6 +86,8 @@ public class CinderscapesRecipeProvider extends TerraformRecipeProvider {
 						new ItemPredicate(CinderscapesItemTags.SULFURS, null, NumberRange.IntRange.ANY, NumberRange.IntRange.ANY, EnchantmentPredicate.ARRAY_OF_ANY, EnchantmentPredicate.ARRAY_OF_ANY, null, NbtPredicate.ANY)))
 				.offerTo(exporter, new Identifier(Cinderscapes.NAMESPACE, "gunpowder"));
 
+		offerReversibleCompactingRecipes(exporter, CinderscapesItems.SULFUR, CinderscapesBlocks.SULFUR_BLOCK);
+
 
 		// quartz recipes
 		offerChiseledBlockRecipe(exporter, CinderscapesBlocks.CHISELED_ROSE_QUARTZ_BLOCK, CinderscapesBlocks.ROSE_QUARTZ_SLAB);
@@ -220,7 +222,7 @@ public class CinderscapesRecipeProvider extends TerraformRecipeProvider {
 				.offerTo(exporter);
 		offerPlanksRecipe(exporter, CinderscapesBlocks.SCORCHED_PLANKS, CinderscapesItemTags.SCORCHED_STEMS);
 		offerPressurePlateRecipe(exporter, CinderscapesBlocks.SCORCHED_PRESSURE_PLATE, CinderscapesBlocks.SCORCHED_PLANKS);
-		createSignRecipe(CinderscapesItems.SCORCHED_SIGN, Ingredient.ofItems(CinderscapesBlocks.SCORCHED_PLANKS))
+		createSignRecipe(CinderscapesBlocks.SCORCHED_SIGN, Ingredient.ofItems(CinderscapesBlocks.SCORCHED_PLANKS))
 				.criterion("has_planks", InventoryChangedCriterion.Conditions.items(CinderscapesBlocks.SCORCHED_PLANKS))
 				.offerTo(exporter);
 		offerSlabRecipe(exporter, CinderscapesBlocks.SCORCHED_SLAB, CinderscapesBlocks.SCORCHED_PLANKS);
@@ -257,7 +259,7 @@ public class CinderscapesRecipeProvider extends TerraformRecipeProvider {
 				.offerTo(exporter);
 		offerPlanksRecipe(exporter, CinderscapesBlocks.UMBRAL_PLANKS, CinderscapesItemTags.UMBRAL_STEMS);
 		offerPressurePlateRecipe(exporter, CinderscapesBlocks.UMBRAL_PRESSURE_PLATE, CinderscapesBlocks.UMBRAL_PLANKS);
-		createSignRecipe(CinderscapesItems.UMBRAL_SIGN, Ingredient.ofItems(CinderscapesBlocks.UMBRAL_PLANKS))
+		createSignRecipe(CinderscapesBlocks.UMBRAL_SIGN, Ingredient.ofItems(CinderscapesBlocks.UMBRAL_PLANKS))
 				.criterion("has_planks", InventoryChangedCriterion.Conditions.items(CinderscapesBlocks.UMBRAL_PLANKS))
 				.offerTo(exporter);
 		offerSlabRecipe(exporter, CinderscapesBlocks.UMBRAL_SLAB, CinderscapesBlocks.UMBRAL_PLANKS);

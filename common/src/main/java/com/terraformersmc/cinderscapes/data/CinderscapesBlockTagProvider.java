@@ -218,12 +218,20 @@ public class CinderscapesBlockTagProvider extends BlockTagProvider {
 
 		// conventional tags
 		getOrCreateTagBuilder(ConventionalBlockTags.ORES)
-				.add(CinderscapesBlocks.SULFUR_ORE);
+			.add(CinderscapesBlocks.SULFUR_ORE);
 
 		getOrCreateTagBuilder(ConventionalBlockTags.QUARTZ_ORES)
-				.add(CinderscapesBlocks.ROSE_QUARTZ_ORE)
-				.add(CinderscapesBlocks.SMOKY_QUARTZ_ORE)
-				.add(CinderscapesBlocks.SULFUR_QUARTZ_ORE);
+			.add(CinderscapesBlocks.ROSE_QUARTZ_ORE)
+			.add(CinderscapesBlocks.SMOKY_QUARTZ_ORE)
+			.add(CinderscapesBlocks.SULFUR_QUARTZ_ORE);
+
+		getOrCreateTagBuilder(CinderscapesBlockTags.STRIPPED_LOGS)
+			.add(CinderscapesBlocks.STRIPPED_SCORCHED_STEM)
+			.add(CinderscapesBlocks.STRIPPED_UMBRAL_STEM);
+
+		getOrCreateTagBuilder(CinderscapesBlockTags.STRIPPED_WOOD)
+			.add(CinderscapesBlocks.STRIPPED_SCORCHED_HYPHAE)
+			.add(CinderscapesBlocks.STRIPPED_UMBRAL_HYPHAE);
 
 
 		// local block tags
