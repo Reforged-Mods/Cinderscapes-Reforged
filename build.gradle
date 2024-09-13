@@ -3,11 +3,31 @@ import org.gradle.jvm.toolchain.JavaLanguageVersion
 
 plugins {
     id 'java'
-    id 'dev.architectury.loom' version '0.12.0-SNAPSHOT' apply false
+    id 'maven-publish'
+    id 'idea'
+    id 'eclipse'
+    id 'dev.architectury.loom' version '1.6-SNAPSHOT'
 }
 
-apply from: 'https://raw.githubusercontent.com/Reforged-Mods/GradleScripts/2.5-arch-loom/ferry.gradle'
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
+
+loom {
+    runs {
+        data {
+            data()
+        }
+    }
+    accessWidenerPath = file("src/main/resources/cinderscapes.accesswidener")
+    forge{
+        dataGen {
+            mod "cinderscapes"
+        }
+        convertAccessWideners = true
+        extraAccessWideners.add("cinderscapes.accesswidener")
+        mixinConfigs = ["mixins.cinderscapes-common.json", "mixins.cinderscapes-worldgen.json"]
+    }
+}
 
 repositories {
     maven {
@@ -27,6 +47,10 @@ repositories {
         name = 'TerraformersMC'
         url = 'https://maven.terraformersmc.com/'
     }
+    maven {
+        url = "https://api.modrinth.com/maven"
+    }
+    maven {  url = "https://repo.repsy.io/mvn/trinsdar/reforged-mods/"}
     maven { url 'https://jitpack.io' }
 }
 
@@ -36,115 +60,31 @@ dependencies {
 
     forge "net.minecraftforge:forge:${rootProject.minecraft_version}-${rootProject.forge_version}"
 
-    modImplementation ("com.github.Reforged-Mods:FabricBiomeApiReforged:${rootProject.fbapi_reforged_version}")
-    include ("com.github.Reforged-Mods:FabricBiomeApiReforged:${rootProject.fbapi_reforged_version}")
+    modImplementation ("maven.modrinth:fb-api-reforged:${rootProject.fbapi_reforged_version}")
     //modImplementation "com.github.Reforged-Mods.Terraform-Reforged:terraform-biome-remapper-api-v1:${project.terraform_version}"
-    includeMod "terraform-api", "com.github.Reforged-Mods.Terraform-Reforged:terraform-shapes-api-v1:${project.terraform_version}"
-    includeMod "terraform-api", "com.github.Reforged-Mods.Terraform-Reforged:terraform-wood-api-v1:${project.terraform_version}"
-    includeMod "terraform-api", "com.github.Reforged-Mods.Terraform-Reforged:terraform-utils-v1:${project.terraform_version}"
+    modImplementation include("io.github.reforgedmods.terraform-api:terraform-shapes-api-v1:${project.terraform_version}")
+    modImplementation include("io.github.reforgedmods.terraform-api:terraform-wood-api-v1:${project.terraform_version}")
+    modImplementation include("io.github.reforgedmods.terraform-api:terraform-utils-v1:${project.terraform_version}")
 
-    includeMod "cloth-config", "me.shedaniel.cloth:cloth-config-forge:${project.clothconfig_version}"
+    modImplementation include("me.shedaniel.cloth:cloth-config-forge:${project.clothconfig_version}")
 
-    afterEvaluate {
-        subprojects.each {
-            implementation project(path: "${it.name}", configuration: "namedElements")
-            include project("${it.name}:")
-        }
+}
+
+processResources {
+    inputs.property "version", project.version
+
+    filesMatching("META-INF/mods.toml") {
+        expand "version": project.version
     }
 }
 
-allprojects {
-    apply plugin: 'java'
-    apply plugin: 'idea'
-    apply plugin: 'eclipse'
-    apply plugin: 'maven-publish'
-    apply plugin: 'dev.architectury.loom'
-    // apply plugin: 'io.github.juuxel.loom-quiltflower-mini'
-
-    java.toolchain.languageVersion = JavaLanguageVersion.of(17)
-
-    group = project.maven_group
-
-    sourceSets {
-        testmod {
-            compileClasspath += main.compileClasspath
-            runtimeClasspath += main.runtimeClasspath
-        }
-    }
-
-    // quiltflower {
-    // 	addToRuntimeClasspath.set(true)
-    // }
-
-    configurations {
-        dev {
-            canBeResolved = false
-            canBeConsumed = true
-        }
-    }
-
-    jar {
-        classifier = "dev"
-    }
-
-    afterEvaluate {
-        processResources {
-            inputs.property "version", project.version
-
-            filesMatching("META-INF/mods.toml") {
-                expand "version": project.version
-            }
-        }
-    }
-
-    //task sourcesJar(type: Jar, dependsOn: classes) {
-    //	classifier = "sources"
-    //	from sourceSets.main.allSource
-    //}
-
-    tasks.withType(JavaCompile) {
-        it.options.encoding = "UTF-8"
-        it.options.release = 17
-    }
-
-    repositories {
-        maven {
-            url "https://maven.shedaniel.me"
-            content {
-                includeGroup "me.shedaniel.cloth.api"
-                includeGroup "me.sargunvohra.mcmods"
-                includeGroup "me.shedaniel.cloth"
-                includeGroup "me.shedaniel"
-            }
-        }
-        maven {
-            name = "Progwml6 (Just Enough Items)"
-            url = "https://dvs1.progwml6.com/files/maven/"
-        }
-        maven {
-            name = 'TerraformersMC'
-            url = 'https://maven.terraformersmc.com/'
-        }
-        maven { url 'https://jitpack.io' }
+configurations {
+    dev {
+        canBeResolved = false
+        canBeConsumed = true
     }
 }
 
-subprojects {
-    dependencies {
-        minecraft "com.mojang:minecraft:${project.minecraft_version}"
-        mappings "net.fabricmc:yarn:${rootProject.minecraft_version}+${project.yarn_mappings}:v2"
-
-        forge "net.minecraftforge:forge:${rootProject.minecraft_version}-${rootProject.forge_version}"
-
-        modImplementation("com.github.Reforged-Mods.Terraform-Reforged:terraform-biome-remapper-api-v1:${rootProject.terraform_version}")
-        modImplementation("com.github.Reforged-Mods.Terraform-Reforged:terraform-wood-api-v1:${rootProject.terraform_version}")
-        modImplementation("com.github.Reforged-Mods.Terraform-Reforged:terraform-shapes-api-v1:${rootProject.terraform_version}")
-        modImplementation("com.github.Reforged-Mods.Terraform-Reforged:terraform-utils-v1:${rootProject.terraform_version}")
-
-        modImplementation "me.shedaniel.cloth:cloth-config-forge:${project.clothconfig_version}"
-    }
-
-    version = rootProject.version
-
-    runClient.enabled = false
+jar {
+    archiveClassifier.set "dev"
 }
