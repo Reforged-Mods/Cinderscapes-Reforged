@@ -9,7 +9,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
-import net.minecraftforge.common.BiomeDictionary;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -38,18 +37,10 @@ public class CinderscapesBiomes {
     private static RegistryKey<Biome> add(String s, Biome b) {
         Identifier id = Cinderscapes.id(s);
         RegistryKey<Biome> key = RegistryKey.of(Registry.BIOME_KEY, id);
-        BiomeDictionary.addTypes(key, BiomeDictionary.Type.NETHER, BiomeDictionary.Type.HOT, BiomeDictionary.Type.DRY);
         BIOMES.put(id, b);
         return key;
     }
 
-    private static RegistryKey<Biome> add(String s, Biome b, BiomeDictionary.Type special) {
-        Identifier id = Cinderscapes.id(s);
-        RegistryKey<Biome> key = RegistryKey.of(Registry.BIOME_KEY, id);
-        BiomeDictionary.addTypes(key, BiomeDictionary.Type.NETHER, BiomeDictionary.Type.HOT, BiomeDictionary.Type.DRY, special);
-        BIOMES.put(id, b);
-        return key;
-    }
 }
 
 /*

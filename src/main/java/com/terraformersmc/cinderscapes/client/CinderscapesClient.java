@@ -9,7 +9,7 @@ import net.minecraft.client.render.RenderLayers;
 import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.text.Style;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
@@ -78,7 +78,7 @@ public class CinderscapesClient {
 
     private void onTooltipEvent(ItemTooltipEvent event){
         if (event.getItemStack().isOf(CinderscapesBlocks.NODZOL.asItem())) {
-            event.getToolTip().add(new TranslatableText("block.cinderscapes.nodzol.description").setStyle(Style.EMPTY.withColor(Formatting.GRAY)));
+            event.getToolTip().add(Text.translatable("block.cinderscapes.nodzol.description").setStyle(Style.EMPTY.withColor(Formatting.GRAY)));
         }
     }
 

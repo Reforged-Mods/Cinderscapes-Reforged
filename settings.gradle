@@ -12,6 +12,3 @@ pluginManagement {
 }
 
 rootProject.name = "cinderscapes"
-include "client"
-include "common"
-include "worldgen"

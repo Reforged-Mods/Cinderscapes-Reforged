@@ -1,5 +1,6 @@
 package com.terraformersmc.cinderscapes.block;
 
+import com.terraformersmc.cinderscapes.init.CinderscapesBlocks;
 import com.terraformersmc.cinderscapes.init.CinderscapesItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

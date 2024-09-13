@@ -14,12 +14,12 @@ description='''An expansion of Minecraft's Nether biomes!'''
 [[dependencies.cinderscapes]]
 modId="forge"
 mandatory=true
-versionRange="[40.1.73,)"
+versionRange="[43.2.0,)"
 ordering="AFTER"
 side="BOTH"
 [[dependencies.cinderscapes]]
 modId="minecraft"
 mandatory=true
-versionRange="[1.18.2,)"
+versionRange="[1.19.2,)"
 ordering="AFTER"
 side="BOTH"

@@ -98,7 +98,7 @@ public class CinderscapesBlockLootTableProvider extends BlockLootTableGenerator 
 		// wood building blocks
 		// TODO: Consider bringing over the WoodBlocks interface from Terrestria
 		addDrop(CinderscapesBlocks.SCORCHED_BUTTON);
-		addDrop(CinderscapesBlocks.SCORCHED_DOOR, BlockLootTableGenerator::addDoorDrop);
+		addDrop(CinderscapesBlocks.SCORCHED_DOOR, BlockLootTableGenerator::doorDrops);
 		addDrop(CinderscapesBlocks.SCORCHED_FENCE);
 		addDrop(CinderscapesBlocks.SCORCHED_FENCE_GATE);
 		addDrop(CinderscapesBlocks.SCORCHED_HYPHAE);
@@ -114,7 +114,7 @@ public class CinderscapesBlockLootTableProvider extends BlockLootTableGenerator 
 		addDrop(CinderscapesBlocks.STRIPPED_SCORCHED_HYPHAE);
 
 		addDrop(CinderscapesBlocks.UMBRAL_BUTTON);
-		addDrop(CinderscapesBlocks.UMBRAL_DOOR, BlockLootTableGenerator::addDoorDrop);
+		addDrop(CinderscapesBlocks.UMBRAL_DOOR, BlockLootTableGenerator::doorDrops);
 		addDrop(CinderscapesBlocks.UMBRAL_FENCE);
 		addDrop(CinderscapesBlocks.UMBRAL_FENCE_GATE);
 		addDrop(CinderscapesBlocks.UMBRAL_FUNGUS);
@@ -202,7 +202,7 @@ public class CinderscapesBlockLootTableProvider extends BlockLootTableGenerator 
 
 	@Override
 	protected Iterable<Block> getKnownBlocks() {
-		Collection<Block> blocks = new ArrayList<>(CinderscapesBlocks.BLOCKS.values());
+		Collection<Block> blocks = new ArrayList<>(CinderscapesBlocks.BLOCKS);
 		blocks.remove(CinderscapesBlocks.NODZOL);
 		return blocks;
 	}

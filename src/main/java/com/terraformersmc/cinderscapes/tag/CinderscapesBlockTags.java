@@ -11,8 +11,8 @@ public class CinderscapesBlockTags {
     public static final TagKey<Block> SCORCHED_STEMS = TagKey.of(Registry.BLOCK_KEY, Cinderscapes.id("scorched_stems"));
     public static final TagKey<Block> UMBRAL_STEMS = TagKey.of(Registry.BLOCK_KEY, Cinderscapes.id("umbral_stems"));
 
-    public static final TagKey<Block> STRIPPED_LOGS = TagKey.of(Registry.BLOCK_KEY, new Identifier("c", "stripped_logs"));
-    public static final TagKey<Block> STRIPPED_WOOD = TagKey.of(Registry.BLOCK_KEY, new Identifier("c", "stripped_wood"));
+    public static final TagKey<Block> STRIPPED_LOGS = TagKey.of(Registry.BLOCK_KEY, new Identifier("forge", "stripped_logs"));
+    public static final TagKey<Block> STRIPPED_WOOD = TagKey.of(Registry.BLOCK_KEY, new Identifier("forge", "stripped_wood"));
 
     public static void init() { }
 }

@@ -7,6 +7,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.server.BlockTagProvider;
 import net.minecraft.tag.BlockTags;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class CinderscapesBlockTagProvider extends BlockTagProvider {
@@ -217,10 +218,10 @@ public class CinderscapesBlockTagProvider extends BlockTagProvider {
 
 
 		// conventional tags
-		getOrCreateTagBuilder(ConventionalBlockTags.ORES)
+		getOrCreateTagBuilder(Tags.Blocks.ORES)
 			.add(CinderscapesBlocks.SULFUR_ORE);
 
-		getOrCreateTagBuilder(ConventionalBlockTags.QUARTZ_ORES)
+		getOrCreateTagBuilder(Tags.Blocks.ORES_QUARTZ)
 			.add(CinderscapesBlocks.ROSE_QUARTZ_ORE)
 			.add(CinderscapesBlocks.SMOKY_QUARTZ_ORE)
 			.add(CinderscapesBlocks.SULFUR_QUARTZ_ORE);

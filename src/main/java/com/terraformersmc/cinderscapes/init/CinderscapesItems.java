@@ -3,19 +3,18 @@ package com.terraformersmc.cinderscapes.init;
 import com.terraformersmc.cinderscapes.Cinderscapes;
 import com.terraformersmc.cinderscapes.item.CinderscapesMusicDiscItem;
 import net.minecraft.MinecraftVersion;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class CinderscapesItems {
-    // Acts as a kind of local registry for items added by Cinderscapes
-    public static final Map<Identifier, Item> ITEMS = new LinkedHashMap<>();
 
-    public static final Item BRAMBLE_BERRIES = add("bramble_berries", new AliasedBlockItem(CinderscapesBlocks.BRAMBLE_BERRY_BUSH, new Item.Settings().group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(2).saturationModifier(0.1F).alwaysEdible().snack().statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 600, 0), 0.8F).build())));
-
-    public static final Item UMBRAL_SIGN = add("umbral_sign", new SignItem(new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS), CinderscapesBlocks.UMBRAL_SIGN, CinderscapesBlocks.UMBRAL_WALL_SIGN));
-
-    public static final Item SCORCHED_SIGN = add("scorched_sign", new SignItem(new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS), CinderscapesBlocks.SCORCHED_SIGN, CinderscapesBlocks.SCORCHED_WALL_SIGN));
     public static final Item ASH_PILE = add("ash_pile", new Item(new Item.Settings().group(ItemGroup.MATERIALS)));
 
     public static final Item SULFUR = add("sulfur", new Item(new Item.Settings().group(ItemGroup.MATERIALS)));
@@ -36,7 +35,8 @@ public class CinderscapesItems {
             blockItem.appendBlocks(Item.BLOCK_ITEMS, item);
         }
 
-        return Registry.register(Registry.ITEM, Identifier.of(Cinderscapes.NAMESPACE, name), item);
+        ForgeRegistries.ITEMS.register(Identifier.of(Cinderscapes.NAMESPACE, name), item);
+        return item;
     }
 
     public static void init() {

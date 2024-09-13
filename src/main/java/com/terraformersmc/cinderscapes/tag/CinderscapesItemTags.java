@@ -1,6 +1,7 @@
 package com.terraformersmc.cinderscapes.tag;
 
 import com.terraformersmc.cinderscapes.Cinderscapes;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
@@ -17,6 +18,8 @@ public class CinderscapesItemTags {
     public static final TagKey<Item> QUARTZ = TagKey.of(Registry.ITEM_KEY, new Identifier("forge", "gems/quartz"));
     public static final TagKey<Item> QUARTZ_BLOCKS = TagKey.of(Registry.ITEM_KEY, new Identifier("forge", "storage_blocks/quartz"));
     public static final TagKey<Item> QUARTZ_ORES = TagKey.of(Registry.ITEM_KEY, new Identifier("forge", "ores/quartz"));
+    public static final TagKey<Item> STRIPPED_LOGS = TagKey.of(Registry.ITEM_KEY, new Identifier("forge", "stripped_logs"));
+    public static final TagKey<Item> STRIPPED_WOOD = TagKey.of(Registry.ITEM_KEY, new Identifier("forge", "stripped_wood"));
     public static final TagKey<Item> SULFUR_ORES = TagKey.of(Registry.ITEM_KEY, new Identifier("forge", "ores/sulfurs"));
     public static final TagKey<Item> SULFURS = TagKey.of(Registry.ITEM_KEY, new Identifier("forge", "sulfurs"));
 
