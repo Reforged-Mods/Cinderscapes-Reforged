@@ -1,6 +1,7 @@
 package com.terraformersmc.cinderscapes;
 
 import com.terraformersmc.cinderscapes.biome.CinderscapesBiomeRemappings;
+import com.terraformersmc.cinderscapes.client.CinderscapesClient;
 import com.terraformersmc.cinderscapes.config.CinderscapesConfig;
 import com.terraformersmc.cinderscapes.data.CinderscapesDatagen;
 import com.terraformersmc.cinderscapes.init.CinderscapesBiomes;
@@ -28,8 +29,10 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.Feature;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModContainer;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -46,7 +49,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
-@Mod("cinderscapes_common")
+@Mod(Cinderscapes.NAMESPACE)
 public class Cinderscapes {
 	public static final String NAMESPACE = "cinderscapes";
 	public static final Logger LOGGER = LogManager.getLogger(StringUtils.capitalize(NAMESPACE));
@@ -63,7 +66,7 @@ public class Cinderscapes {
 			SpawnRestriction.register(EntityType.ZOGLIN, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ZoglinEntity::canMobSpawn);
 			SpawnRestriction.register(EntityType.ZOMBIFIED_PIGLIN, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, ZombifiedPiglinEntity::canMobSpawn);
 		} catch (IllegalStateException ignored) { }
-
+		DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> CinderscapesClient::new);
 		CinderscapesGroups.init();
 	}
 

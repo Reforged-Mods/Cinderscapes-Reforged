@@ -18,7 +18,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @SuppressWarnings("unused")
-@Mod("cinderscapes_client")
 public class CinderscapesClient {
 
     public CinderscapesClient(){

@@ -18,7 +18,7 @@ import net.minecraft.world.WorldView;
 import java.util.Locale;
 
 public class GhastlyEctoplasmBlock extends Block {
-    public static final EnumProperty<GhastlyEctoplasmBlock.Type> TYPE = EnumProperty.of("type", GhastlyEctoplasmBlock.Type.class);
+    public static final EnumProperty<Type> TYPE = EnumProperty.of("type", Type.class);
 
     public GhastlyEctoplasmBlock(Settings settings) {
         super(settings);
@@ -28,7 +28,7 @@ public class GhastlyEctoplasmBlock extends Block {
     @Override
     @SuppressWarnings("deprecation")
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return state.get(GhastlyEctoplasmBlock.TYPE) == GhastlyEctoplasmBlock.Type.BOTTOM ? Block.createCuboidShape(3.0D, 2.5D, 3.0D, 13.0D, 16.0D, 13.0D) : Block.createCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
+        return state.get(GhastlyEctoplasmBlock.TYPE) == Type.BOTTOM ? Block.createCuboidShape(3.0D, 2.5D, 3.0D, 13.0D, 16.0D, 13.0D) : Block.createCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
     }
 
     @Override

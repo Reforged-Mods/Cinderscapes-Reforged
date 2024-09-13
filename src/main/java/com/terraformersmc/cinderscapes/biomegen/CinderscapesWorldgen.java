@@ -1,4 +1,4 @@
-package com.terraformersmc.cinderscapes.worldgen;
+package com.terraformersmc.cinderscapes.biomegen;
 
 import com.google.common.collect.ImmutableSet;
 import com.terraformersmc.cinderscapes.Cinderscapes;
