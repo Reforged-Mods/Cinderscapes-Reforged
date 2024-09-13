@@ -26,3 +26,4 @@ common/src/generated/
 run/
 
 .DS_Store
+src/generated/resources

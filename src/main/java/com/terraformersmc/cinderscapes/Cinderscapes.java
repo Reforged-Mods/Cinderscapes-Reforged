@@ -1,6 +1,7 @@
 package com.terraformersmc.cinderscapes;
 
 import com.terraformersmc.cinderscapes.biome.CinderscapesBiomeRemappings;
+import com.terraformersmc.cinderscapes.client.CinderscapesClient;
 import com.terraformersmc.cinderscapes.config.CinderscapesConfig;
 import com.terraformersmc.cinderscapes.data.CinderscapesDatagen;
 import com.terraformersmc.cinderscapes.init.CinderscapesBiomes;
@@ -15,6 +16,7 @@ import com.terraformersmc.cinderscapes.init.CinderscapesTrades;
 import com.terraformersmc.cinderscapes.tag.CinderscapesBlockTags;
 import com.terraformersmc.cinderscapes.tag.CinderscapesItemTags;
 import com.terraformersmc.cinderscapes.util.NoiseCollisionChecker;
+import com.terraformersmc.cinderscapes.worldgen.CinderscapesWorldgen;
 import net.minecraft.block.Block;
 import net.minecraft.block.ComposterBlock;
 import net.minecraft.entity.EntityType;
@@ -28,8 +30,10 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.Feature;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModContainer;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -46,7 +50,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.List;
 
-@Mod("cinderscapes_common")
+@Mod(Cinderscapes.NAMESPACE)
 public class Cinderscapes {
 	public static final String NAMESPACE = "cinderscapes";
 	public static final Logger LOGGER = LogManager.getLogger(StringUtils.capitalize(NAMESPACE));
@@ -60,6 +64,8 @@ public class Cinderscapes {
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 		FMLJavaModLoadingContext.get().getModEventBus().register(this);
 
+		DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> CinderscapesClient::new);
+		new CinderscapesWorldgen();
 		CinderscapesGroups.init();
 	}
 
@@ -75,8 +81,6 @@ public class Cinderscapes {
 	@SubscribeEvent
 	@SuppressWarnings({"unchecked", "rawtypes"})
 	public void onRegister(final RegistryEvent.Register<?> event){
-		ModContainer previous = ModLoadingContext.get().getActiveContainer();
-		ModLoadingContext.get().setActiveContainer(ModList.get().getModContainerById(NAMESPACE).isPresent() ? ModList.get().getModContainerById(NAMESPACE).get() : previous);
 		if (event.getRegistry() == ForgeRegistries.FEATURES){
 			for (Identifier id : CinderscapesFeatures.FEATURES.keySet()){
 				Feature<?> feature = CinderscapesFeatures.FEATURES.get(id);
@@ -139,7 +143,6 @@ public class Cinderscapes {
 				((IForgeRegistry)event.getRegistry()).register(item);
 			}
 		}
-		ModLoadingContext.get().setActiveContainer(previous);
 	}
 
 	public void onInitialize() {

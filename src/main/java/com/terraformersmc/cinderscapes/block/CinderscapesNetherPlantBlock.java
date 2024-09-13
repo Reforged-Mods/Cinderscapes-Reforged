@@ -25,8 +25,8 @@ public class CinderscapesNetherPlantBlock extends PlantBlock {
     }
 
     @Override
-    public AbstractBlock.OffsetType getOffsetType() {
-        return AbstractBlock.OffsetType.XZ;
+    public OffsetType getOffsetType() {
+        return OffsetType.XZ;
     }
 
     @Override

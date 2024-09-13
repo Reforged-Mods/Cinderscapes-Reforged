@@ -78,7 +78,7 @@ public class UmbralVineFeature extends Feature<DefaultFeatureConfig> {
         int dx = to.getX() - from.getX();
         int dy = to.getY() - from.getY();
         int dz = to.getZ() - from.getZ();
-        int dt = java.lang.Math.max(java.lang.Math.max(java.lang.Math.abs(dx), java.lang.Math.abs(dy)), java.lang.Math.abs(dz));
+        int dt = Math.max(Math.max(Math.abs(dx), Math.abs(dy)), Math.abs(dz));
 
         int randomDroop = -(random.nextInt(dt/2) + 1);
 
