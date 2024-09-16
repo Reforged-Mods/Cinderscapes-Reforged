@@ -229,9 +229,9 @@ public class CinderscapesBlocks {
     }
 
     private static <B extends Block> B withItem(String name, B block, ItemGroup tab) {
+        B block1 = add(name, block);
         CinderscapesItems.add(name, new BlockItem(block, new Item.Settings().group(tab)));
-
-        return add(name, block);
+        return block1;
     }
 
     private static <B extends Block> B add(String name, B block) {
