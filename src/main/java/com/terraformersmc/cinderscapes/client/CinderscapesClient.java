@@ -28,7 +28,7 @@ public class CinderscapesClient {
     }
 
     public void addSigns(TextureStitchEvent.Pre event) {
-        if (event.getAtlas().equals(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE)){
+        if (event.getAtlas().getId().equals(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE)){
             event.addSprite(Cinderscapes.id("entity/signs/umbral"));
             TexturedRenderLayers.addWoodType(CinderscapesBlocks.UMBRAL_SIGN_TYPE);
             event.addSprite(Cinderscapes.id("entity/signs/scorched"));
