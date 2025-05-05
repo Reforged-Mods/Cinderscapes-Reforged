@@ -46,6 +46,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.SignType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
@@ -82,8 +83,9 @@ public class CinderscapesBlocks {
     public static final Block SCORCHED_STAIRS = withItem("scorched_stairs", new StairsBlock(SCORCHED_PLANKS.getDefaultState(), TerraformBlockSettings.copyOf(Blocks.WARPED_STAIRS).mapColor(MapColor.LIGHT_GRAY)), ItemGroup.BUILDING_BLOCKS);
     public static final Block SCORCHED_BUTTON = withItem("scorched_button", new WoodenButtonBlock(TerraformBlockSettings.copyOf(Blocks.WARPED_BUTTON).mapColor(MapColor.LIGHT_GRAY)), ItemGroup.REDSTONE);
     public static final Block SCORCHED_DOOR = withItem("scorched_door", new DoorBlock(TerraformBlockSettings.copyOf(Blocks.WARPED_DOOR).mapColor(MapColor.LIGHT_GRAY)), ItemGroup.REDSTONE);
-    public static final Block SCORCHED_SIGN = add("scorched_sign", new TerraformSignBlock(Cinderscapes.id("entity/signs/scorched"), TerraformBlockSettings.copyOf(Blocks.WARPED_SIGN).mapColor(MapColor.LIGHT_GRAY)));
-    public static final Block SCORCHED_WALL_SIGN = add("scorched_wall_sign", new TerraformWallSignBlock(Cinderscapes.id("entity/signs/scorched"), TerraformBlockSettings.copyOf(Blocks.WARPED_WALL_SIGN).mapColor(MapColor.LIGHT_GRAY).dropsLike(SCORCHED_SIGN)));
+    public static final SignType SCORCHED_SIGN_TYPE = SignType.register(SignType.create(Cinderscapes.NAMESPACE + ":scorched"));
+    public static final Block SCORCHED_SIGN = add("scorched_sign", new TerraformSignBlock(TerraformBlockSettings.copyOf(Blocks.WARPED_SIGN).mapColor(MapColor.LIGHT_GRAY), SCORCHED_SIGN_TYPE));
+    public static final Block SCORCHED_WALL_SIGN = add("scorched_wall_sign", new TerraformWallSignBlock(TerraformBlockSettings.copyOf(Blocks.WARPED_WALL_SIGN).mapColor(MapColor.LIGHT_GRAY).dropsLike(SCORCHED_SIGN), SCORCHED_SIGN_TYPE));
     public static final Item SCORCHED_SIGN_ITEM = CinderscapesItems.add("scorched_sign", new SignItem(new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS), SCORCHED_SIGN, SCORCHED_WALL_SIGN));
 
     public static final Block SCORCHED_SHRUB = withItem("scorched_shrub", new CinderscapesNetherPlantBlock(Settings.copy(Blocks.DEAD_BUSH), (state) -> Block.createCuboidShape(2.0, 0.0, 2.0, 14.0, 14.0, 14.0)), ItemGroup.DECORATIONS);
@@ -129,8 +131,9 @@ public class CinderscapesBlocks {
     public static final Block UMBRAL_STAIRS = withItem("umbral_stairs", new StairsBlock(UMBRAL_PLANKS.getDefaultState(), TerraformBlockSettings.copyOf(Blocks.WARPED_STAIRS).mapColor(MapColor.BLUE)), ItemGroup.BUILDING_BLOCKS);
     public static final Block UMBRAL_BUTTON = withItem("umbral_button", new WoodenButtonBlock(TerraformBlockSettings.copyOf(Blocks.WARPED_BUTTON).mapColor(MapColor.BLUE)), ItemGroup.REDSTONE);
     public static final Block UMBRAL_DOOR = withItem("umbral_door", new DoorBlock(TerraformBlockSettings.copyOf(Blocks.WARPED_DOOR).mapColor(MapColor.BLUE)), ItemGroup.REDSTONE);
-    public static final Block UMBRAL_SIGN = add("umbral_sign", new TerraformSignBlock(Cinderscapes.id("entity/signs/umbral"), TerraformBlockSettings.copyOf(Blocks.WARPED_SIGN).mapColor(MapColor.BLUE)));
-    public static final Block UMBRAL_WALL_SIGN = add("umbral_wall_sign", new TerraformWallSignBlock(Cinderscapes.id("entity/signs/umbral"), TerraformBlockSettings.copyOf(Blocks.WARPED_WALL_SIGN).mapColor(MapColor.BLUE).dropsLike(UMBRAL_SIGN)));
+    public static final SignType UMBRAL_SIGN_TYPE = SignType.register(SignType.create(Cinderscapes.NAMESPACE + ":umbral"));
+    public static final Block UMBRAL_SIGN = add("umbral_sign", new TerraformSignBlock(TerraformBlockSettings.copyOf(Blocks.WARPED_SIGN).mapColor(MapColor.BLUE), UMBRAL_SIGN_TYPE));
+    public static final Block UMBRAL_WALL_SIGN = add("umbral_wall_sign", new TerraformWallSignBlock(TerraformBlockSettings.copyOf(Blocks.WARPED_WALL_SIGN).mapColor(MapColor.BLUE).dropsLike(UMBRAL_SIGN), UMBRAL_SIGN_TYPE));
     public static final Item UMBRAL_SIGN_ITEM = CinderscapesItems.add("umbral_sign", new SignItem(new Item.Settings().maxCount(16).group(ItemGroup.DECORATIONS), UMBRAL_SIGN, UMBRAL_WALL_SIGN));
 
     // Other

@@ -1,7 +1,7 @@
 package com.terraformersmc.cinderscapes.client;
 
+import com.terraformersmc.cinderscapes.Cinderscapes;
 import com.terraformersmc.cinderscapes.init.CinderscapesBlocks;
-import com.terraformersmc.terraform.sign.SpriteIdentifierRegistry;
 import com.terraformersmc.terraform.sign.block.TerraformSignBlock;
 import net.minecraft.block.Block;
 import net.minecraft.client.render.RenderLayer;
@@ -11,6 +11,7 @@ import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -22,17 +23,21 @@ public class CinderscapesClient {
 
     public CinderscapesClient(){
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::addSigns);
         MinecraftForge.EVENT_BUS.addListener(this::onTooltipEvent);
     }
 
-    public static void addSigns(){
-        SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, ((TerraformSignBlock) CinderscapesBlocks.UMBRAL_SIGN).getTexture()));
-        SpriteIdentifierRegistry.INSTANCE.addIdentifier(new SpriteIdentifier(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE, ((TerraformSignBlock) CinderscapesBlocks.SCORCHED_SIGN).getTexture()));
+    public void addSigns(TextureStitchEvent.Pre event) {
+        if (event.getAtlas().equals(TexturedRenderLayers.SIGNS_ATLAS_TEXTURE)){
+            event.addSprite(Cinderscapes.id("entity/signs/umbral"));
+            TexturedRenderLayers.addWoodType(CinderscapesBlocks.UMBRAL_SIGN_TYPE);
+            event.addSprite(Cinderscapes.id("entity/signs/scorched"));
+            TexturedRenderLayers.addWoodType(CinderscapesBlocks.SCORCHED_SIGN_TYPE);
+        }
     }
 
     private void clientSetup(FMLClientSetupEvent event) {
         // TODO: Find a more elegant way to add blocks to their render layers
-        addSigns();
         event.enqueueWork(() -> {
             addArrayToLayer(RenderLayer.getTranslucent(),
                     CinderscapesBlocks.UMBRAL_WART_BLOCK,
